@@ -30,12 +30,19 @@ body {
 }
 
 .banner-box { 
-    background-color: white;
+    background-color: rgb(255, 255, 255, 0.8);
     height: calc(100%-.5%);
     width: 100%;
     margin: 2%;
     border-radius: 7px;
-    opacity: 80%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.banner-box:hover { 
+    transform: scale(1.1);
+    transition: ease 0.3s;
 }
 
 #selected-banner { 
@@ -139,4 +146,20 @@ body {
 .wish-button-icon { 
     position: relative;
     left: -2%;
+}
+
+#hero-icon-demy { 
+    width: 52%;
+}
+
+#hero-icon-james { 
+    width: 93%;
+}
+.hero-icons { 
+    position: absolute;
+    bottom: 0; 
+}
+
+#hero-icon-jayson { 
+    width: 75%;
 }
