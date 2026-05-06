@@ -84,6 +84,11 @@ body {
     border: none;
     margin: 2%;
     border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .currency-container { 
@@ -109,7 +114,7 @@ body {
     align-items: center;
 }
 
-.icons { 
+.icon-cvsu { 
     width: 40px;
     opacity: 100%;
 }
@@ -129,4 +134,9 @@ body {
     left: 10%;
     display: flex;
     align-items: center;
+}
+
+.wish-button-icon { 
+    position: relative;
+    left: -2%;
 }
