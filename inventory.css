@@ -1,0 +1,186 @@
+* {
+    font-family: Lexend;
+    margin: 0;
+}
+
+@font-face {
+    font-family: Lexend;
+    src: url(Assets/Lexend-VariableFont_wght.ttf);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url(Assets/inventory-background.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+header {
+    height: 70px;
+    align-content: center;
+}
+
+header button {
+    height: 40px;
+    width: 80px;
+    border-radius: 30px;
+    background-color: #00df6d;
+    border: 0;
+    margin-left: clamp(5px, 2vw, 30px);
+}
+
+header button:hover {
+    background-color: #01f577;
+}
+
+header button:active {
+    background-color: #00b859
+}
+
+main {
+    flex-grow: 1;
+    margin: 0px 80px 20px 80px;
+    display: grid;
+    grid-template-columns: 1fr 0.1fr 0.8fr 0.2fr;
+}
+
+.student-list {
+    background-color: rgba(255, 255, 255, 0.418);
+    border-radius: 20px;
+}
+
+.student-info {
+    background-color: rgba(255, 255, 255, 0.932);
+    border-radius: 20px;
+    display: grid;
+    grid-template-rows: 50px 200px 150px 1fr;
+    overflow: hidden;
+}
+
+.student-info-header {
+    display: flex;
+    background-color: #00df6d;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.student-info-main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: clamp(5px, 5vw, 20px);
+    background-color: #d7ffea;
+    padding: 20px;
+}
+
+.student-info-pic-container {
+    justify-self: center;
+    width: min-content;
+}
+
+.student-info-pic {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.student-info-name {
+    margin-top: 5px;
+    color: #264d3a;
+}
+
+.student-info-name h1 {
+    font-size: 28px;
+    border-bottom: 2px solid #75fcb4;
+}
+
+.student-info-name h2 {
+    font-size: 20px;
+}
+
+.student-info-stats-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-info-stats-container h2{
+    font-size: 20px;
+    align-self: center;
+    margin: 5px 0;
+    color: #264d3a;
+}
+
+.student-info-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: auto;
+    margin: 0 15px 15px 15px;
+    border: 2px solid #c4c4c4;
+    background-color: white;
+    border-radius: 10px;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.student-info-stats-boxes {
+    border-right: 2px solid #c4c4c4;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.student-info-stats-boxes:last-child {
+    border-right: 0;
+}
+
+.stat-box-up {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #35e489;
+    font-size: 15px;
+    color: #264d3a;
+    padding-bottom: 5px;
+}
+
+.stat-box-down {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #264d3a;
+    padding-bottom: 8px;
+}
+
+.student-info-details {
+    display: grid;
+    margin: 10px 20px;
+    grid-template-rows: 40px 1fr;
+}
+
+.student-info-details-buttons {
+    align-content: center;
+}
+
+.student-info-details-buttons button {
+    background-color: #00df6d;
+    border: 2px solid #00df6d;
+    border-radius: 20px;
+    height: 30px;
+    width: 70px;
+}
+
+#info-button {
+    background-color: #c4c4c4;
+    border-color: #b4b4b4;
+}
+
+.student-info-details-content {
+    margin: 5px 10px;
+    text-align: justify;
+}
+
