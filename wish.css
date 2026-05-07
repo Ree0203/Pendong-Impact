@@ -302,3 +302,14 @@ body {
 #min, #max { 
     margin: 3%; 
 }
+
+#amount-to-convert { 
+    position: relative;
+    font-size: 2rem;
+    top: 10%;
+    background-color: #00df6d;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+}
