@@ -163,3 +163,13 @@ body {
 #hero-icon-jayson { 
     width: 115%;
 }
+
+.purchase { 
+    width: 18%;
+    height: 60%;
+    border-radius: 200px;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 5%; 
+}
