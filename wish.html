@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="purchase-cvsu-slider">
+    <div class="purchase-cvsu-slider" id="conversion-container">
         <div class="slider-title">
             Purchase CVSU gems
             <hr>
@@ -59,8 +59,12 @@
         <div id="amount-to-convert"></div>
         <div class="slider-container">
             <div id="min"></div>
-            <input type="range" min="0" max="100" value="50" class="slider" id="myRange">
+            <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
             <div id="max"></div>
+        </div>
+        <div class="slider-buttons">
+            <button id="cancel" class="purchase-buttons">Cancel</button>
+            <button id="purchase" class="purchase-buttons">Purchase</button>
         </div>
     </div>
 
@@ -89,6 +93,7 @@
             </div>
         </button>
     </div>
+
     <script src="wish.js"></script>
 </body>
 </html>

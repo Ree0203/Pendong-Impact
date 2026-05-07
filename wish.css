@@ -183,7 +183,7 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 33vw;
-    height: 40vh;
+    height: 45vh;
     border-radius: 30px;
     background-color: white;
     display: flex;
@@ -243,11 +243,13 @@ body {
     display: flex;
     align-items: center;
     width: 80%;
+    position: relative;
+    bottom: 5%;
 }
 
 .slider { 
     width: 100%;
-    -webkit-appearance: none;
+    -moz-appearance: none;
     height: 5%;
     background-color: #00df6d;
     border-radius: 10px;
@@ -306,10 +308,36 @@ body {
 #amount-to-convert { 
     position: relative;
     font-size: 2rem;
-    top: 10%;
+    top: 8%;
     background-color: #00df6d;
     width: 20%;
     display: flex;
     justify-content: center;
     border-radius: 30px;
+    color: black;
 }
+
+.slider-buttons { 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    bottom: 4%;
+    gap: 8%;
+}
+
+#purchase:hover { 
+    background-color: #00df6d;
+}
+.purchase-buttons { 
+    height: 100%;
+    background-color: #00df6d;
+    outline: none;
+    border: none;
+    width: 30%;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+}
+
