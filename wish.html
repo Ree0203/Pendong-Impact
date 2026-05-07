@@ -24,13 +24,51 @@
     <div class="currency-container">
         <div class="currency" id="cvsu-coins">
             <div class="image1"><img src="Assets/cvsu-icon.png" alt="cvsu-icon" class="icon-cvsu"></div>
-            <div class="amount">10</div>
+            <div class="amount" id="cvsu-coins-amount"></div>
+            <button class="purchase"  id="purchase-cvsu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+
+            </button>
         </div>
         <div class="currency" id="3-coins">
             <div class="image2"><img src="Assets/3-icon.png" alt="3-coin" class="icons1"></div>
-            <div class="amount">1000</div>
+            <div class="amount" id="3-coins-amount"></div>
         </div>
     </div>
+
+    <div class="purchase-cvsu-slider" id="conversion-container">
+        <div class="slider-title">
+            Purchase CVSU gems
+            <hr>
+        </div>
+        <div class="hero-icon-cvsu-container">
+            <img src="Assets/cvsu-icon.png" alt="">
+            <div class="hero-icon-cvsu-name">
+                <div class="gem">
+                    CvSU gem
+                    <div class="currency-exchange">
+                        <img src="Assets/3-icon.png" class="icons-3-exchange" alt="">
+                        100
+                    </div>
+                </div>
+                <div class="description">Gem used to pull for 2-3 characters</div>
+            </div>
+        </div>
+        <div id="amount-to-convert"></div>
+        <div class="slider-container">
+            <div id="min"></div>
+            <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+            <div id="max"></div>
+        </div>
+        <div class="slider-buttons">
+            <button id="cancel" class="purchase-buttons">Cancel</button>
+            <button id="purchase" class="purchase-buttons">Purchase</button>
+        </div>
+    </div>
+
+
     <div id="selected-banner">
 
     </div>
@@ -55,5 +93,7 @@
             </div>
         </button>
     </div>
+
+    <script src="wish.js"></script>
 </body>
 </html>

@@ -48,9 +48,8 @@ body {
 #selected-banner { 
     width: 63vw;
     height: 60vh;
-    background-color: white;
+    background-color: rgb(255, 255, 255, .8);
     border-radius: 10px;
-    opacity: 80%;
 }
 
 .detail-buttons-container { 
@@ -70,6 +69,7 @@ body {
     outline: none;
     border: none;
     margin: 2%; 
+    background-color: #00df6d;
 }
 
 
@@ -149,7 +149,7 @@ body {
 }
 
 #hero-icon-demy { 
-    width: 52%;
+    width: 90%;
 }
 
 #hero-icon-james { 
@@ -161,5 +161,184 @@ body {
 }
 
 #hero-icon-jayson { 
-    width: 75%;
+    width: 115%;
 }
+
+.purchase { 
+    width: 18%;
+    height: 60%;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 5%; 
+    display: flex;
+    align-items: center;
+    background-color: #00df6d;
+}
+
+.purchase-cvsu-slider { 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 33vw;
+    height: 45vh;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    flex-direction: column;
+    display: none;
+}
+
+.slider-title {
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 8%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    width: 100%;
+    color: #00df6d;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.slider-title hr { 
+    width: 90%;
+    opacity: 30%;
+    color: #00df6d;
+}
+.hero-icon-cvsu-container {
+
+    margin-top: 5%;
+    height: 35%;
+    width: 90%;
+    display: flex; 
+    background-image: linear-gradient(to right top, #00df6d, #00de9e, #00dbc4, #00d5dd, #1bcee9);
+}
+
+.hero-icon-cvsu-name { 
+    display: flex;
+    position: relative;
+    font-size: 2rem;
+    top: 4%;
+    color: white;
+    font-weight: 500;
+    margin-top: 1%;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hero-icon-cvsu-name .description { 
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.slider-container { 
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    position: relative;
+    bottom: 5%;
+}
+
+.slider { 
+    width: 100%;
+    -moz-appearance: none;
+    height: 5%;
+    background-color: #00df6d;
+    border-radius: 10px;
+}
+
+.slider::-moz-range-thumb { 
+    border: none;
+    outline: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: rgb(255, 255, 255);
+    height: 3vh;
+    width: 1.5vw;
+    border-radius: 50%;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.slider::-moz-range-thumb:hover { 
+    box-shadow: 0 0 0 3px #00df6d,
+                0 0 0 6px white; 
+}
+
+.slider::-moz-range-thumb:active { 
+    box-shadow: 0 0 0 3px #00df6d,
+                0 0 0 6px white; 
+}
+
+.gem {
+    display: flex;
+    position: relative;
+
+}
+
+.currency-exchange { 
+    background-color: rgb(0, 0, 0, .5);
+    position: absolute;
+    right: 10%;
+    width: 20%;
+    font-size: 1.1rem;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    align-items: center;
+}
+
+.icons-3-exchange { 
+   height: 80%;
+   width: 40%;
+}
+
+#min, #max { 
+    margin: 3%; 
+}
+
+#amount-to-convert { 
+    position: relative;
+    font-size: 2rem;
+    top: 8%;
+    background-color: #00df6d;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    border-radius: 30px;
+    color: black;
+}
+
+.slider-buttons { 
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    bottom: 4%;
+    gap: 8%;
+}
+
+#purchase:hover { 
+    background-color: #00df6d;
+}
+.purchase-buttons { 
+    height: 100%;
+    background-color: #00df6d;
+    outline: none;
+    border: none;
+    width: 30%;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+}
+
