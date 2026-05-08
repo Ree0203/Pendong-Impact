@@ -174,7 +174,7 @@
             </section>
             <section class="student-info-main">
                 <div class="student-info-pic">
-                    
+
                 </div>
 
                 <div class="student-info-name">
@@ -226,8 +226,8 @@
 
             <section class="student-info-details">
                 <div class="student-info-details-buttons" >
-                    <button id="skill-button">Skill</button>
-                    <button id="info-button">Info</button>
+                    <button class="info-details-button click" id="skill-button">Skill</button>
+                    <button class="info-details-button" id="info-button">Info</button>
                 </div>
                 <div class="student-info-details-content" >
                     <h3>Jakol Requiem</h3>
@@ -236,5 +236,23 @@
             </section>
         </div>
     </main>
+    
+    <script>
+        const skillButton = document.getElementById("skill-button");
+        const infoButton = document.getElementById("info-button");
+
+        skillButton.addEventListener('click', skillButtonClick);
+        infoButton.addEventListener('click', infoButtonClick);
+
+        function skillButtonClick(){
+            skillButton.classList.add("click");
+            infoButton.classList.remove("click");
+        }
+
+        function infoButtonClick(){
+            skillButton.classList.remove("click");
+            infoButton.classList.add("click");
+        }
+    </script>
 </body>
 </html>
