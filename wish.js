@@ -13,15 +13,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const cancelPurchase = document.getElementById("cancel"); 
 
 
-    var cvsuCoinsValue = 1000; 
+    var cvsuCoinsValue = 21245; 
     var minValue = 0; 
-    var maxValue = cvsuCoinsValue/100; 
+    var maxValue = 0; 
     var cvsuGems = 20; 
 
     var conversionamount = 0; 
     amountdiv.textContent = 0; 
 
     addGemButton.addEventListener("click", function() { 
+        slider.value = 50;
+        maxValue = Math.floor(cvsuCoinsValue/100); 
+
+        conversionamount = Math.floor((slider.value/100)*maxValue); 
+        amountdiv.textContent = conversionamount; 
+
+        min.textContent = minValue; 
+        max.textContent = maxValue; 
         purchaseContainer.style.display = "flex"; 
     });
 
@@ -52,6 +60,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     cvsucoins.textContent = cvsuGems; 
     coins3.textContent = cvsuCoinsValue;
-    min.textContent = minValue; 
-    max.textContent = maxValue; 
+    
 });
