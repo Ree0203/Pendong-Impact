@@ -278,6 +278,7 @@ body {
     box-shadow: 0 0 0 3px #00df6d,
                 0 0 0 6px white; 
 }
+
 .slider::-moz-range-thumb { 
     border: none;
     outline: none;
