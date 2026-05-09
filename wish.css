@@ -27,18 +27,19 @@ body {
     display: flex;
     margin-top: 3vh;
     margin-bottom: 6vh;
+    gap: 4%
 }
 
 .banner-box { 
     background-color: rgb(255, 255, 255, 0.8);
     height: calc(100%-.5%);
     width: 100%;
-    margin: 2%;
     border-radius: 7px;
     display: flex;
     justify-content: center;
     position: relative;
 }
+
 
 .banner-box:hover { 
     transform: scale(1.1);
