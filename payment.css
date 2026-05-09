@@ -296,3 +296,6 @@ hr {
     transform: scale(0.9);
 }
 
+.payment-type-buttons.active-button { 
+    background-color: #00df6d;
+}
