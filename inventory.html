@@ -238,21 +238,16 @@
     </main>
     
     <script>
-        const skillButton = document.getElementById("skill-button");
-        const infoButton = document.getElementById("info-button");
+        const infoDetailsButtons = document.querySelectorAll(".info-details-button");
 
-        skillButton.addEventListener('click', skillButtonClick);
-        infoButton.addEventListener('click', infoButtonClick);
+        infoDetailsButtons.forEach(
+            button => button.addEventListener("click", detailsButtonClick));
 
-        function skillButtonClick(){
-            skillButton.classList.add("click");
-            infoButton.classList.remove("click");
+        function detailsButtonClick(){
+            infoDetailsButtons.forEach(button => button.classList.remove("click"));
+            event.target.classList.add("click");
         }
 
-        function infoButtonClick(){
-            skillButton.classList.remove("click");
-            infoButton.classList.add("click");
-        }
     </script>
 </body>
 </html>
