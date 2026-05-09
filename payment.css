@@ -169,4 +169,127 @@ hr {
     color: black;
 }
 
+.confirmation-window-container { 
+    position: absolute;
+    background-color: #fffbef;
+    height: 40vh;
+    width: 30vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 15px;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+}
+
+.confirmation-inner-container { 
+    height: 100%;
+    width: 100%;
+    background-color: #f5ead8;
+    border-radius: .7rem;
+    border: 3px solid #dcd5be;
+    display: flex; 
+    flex-direction: column;
+    position: relative;
+}
+
+#confirmation-title{ 
+    font-size: 1.7rem;
+    color: black;
+    font-weight: bold;
+    margin-top: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.product { 
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.5fr 4fr;
+    padding: 3%;
+}
+.hero-product img { 
+    width: 70%;
+  
+}
+
+.hero-product { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product-title { 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.product-price { 
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    padding-right: 10%;
+    font-size: 1.5rem;
+}
+
+.payment-type-container { 
+    font-size: 1rem;
+    padding-left: 3%;
+    width: calc(100%-6%);
+    padding-right: 3%;
+    height: 20%;
+}
+
+.button-container { 
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+    height: 50%;
+    margin-top: 2%;
+}
+
+.button-container button { 
+    width: 30%;
+    height: 100%;
+    background-color: transparent;
+    border: 3px #cdc4afa1 solid;
+    border-radius: 10px;
+    outline: none;
+    transition: 0.3s all;
+}
+
+.button-container button:hover { 
+    border: 3px #00df6d solid;
+}
+
+.confirm-button { 
+    position: absolute;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 5%;
+    height: 10%;
+}
+
+.confirm-button button { 
+    width: 40%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background-color: #00df6d;
+    border-radius: 30px;
+    color: white;
+    transition: 0.3s all;
+    border: 3px rgb(255, 255, 255, 0) solid;
+}
+
+.confirm:hover { 
+    border: 3px rgb(255, 255, 255, 0.8) solid;
+}
 
