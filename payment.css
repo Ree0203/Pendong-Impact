@@ -114,7 +114,6 @@ hr {
     transform: scale(.95);
 }
 .exchange:hover { 
-    transition: 0.3s all;
     box-shadow: 0 0 0 7px #00df6d;
 }
 
@@ -127,6 +126,7 @@ hr {
     justify-content: center;
     align-items: center;
     padding: 1.5rem;
+    transition: 0.3s all;
 }
 
 .inner-container { 
