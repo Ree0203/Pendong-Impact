@@ -61,16 +61,21 @@ body {
     left: 3%;
     display: flex; 
     align-items: center;
+
 }
 
+.detail-buttons-container button:hover { 
+    border: 3px rgb(255, 255, 255, 0.8) solid; 
+}
 .detail-buttons { 
     width: 100%;
     height: 70%;
     border-radius: 20px;
     outline: none;
-    border: none;
+    border: 3px rgb(255, 255, 255, 0) solid;
     margin: 2%; 
     background-color: #00df6d;
+
 }
 
 
@@ -85,7 +90,7 @@ body {
 }
 
 .wish-buttons {
-    font-size: 1rem; 
+    font-size: .9rem; 
     width: 100%;
     height: 60%;
     outline: none;
@@ -106,6 +111,8 @@ body {
     width: 17vw; 
     height: 5vh;
     display: flex;
+    align-items: center;
+    gap: 6%;
 }
 
 .currency { 
@@ -114,32 +121,40 @@ body {
     color: white;
     display: flex;
     width: 100%;
-    height: 90%;
+    height: 70%;
     background-color: rgb(82, 82, 82, 0.5);
     border-radius: 30px;
-    margin: 3%;
     justify-content: center;
     align-items: center;
+    font-size: 1.1rem;
 }
 
-.icon-cvsu { 
-    width: 40px;
+.icon-cvsu1 { 
+    width: 25%;
+    aspect-ratio: 1.5/1;
+    opacity: 100%;
+    position: relative;
+}
+.icon-cvsu2 { 
+    width: 15%;
+    aspect-ratio: 1.5/1;
     opacity: 100%;
 }
 .image1 {
     display: flex;
     align-items: center;
     position: absolute;
-    left: 5%;
+    left: 0%;
 }
 
 .icons1 { 
-    width: 25px;
+    width: 15%;
+    aspect-ratio: 1/1;
 }
 
 .image2 { 
     position: absolute;
-    left: 10%;
+    left: 3%;
     display: flex;
     align-items: center;
 }
@@ -166,16 +181,16 @@ body {
 }
 
 .purchase { 
-    width: 18%;
-    height: 60%;
+    height: 90%;
     border-radius: 50%;
     border: none;
     outline: none;
     position: absolute;
-    right: 5%; 
+    right: 1%; 
     display: flex;
     align-items: center;
     background-color: #00df6d;
+    aspect-ratio: 1/1;
 }
 
 .purchase-cvsu-slider { 
@@ -269,6 +284,7 @@ body {
     border-radius: 50%;
     box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
 }
+
 
 .slider::-webkit-slider-thumb:hover { 
     box-shadow: 0 0 0 3px #00df6d,
