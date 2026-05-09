@@ -1,0 +1,129 @@
+body { 
+    margin: 0;
+    padding: 0; 
+    background-image: url(Assets/wish-background-image.png);
+    background-size: cover;
+    backdrop-filter: blur(10px);
+}
+
+.background { 
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}   
+
+.currency-container { 
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    width: 17vw; 
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    gap: 6%;
+}
+
+.icon-cvsu1 { 
+    width: 25%;
+    aspect-ratio: 1.5/1;
+    opacity: 100%;
+    position: relative;
+}
+
+.image1 {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0%;
+}
+
+.icons1 { 
+    width: 15%;
+    aspect-ratio: 1/1;
+}
+
+.image2 { 
+    position: absolute;
+    left: 3%;
+    display: flex;
+    align-items: center;
+}
+
+.purchase { 
+    height: 90%;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 1%; 
+    display: flex;
+    align-items: center;
+    background-color: #00df6d;
+    aspect-ratio: 1/1;
+}
+
+.currency { 
+    position: relative;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    width: 100%;
+    height: 70%;
+    background-color: rgb(82, 82, 82, 0.5);
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+@font-face {
+    font-family: Lexend;
+    src: url(assets/Lexend-VariableFont_wght.ttf);
+}
+
+hr { 
+    width: 95%;
+    border: 1px solid white;
+    outline: none;
+}
+* { 
+    font-family: Lexend;
+}
+.title { 
+    font-weight: bold;
+    font-size: 2rem;
+    color: #00df6d;
+    margin-top: 2vh;
+}
+
+.payment-container { 
+    width: 60%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 7%;
+    padding: 3%;
+}
+
+.exchange { 
+    background-color: #fffced;
+    aspect-ratio: 1/1;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.exchange-title { 
+    position: absolute;
+    bottom: 0; 
+    width: 100%;
+    height: 20%;
+    background-color: #00df6d;
+    border-radius: 0 0 1rem 1rem;
+}
+
+

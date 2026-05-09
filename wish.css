@@ -66,6 +66,7 @@ body {
 
 .detail-buttons-container button:hover { 
     border: 3px rgb(255, 255, 255, 0.8) solid; 
+    transition: 0.3s all; 
 }
 .detail-buttons { 
     width: 100%;
@@ -191,6 +192,11 @@ body {
     align-items: center;
     background-color: #00df6d;
     aspect-ratio: 1/1;
+}
+
+.purchase:hover { 
+    box-shadow: 0 0 5px 5px rgba(252, 252, 252, 0.582);
+    transition: 0.3s all;
 }
 
 .purchase-cvsu-slider { 
