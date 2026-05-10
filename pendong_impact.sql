@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2026 at 11:59 AM
+-- Generation Time: May 10, 2026 at 01:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,6 +35,13 @@ CREATE TABLE `accounts` (
   `profile_pic` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`user_id`, `username`, `password`, `date_created`, `profile_pic`) VALUES
+(1, 'Brostic', 'Brotastic1234', '2026-05-10', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -58,7 +65,9 @@ CREATE TABLE `characters` (
 --
 
 INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defence`, `speed`, `luck`, `picture`) VALUES
-(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, NULL);
+(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, NULL),
+(2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, NULL),
+(3, 'Johanes', 'Leyran', 4, 45, 38, 70, 59, NULL);
 
 -- --------------------------------------------------------
 
@@ -69,8 +78,16 @@ INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `
 CREATE TABLE `inventory` (
   `user_id` int(11) NOT NULL,
   `character_id` int(11) NOT NULL,
-  `date_acquired` date NOT NULL
+  `date_acquired` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
+(1, 1, '2026-05-10'),
+(1, 3, '2026-05-10');
 
 --
 -- Indexes for dumped tables
@@ -92,7 +109,8 @@ ALTER TABLE `characters`
 -- Indexes for table `inventory`
 --
 ALTER TABLE `inventory`
-  ADD PRIMARY KEY (`user_id`,`character_id`);
+  ADD PRIMARY KEY (`user_id`,`character_id`),
+  ADD KEY `character_id` (`character_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -102,13 +120,24 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `character_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `character_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `inventory`
+--
+ALTER TABLE `inventory`
+  ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `inventory_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `characters` (`character_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
