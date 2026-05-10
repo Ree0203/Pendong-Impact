@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2026 at 01:13 PM
+-- Generation Time: May 10, 2026 at 08:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `accounts` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `date_created` date NOT NULL DEFAULT current_timestamp(),
   `profile_pic` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -39,8 +40,8 @@ CREATE TABLE `accounts` (
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`user_id`, `username`, `password`, `date_created`, `profile_pic`) VALUES
-(1, 'Brostic', 'Brotastic1234', '2026-05-10', NULL);
+INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_created`, `profile_pic`) VALUES
+(10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', NULL);
 
 -- --------------------------------------------------------
 
@@ -82,14 +83,6 @@ CREATE TABLE `inventory` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `inventory`
---
-
-INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
-(1, 1, '2026-05-10'),
-(1, 3, '2026-05-10');
-
---
 -- Indexes for dumped tables
 --
 
@@ -97,7 +90,8 @@ INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
 -- Indexes for table `accounts`
 --
 ALTER TABLE `accounts`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `emailunique` (`email`);
 
 --
 -- Indexes for table `characters`
@@ -120,7 +114,7 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `characters`
