@@ -12,6 +12,31 @@ document.addEventListener("DOMContentLoaded", function(){
     const purchaseContainer = document.getElementById("conversion-container"); 
     const cancelPurchase = document.getElementById("cancel"); 
 
+    const demyBanner = document.getElementById("demy-container"); 
+    const jaysonBanner = document.getElementById("jayson-container"); 
+    const jamesBanner = document.getElementById("james-container"); 
+    const jaysonBox = document.getElementById("jayson");
+    const demyBox = document.getElementById("demy"); 
+    const jamesBox = document.getElementById("james"); 
+
+    jaysonBox.addEventListener("click", function() {
+        demyBanner.style.display = "none"; 
+        jamesBanner.style.display = "none";  
+        jaysonBanner.style.display = "block"; 
+    }); 
+
+    demyBox.addEventListener("click", function() {
+        demyBanner.style.display = "block"; 
+        jamesBanner.style.display = "none";  
+        jaysonBanner.style.display = "none"; 
+    }); 
+
+    jamesBox.addEventListener("click", function() {
+        demyBanner.style.display = "none"; 
+        jamesBanner.style.display = "block";  
+        jaysonBanner.style.display = "none"; 
+    }); 
+
     var cvsuCoinsValue = 21245; 
     var minValue = 0; 
     var maxValue = 0; 
@@ -59,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     cvsucoins.textContent = cvsuGems; 
     coins3.textContent = cvsuCoinsValue;
+
 }); 
 
 
