@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2026 at 11:46 AM
+-- Generation Time: May 10, 2026 at 11:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,11 +47,18 @@ CREATE TABLE `characters` (
   `last_name` varchar(50) NOT NULL,
   `rarity` int(11) NOT NULL,
   `attack` int(11) NOT NULL,
-  `defend` int(11) NOT NULL,
+  `defence` int(11) NOT NULL,
   `speed` int(11) NOT NULL,
   `luck` int(11) NOT NULL,
   `picture` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `characters`
+--
+
+INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defence`, `speed`, `luck`, `picture`) VALUES
+(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, NULL);
 
 -- --------------------------------------------------------
 
@@ -101,7 +108,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `character_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `character_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
