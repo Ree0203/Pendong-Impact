@@ -20,18 +20,30 @@ document.addEventListener("DOMContentLoaded", function(){
     const jamesBox = document.getElementById("james"); 
 
     jaysonBox.addEventListener("click", function() {
+        jamesBox.classList.remove("active-banner"); 
+        demyBox.classList.remove("active-banner"); 
+        jaysonBox.classList.add("active-banner"); 
+
         demyBanner.style.display = "none"; 
         jamesBanner.style.display = "none";  
         jaysonBanner.style.display = "block"; 
     }); 
 
     demyBox.addEventListener("click", function() {
+        jamesBox.classList.remove("active-banner"); 
+        jaysonBox.classList.remove("active-banner"); 
+        demyBox.classList.add("active-banner"); 
+
         demyBanner.style.display = "block"; 
         jamesBanner.style.display = "none";  
         jaysonBanner.style.display = "none"; 
     }); 
 
     jamesBox.addEventListener("click", function() {
+        jamesBox.classList.add("active-banner"); 
+        demyBox.classList.remove("active-banner"); 
+        jaysonBox.classList.remove("active-banner"); 
+
         demyBanner.style.display = "none"; 
         jamesBanner.style.display = "block";  
         jaysonBanner.style.display = "none"; 

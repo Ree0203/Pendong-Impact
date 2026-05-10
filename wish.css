@@ -38,12 +38,12 @@ body {
     display: flex;
     justify-content: center;
     position: relative;
+    transition: all 0.3s;
 }
 
 
 .banner-box:hover { 
     transform: scale(1.1);
-    transition: ease 0.3s;
 }
 
 #selected-banner { 
@@ -597,4 +597,8 @@ body {
 
 .james-title span { 
     color: #00df6d;
+}
+
+.banner-box.active-banner { 
+    transform: scale(1.1);
 }
