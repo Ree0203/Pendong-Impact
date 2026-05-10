@@ -1,4 +1,5 @@
 <?php
+    session_start();
     if($_SERVER['REQUEST_METHOD'] !== 'POST') {
         header("Location: login.html");
         exit;
@@ -62,7 +63,7 @@
         }
 
         require_once 'database.php';
-        $stmt = $conn->prepare('SELECT username, password FROM Accounts WHERE username = ?');
+        $stmt = $conn->prepare('SELECT user_id, username, password FROM Accounts WHERE username = ?');
         $stmt->bind_param('s', $username);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
@@ -72,6 +73,8 @@
         }
 
         if(password_verify($password, $result['password'])) {
+            $_SESSION['userId'] = $result['user_id'];
+            $_SESSION['username'] = $username;
             sendResponse('logged', 'Successfully logged in. Redirecting...');
         }
         else {
