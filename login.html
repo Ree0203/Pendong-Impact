@@ -70,12 +70,13 @@
         <form id="login-form">
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" placeholder="Enter username" required>
+                <input type="text" placeholder="Enter username" name="username">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" placeholder="Enter password" required minlength="8" maxlength="16">
+                <input type="password" placeholder="Enter password" name="password">
             </div>
+            <input type="hidden" name="type" value="login">
             <button type="submit">Login</button>
         </form>
         <p class="toggle-text">New here? <span onclick="toggleForms()">Register</span></p>
@@ -85,22 +86,21 @@
         <form id="register-form">
             <div class="form-group">
                 <label>Username</label>
-                <input type="text" placeholder="Choose a username" required>
+                <input type="text" placeholder="Choose a username" name="username">
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" placeholder="email@example.com" required>
+                <input type="text" placeholder="email@example.com" name="email">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" id="reg-password" placeholder="Enter Password" required minlength="8" maxlength="16">
-                <span id="length-error" class="error-msg">Password must be 8-16 characters.</span>
+                <input type="password" id="reg-password" placeholder="Enter Password" name="password">
             </div>
             <div class="form-group">
                 <label>Confirm Password</label>
-                <input type="password" id="confirm-password" placeholder="Repeat password" required>
-                <span id="match-error" class="error-msg">Passwords do not match!</span>
+                <input type="password" id="confirm-password" placeholder="Repeat password" name="confirm-password">
             </div>
+            <input type="hidden" name="type" value="register">
             <button type="submit">Create Account</button>
         </form>
         <p class="toggle-text">Already have an account? <span onclick="toggleForms()">Login</span></p>
@@ -108,41 +108,48 @@
 </div>
 
 <script>
+    
+    const formGroupInput = document.querySelectorAll('.form-group input');
+
     function toggleForms() {
         document.getElementById('login-section').classList.toggle('hidden');
         document.getElementById('register-section').classList.toggle('hidden');
+        formGroupInput.forEach(input => input.value = '');
     }
 
     const regForm = document.getElementById('register-form');
+    const loginForm = document.getElementById('login-form');
+    regForm.addEventListener('submit', formValidate);
+    loginForm.addEventListener('submit', formValidate);
+
+    function formValidate(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        fetch('login.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            
+            if(data.status === 'error') {
+                alert(data.message);
+            } 
+            else if(data.status === 'logged') {
+                alert(data.message);
+            }
+            else {
+                alert(data.message);
+                toggleForms();
+            }
+
+
+
+        }
+        );
+    }
     
-    regForm.onsubmit = function(e) {
-        const pass = document.getElementById('reg-password').value;
-        const confirm = document.getElementById('confirm-password').value;
-        
-        const lengthError = document.getElementById('length-error');
-        const matchError = document.getElementById('match-error');
-
-        lengthError.style.display = "none";
-        matchError.style.display = "none";
-
-        let isValid = true;
-
-        if (pass.length < 8 || pass.length > 16) {
-            lengthError.style.display = "block";
-            isValid = false;
-        }
-
-        if (pass !== confirm) {
-            matchError.style.display = "block";
-            isValid = false;
-        }
-
-        if (!isValid) {
-            e.preventDefault(); 
-        } else {
-            alert("Registration successful!");
-        }
-    };
 </script>
 
 </body>
