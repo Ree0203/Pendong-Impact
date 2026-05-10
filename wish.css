@@ -47,10 +47,13 @@ body {
 }
 
 #selected-banner { 
-    width: 63vw;
-    height: 60vh;
+    width: 55vw;
+    height: 59vh;
     background-color: rgb(255, 255, 255, .8);
     border-radius: 10px;
+    background-image: url(Assets/banner-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .detail-buttons-container { 
