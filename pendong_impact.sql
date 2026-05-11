@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2026 at 08:13 PM
+-- Generation Time: May 11, 2026 at 06:24 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -82,6 +82,25 @@ CREATE TABLE `inventory` (
   `date_acquired` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_currency`
+--
+
+CREATE TABLE `user_currency` (
+  `userID` int(11) NOT NULL,
+  `cvsu_gems` int(11) DEFAULT NULL,
+  `coins` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_currency`
+--
+
+INSERT INTO `user_currency` (`userID`, `cvsu_gems`, `coins`) VALUES
+(1, 0, 0);
+
 --
 -- Indexes for dumped tables
 --
@@ -107,6 +126,12 @@ ALTER TABLE `inventory`
   ADD KEY `character_id` (`character_id`);
 
 --
+-- Indexes for table `user_currency`
+--
+ALTER TABLE `user_currency`
+  ADD PRIMARY KEY (`userID`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -121,6 +146,12 @@ ALTER TABLE `accounts`
 --
 ALTER TABLE `characters`
   MODIFY `character_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `user_currency`
+--
+ALTER TABLE `user_currency`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
