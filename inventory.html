@@ -79,7 +79,7 @@
                     
                     <section class="student-info-stats-boxes">
                         <div class="stat-box-up">
-                            <h3>Intelligence</h3>
+                            <h3>Luck</h3>
                         </div>
                         <div class="stat-box-down">
                              <h1>100</h1>
@@ -106,20 +106,19 @@
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
             .catch((error) => console.error(error));
 
-
         getInventory();
         async function getInventory() {
             const response = await fetch('get_inventory.php');
             const inventory = await response.json();
 
             const owned = inventory.owned;
-            const unowned = inventory.unowned;
+            const unowned = inventory.unowned;;
             
             displayInventory(owned, 0);
             displayInventory(unowned, 1);
 
             studentSquares = document.querySelectorAll('.student-list-square');
-            studentSquares.forEach(square => square.addEventListener('click', studentSquareClick));
+            studentSquares.forEach(square => square.addEventListener('click', e => studentSquareClick(e, [...owned, ...unowned])));
         }
 
         const studentSquareListContainer = document.querySelectorAll('.student-list-square-container');
@@ -131,7 +130,7 @@
             for(let i = 0; i < array.length; i++) {
                 const studentSquareCopy = studentSquareOrig.cloneNode(true);
                 const studentSquareStars = studentSquareCopy.querySelectorAll('.student-list-stars img');
-                studentSquareCopy.id = array[i].characterId;
+                studentSquareCopy.id = array[i].character_id;
                 studentSquareCopy.style.display = 'block';
                 studentSquareCopy.style.backgroundImage = `url('Assets/${array[i].picture}')`;
                 
@@ -144,11 +143,20 @@
         }
 
         const studentInfoName = document.querySelector('.student-info-name');
+        const statBoxes = document.querySelectorAll('.stat-box-down h1');
 
-        function studentSquareClick(e) {
+        function studentSquareClick(e, characters) {
+            const characterIndex = characters.findIndex(char => char.character_id == e.currentTarget.id);
+            const character = characters[characterIndex];
+            const stats = ['attack', 'defense', 'speed', 'luck']
+
             studentSquares.forEach(square => square.classList.remove('click'));
             e.currentTarget.classList.add('click');
-            console.log(studentInfoName.querySelector('h1'));
+            
+            studentInfoName.querySelector('h1').textContent = `${character.first_name} ${character.last_name}`
+            statBoxes.forEach((statBox, index) => {
+                statBox.textContent = character[stats[index]]
+            });
         }
 
 
