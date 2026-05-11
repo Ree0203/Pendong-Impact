@@ -19,6 +19,59 @@ document.addEventListener("DOMContentLoaded", function(){
     const demyBox = document.getElementById("demy"); 
     const jamesBox = document.getElementById("james"); 
 
+    const characters = [{id:1, name:"jayson", rarity:5}, 
+                        {id:2, name:"demy", rarity:5}, 
+                        {id:3, name:"james", rarity:5},
+                        {id:4, name:"trash", rarity:3},
+                        {id:5, name:"ryan", rarity:4}]; 
+    
+    const wishButton1 = document.getElementById("wish1")
+    const wishButton10 = document.getElementById("wish10");
+
+
+    wishButton1.addEventListener("click", pullCharacter);
+    wishButton10.addEventListener("click", multipull);
+
+    function multipull(){ 
+
+        for(let i = 0; i<10; i++) { 
+            pullCharacter(); 
+        }
+    }
+    function pullCharacter() { 
+
+        let rarity; 
+
+        var random = Math.random()*100; 
+
+        if(random<0.6) { 
+            rarity = 5; 
+        } else if (random<5.6) { 
+            rarity = 4; 
+        } else { 
+            rarity = 3; 
+        }
+
+        let filteredCharacters;
+        filteredCharacters = filterCharacters(rarity, characters); 
+
+        var selected = filteredCharacters[Math.floor(Math.random() * filteredCharacters.length)];
+
+        console.log("Pulled character: ", selected.name);
+    }
+
+    function filterCharacters(rarity, characters) { 
+        let filteredCharacters = [];
+        for(let i = 0; i<characters.length; i++){ 
+
+            if(characters[i].rarity === rarity) { 
+                filteredCharacters.push(characters[i]);
+            }
+        }
+
+        return filteredCharacters;
+    }
+
     jaysonBox.addEventListener("click", function() {
         jamesBox.classList.remove("active-banner"); 
         demyBox.classList.remove("active-banner"); 
