@@ -76,13 +76,19 @@ main {
 
 .student-list-square {
     display: none;
-    background-color: white;
+    background-color: #eeeeee;
+    border: 3px solid #797979;
     border-radius: 0.625rem;
     aspect-ratio: 1/1;
     position: relative;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.student-list-square.click {
+    border-color: #00b859;
+    width: 98%;
 }
 
 .student-list-stars {
