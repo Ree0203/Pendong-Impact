@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2026 at 06:24 AM
+-- Generation Time: May 11, 2026 at 06:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -89,17 +89,10 @@ CREATE TABLE `inventory` (
 --
 
 CREATE TABLE `user_currency` (
-  `userID` int(11) NOT NULL,
-  `cvsu_gems` int(11) DEFAULT NULL,
+  `userId` int(11) NOT NULL,
+  `gems` int(11) DEFAULT NULL,
   `coins` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user_currency`
---
-
-INSERT INTO `user_currency` (`userID`, `cvsu_gems`, `coins`) VALUES
-(1, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -129,7 +122,7 @@ ALTER TABLE `inventory`
 -- Indexes for table `user_currency`
 --
 ALTER TABLE `user_currency`
-  ADD PRIMARY KEY (`userID`);
+  ADD PRIMARY KEY (`userId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -151,7 +144,7 @@ ALTER TABLE `characters`
 -- AUTO_INCREMENT for table `user_currency`
 --
 ALTER TABLE `user_currency`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
