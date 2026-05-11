@@ -23,147 +23,11 @@
                         <img src="Assets/star-icon.svg">
                     </section>
                 </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
-                <div class="student-list-square">
-                    <section class="student-list-stars">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                        <img src="Assets/star-icon.svg">
-                    </section>
-                </div>
             </section>
-            
+            <h2>Unobtained Students</h2>
+            <section class="student-list-square-container">
+                
+            </section>
         </div>
 
         <div></div>
@@ -238,6 +102,46 @@
     </main>
     
     <script>
+        fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+            if(!loggedIn.loggedIn) window.location.replace('login.html')})
+            .catch((error) => console.error(error));
+
+
+        getInventory();
+
+        async function getInventory() {
+            const response = await fetch('get_inventory.php');
+            const inventory = await response.json();
+
+            const owned = inventory.owned;
+            const unowned = inventory.unowned;
+            
+            displayInventory(owned, 0);
+            displayInventory(unowned, 1);
+        }
+
+        const studentSquareListContainer = document.querySelectorAll('.student-list-square-container');
+        const studentSquareOrig = document.querySelector('.student-list-square');
+
+        function displayInventory(array, container) {
+            
+            for(let i = 0; i < array.length; i++) {
+                const studentSquareCopy = studentSquareOrig.cloneNode(true);
+                const studentSquareStars = studentSquareCopy.querySelectorAll('.student-list-stars img');
+                studentSquareCopy.id = array[i].characterId;
+                studentSquareCopy.style.display = 'block';
+                studentSquareCopy.style.backgroundImage = `url('Assets/${array[i].picture}')`;
+                
+                for(let y = 0; y < array[i].rarity; y++) {
+                    studentSquareStars[y].style.display ='inline';
+                }
+                
+                studentSquareListContainer[container].append(studentSquareCopy);
+            }
+        }
+
+
+
         const infoDetailsButtons = document.querySelectorAll(".info-details-button");
 
         infoDetailsButtons.forEach(
