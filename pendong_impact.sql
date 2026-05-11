@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2026 at 06:58 AM
+-- Generation Time: May 11, 2026 at 01:20 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `pendong_impact`
 --
+CREATE DATABASE IF NOT EXISTS `pendong_impact` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `pendong_impact`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `accounts`
 --
 
+DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -41,7 +44,8 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_created`, `profile_pic`) VALUES
-(10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', NULL);
+(10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', NULL),
+(11, 'John', '$2y$10$hJjkZ9L.Tr/u2vw4I7NemOFz5uaNMAWdshvY/QGgqBwihejTPe6bq', 'John@gmail.com', '2026-05-11', NULL);
 
 -- --------------------------------------------------------
 
@@ -49,6 +53,7 @@ INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_create
 -- Table structure for table `characters`
 --
 
+DROP TABLE IF EXISTS `characters`;
 CREATE TABLE `characters` (
   `character_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
@@ -66,9 +71,9 @@ CREATE TABLE `characters` (
 --
 
 INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defence`, `speed`, `luck`, `picture`) VALUES
-(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, NULL),
-(2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, NULL),
-(3, 'Johanes', 'Leyran', 4, 45, 38, 70, 59, NULL);
+(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, 'jayson.png'),
+(2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, 'demy.png'),
+(3, 'Johanes', 'Leyran', 4, 45, 38, 70, 59, 'johan.png');
 
 -- --------------------------------------------------------
 
@@ -76,11 +81,22 @@ INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `
 -- Table structure for table `inventory`
 --
 
+DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
   `user_id` int(11) NOT NULL,
   `character_id` int(11) NOT NULL,
   `date_acquired` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
+(10, 1, '2026-05-11'),
+(10, 3, '2026-05-11'),
+(11, 1, '2026-05-11'),
+(11, 2, '2026-05-11');
 
 -- --------------------------------------------------------
 
@@ -88,6 +104,7 @@ CREATE TABLE `inventory` (
 -- Table structure for table `user_currency`
 --
 
+DROP TABLE IF EXISTS `user_currency`;
 CREATE TABLE `user_currency` (
   `userId` int(11) NOT NULL,
   `gems` int(11) DEFAULT NULL,
@@ -132,7 +149,7 @@ ALTER TABLE `user_currency`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `characters`

@@ -56,6 +56,7 @@ main {
     display: flex;
     flex-direction: column;
     min-height: 0;
+    overflow-y: auto;
 }
 
 .student-list h2 {
@@ -69,16 +70,19 @@ main {
     grid-auto-rows: 12.5rem;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
-    min-height: 0;
-    overflow-y: auto;
+    max-height: auto;
+    min-height: 8.5rem;
 }
 
 .student-list-square {
+    display: none;
     background-color: white;
     border-radius: 0.625rem;
     aspect-ratio: 1/1;
     position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .student-list-stars {
@@ -93,6 +97,7 @@ main {
 }
 
 .student-list-stars img {
+    display: none;
     height: 100%;
 }
 
