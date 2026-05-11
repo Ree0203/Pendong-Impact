@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function(){
             pullCharacter(); 
         }
     }
-    function pullCharacter() { 
 
+    function pullCharacter() { 
         let rarity; 
 
         var random = Math.random()*100; 

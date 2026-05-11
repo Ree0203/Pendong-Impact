@@ -56,6 +56,10 @@
         else{
             sendResponse('error', 'Error during registration. Please try again.');
         }
+
+        $stmt = $conn->(prepare("INSERT INTO user_currency(gems, coins) VALUES(0, 0)" ));
+        $stmt->execute(); 
+        
     }
     elseif($type === 'login') {
         if(empty($username) || empty($password)) {
