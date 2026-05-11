@@ -50,15 +50,21 @@
         $stmt = $conn->prepare("INSERT INTO Accounts(username, password, email) VALUES(?, ?, ?)");
         $stmt->bind_param('sss', $username, $hashedPassword, $email);
         
+        if(!$stmt->execute()) {
+            sendResponse('error', 'Error during registration. Please try again.');
+        }
+
+        $newUserId = $conn->insert_id;
+        
+        $stmt = $conn->prepare("INSERT INTO user_currency(user_id, gems, coins) VALUES(?, 0, 0)");
+        $stmt->bind_param('i', $newUserId);
+
         if($stmt->execute()) {
             sendResponse('registered', 'Successfully Registered. You can now log in.');
         }
         else{
             sendResponse('error', 'Error during registration. Please try again.');
         }
-
-        $stmt = $conn->(prepare("INSERT INTO user_currency(gems, coins) VALUES(0, 0)" ));
-        $stmt->execute(); 
         
     }
     elseif($type === 'login') {

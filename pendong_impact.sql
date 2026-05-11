@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2026 at 01:20 PM
+-- Generation Time: May 11, 2026 at 02:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,14 +38,6 @@ CREATE TABLE `accounts` (
   `date_created` date NOT NULL DEFAULT current_timestamp(),
   `profile_pic` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `accounts`
---
-
-INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_created`, `profile_pic`) VALUES
-(10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', NULL),
-(11, 'John', '$2y$10$hJjkZ9L.Tr/u2vw4I7NemOFz5uaNMAWdshvY/QGgqBwihejTPe6bq', 'John@gmail.com', '2026-05-11', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,16 +80,6 @@ CREATE TABLE `inventory` (
   `date_acquired` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `inventory`
---
-
-INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
-(10, 1, '2026-05-11'),
-(10, 3, '2026-05-11'),
-(11, 1, '2026-05-11'),
-(11, 2, '2026-05-11');
-
 -- --------------------------------------------------------
 
 --
@@ -106,7 +88,7 @@ INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
 
 DROP TABLE IF EXISTS `user_currency`;
 CREATE TABLE `user_currency` (
-  `userId` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `gems` int(11) DEFAULT NULL,
   `coins` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -139,7 +121,7 @@ ALTER TABLE `inventory`
 -- Indexes for table `user_currency`
 --
 ALTER TABLE `user_currency`
-  ADD PRIMARY KEY (`userId`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -149,7 +131,7 @@ ALTER TABLE `user_currency`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `characters`
@@ -161,7 +143,7 @@ ALTER TABLE `characters`
 -- AUTO_INCREMENT for table `user_currency`
 --
 ALTER TABLE `user_currency`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -173,6 +155,12 @@ ALTER TABLE `user_currency`
 ALTER TABLE `inventory`
   ADD CONSTRAINT `inventory_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `inventory_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `characters` (`character_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_currency`
+--
+ALTER TABLE `user_currency`
+  ADD CONSTRAINT `user_currency_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
