@@ -24,7 +24,7 @@
                     </section>
                 </div>
             </section>
-            <h2>Unobtained Students</h2>
+            <h3>Unobtained Students</h3>
             <section class="student-list-square-container">
                 
             </section>
@@ -36,18 +36,18 @@
             <section class="student-info-header">
                 <h2>Student Details</h2>
             </section>
-            <section class="student-info-main">
+            <section class="student-info-main hiddenChildren">
                 <div class="student-info-pic">
 
                 </div>
 
-                <div class="student-info-name">
+                <div class="student-info-name hiddenChildren">
                     <h1>Chlowen Patambang</h1>
                     <h3>"Fake it til' you make it."</h3>
                 </div>
             </section>
 
-            <section class="student-info-stats-container">
+            <section class="student-info-stats-container hiddenChildren">
                 <h2>Stats</h2>
                 <div class="student-info-stats">
                     <section class="student-info-stats-boxes">
@@ -88,13 +88,17 @@
                 </div>
             </section>
 
-            <section class="student-info-details">
+            <section class="student-info-details hiddenChildren">
                 <div class="student-info-details-buttons" >
-                    <button class="info-details-button click" id="skill-button">Skill</button>
-                    <button class="info-details-button" id="info-button">Info</button>
+                    <button class="info-details-button click" data-target="skill-content">Skill</button>
+                    <button class="info-details-button" data-target="info-content">Info</button>
                 </div>
-                <div class="student-info-details-content" >
+                <div class="student-info-details-content" id="skill-content">
                     <h3>Jakol Requiem</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia.</p>
+                </div>
+                <div class="student-info-details-content hidden" id="info-content">
+                    <h3>Background Info</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia.</p>
                 </div>
             </section>
@@ -142,6 +146,7 @@
             }
         }
 
+        const studentInfoPic = document.querySelector('.student-info-pic');
         const studentInfoName = document.querySelector('.student-info-name');
         const statBoxes = document.querySelectorAll('.stat-box-down h1');
 
@@ -149,26 +154,52 @@
             const characterIndex = characters.findIndex(char => char.character_id == e.currentTarget.id);
             const character = characters[characterIndex];
             const stats = ['attack', 'defense', 'speed', 'luck']
+            let characterJsonIndex;
 
             studentSquares.forEach(square => square.classList.remove('click'));
             e.currentTarget.classList.add('click');
             
+            studentInfoPic.style.backgroundImage = `url('Assets/${character.picture}')`
             studentInfoName.querySelector('h1').textContent = `${character.first_name} ${character.last_name}`
             statBoxes.forEach((statBox, index) => {
                 statBox.textContent = character[stats[index]]
             });
+            
+            fetch('Assets/json/characters.json').then(response => response.json()).then(array => {
+                characterJson = array[array.findIndex(object => character.first_name == object.firstName)];
+                
+                studentInfoName.querySelector('h3').textContent = characterJson.quote;
+                infoDetailsContents[0].querySelector('h3').textContent = characterJson.skillName;
+                infoDetailsContents[0].querySelector('p').textContent = characterJson.skillDesc;
+                infoDetailsContents[1].querySelector('p').textContent = characterJson.backgroundInfo;
+            })
+            .catch((error) => console.error(error));
+
+            showStudentInfo();
         }
 
 
 
         const infoDetailsButtons = document.querySelectorAll(".info-details-button");
+        const infoDetailsContents = document.querySelectorAll(".student-info-details-content")
 
         infoDetailsButtons.forEach(
-            button => button.addEventListener("click", detailsButtonClick));
+            button => button.addEventListener("click", detailsButtonClick)
+        );
 
-        function detailsButtonClick(){
+        function detailsButtonClick(e){
             infoDetailsButtons.forEach(button => button.classList.remove("click"));
             event.target.classList.add("click");
+
+            infoDetailsContents.forEach(content => content.classList.add("hidden"));
+            const targetContent = e.currentTarget.getAttribute('data-target');
+            document.getElementById(targetContent).classList.remove('hidden');
+
+        }
+
+        function showStudentInfo() {
+            const studentInfoSections = document.querySelectorAll('.student-info > section');
+            studentInfoSections.forEach(section => section.classList.remove('hiddenChildren'));
         }
 
     </script>

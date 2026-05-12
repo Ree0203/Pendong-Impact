@@ -59,8 +59,14 @@ main {
     overflow-y: auto;
 }
 
-.student-list h2 {
+.student-list h2, .student-list h3 {
     align-self: center;
+}
+
+.student-list h3 {
+    border-top: 2px solid rgb(27, 27, 27);
+    width: 95%;
+    text-align: center;
 }
 
 .student-list-square-container {
@@ -108,11 +114,16 @@ main {
 }
 
 .student-info {
-    background-color: rgba(255, 255, 255, 0.932);
+    background-color: #ffffffee;
+    border: 2px solid #264d3a;
     border-radius: 1.25rem;
     display: grid;
     grid-template-rows: 3.125rem 12.5rem 9.375rem 1fr;
     overflow: hidden;
+}
+
+.student-info > .hiddenChildren > * {
+    display: none;
 }
 
 .student-info-header {
@@ -138,6 +149,9 @@ main {
     aspect-ratio: 1/1;
     background-color: white;
     border-radius: 0.625rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .student-info-name {
@@ -243,3 +257,6 @@ main {
     text-align: justify;
 }
 
+.student-info-details-content.hidden {
+    display: none;
+}
