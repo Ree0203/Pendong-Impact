@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", function(){
     const demyBox = document.getElementById("demy"); 
     const jamesBox = document.getElementById("james"); 
 
-    const characters = [{id:1, name:"jayson", rarity:5}, 
-                        {id:2, name:"demy", rarity:5}, 
-                        {id:3, name:"james", rarity:5},
-                        {id:4, name:"trash", rarity:3},
-                        {id:5, name:"ryan", rarity:4}]; 
+    const characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
+                        {id:2, name:"demy", rarity:5, image: "demy.png"}, 
+                        {id:3, name:"james", rarity:5, image:"james.png"},
+                        {id:4, name:"trash", rarity:3, image:"trash.png"},
+                        {id:5, name:"ryan", rarity:4, image: "ryan.png"}]; 
     
     const wishButton1 = document.getElementById("wish1")
     const wishButton10 = document.getElementById("wish10");
