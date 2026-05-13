@@ -111,8 +111,19 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    border: 3px #00df6c00 solid;
+    transition: 0.3s all;
+    background-color: white;
 }
 
+.wish-buttons:hover {
+    background-color: white;
+    border: 3px #00df6d solid;
+}
+
+.wish-buttons:active { 
+    transform: scale(0.9);
+}
 .currency-container { 
     position: absolute;
     top: 3%;
@@ -629,3 +640,4 @@ body {
     opacity: 1;
     transform: scale(1);
 }
+

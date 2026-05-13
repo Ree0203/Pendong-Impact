@@ -26,7 +26,8 @@ const characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"},
                     {id:6, name:"johan", rarity:4, image:"johan.png"},
                     {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
                     {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                    {id:9, name:"chlowen", rarity:4, image:"chlowen.png"}]; 
+                    {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
+                    {id:10, name:"marcus", rarity:4, image:"marcus.jpg"}]; 
 
 const wishButton1 = document.getElementById("wish1")
 const wishButton10 = document.getElementById("wish10");
