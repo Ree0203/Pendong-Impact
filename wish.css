@@ -606,3 +606,26 @@ body {
 .banner-box.active-banner { 
     transform: scale(1.1);
 }
+
+.obtainedCharacters { 
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    background-image: url("Assets/inventory-background.png");
+    background-size: cover;
+}
+
+.obtainedCharacters img { 
+    opacity: 0;
+    transform: scale(1.3);
+    transition: all 0.3s ease-out;
+}
+
+.obtainedCharacters img.fade-in { 
+    opacity: 1;
+    transform: scale(1);
+}
