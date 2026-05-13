@@ -1,0 +1,169 @@
+* {
+    font-family: Lexend;
+    margin: 0;
+}
+
+@font-face {
+    font-family: Lexend;
+    src: url(Assets/Lexend-VariableFont_wght.ttf);
+}
+
+:root {
+    --color1: #004926;
+    --color2: #00753d;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    
+}
+
+header {
+    display: flex;
+    height: 8.5vh;
+    background-color: var(--color1);
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+header h1 {
+    color: white;
+    font-size: 40px;
+    font-weight: normal;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1.1fr 0.1fr 0.9fr;
+    flex-grow: 1;
+    padding: 10vh 10vw;
+    min-height: 0;
+    background: linear-gradient(to bottom, #b8ffdf, #ffffff);
+    
+}
+
+.main-left {
+    display: grid;
+    grid-template-rows: 1.1fr 1fr 1fr;
+    height: auto;
+}
+
+.profile {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    margin: 10px;
+    gap: 10px;
+    min-height: 0;
+}
+
+.profile-pic {
+    background-color: gray;
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+    max-width: auto;
+    max-height: auto;
+    justify-self: center;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info h1 {
+    font-size: 50px;
+}
+
+.profile-info-secondary {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.profile-info-secondary h3 {
+    background-color: var(--color2);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: white;
+}
+
+.profile-info-secondary h2 {
+    padding: 0 4px;
+    font-size: 22px;
+}
+
+.profile-info-secondary h2:first-of-type {
+    margin-bottom: 5px;
+}
+
+.profile-stats-container {
+    padding: 20px 50px;
+    display: flex;
+}
+
+.profile-stats {
+    width: 230px;
+}
+
+.profile-stats h2{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color2);
+    margin: 10px 0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.student-showcase {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 0;
+}
+
+.student-showcase-top {
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+    background-color: var(--color1);
+    color: white;
+    min-height: 50px;
+    padding: 0px 10px
+}
+
+.student-showcase-down {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding: 3px 0;
+    gap: 3px;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    
+}
+
+.student-showcase-down div {
+    aspect-ratio: 1/1;
+    min-height: 0;
+    min-width: 0;
+    background-color: rgb(168, 168, 168);
+}
+
+.main-right textarea {
+    margin-top: 30px;
+    background-color: #f4fffa;
+    border: 2px solid #d8ffeb;
+    border-radius: 10px;
+    resize: none;
+    width: 80%;
+    height: 35%;
+    font-size: 30px;
+    padding: 30px 20px;
+}
+
+.main-right textarea:focus {
+    outline: 2px solid #78be9c;
+}
