@@ -42,8 +42,7 @@ main {
     flex-grow: 1;
     padding: 10vh 10vw;
     min-height: 0;
-    background: linear-gradient(to bottom, #b8ffdf, #ffffff);
-    
+    background: linear-gradient(to bottom, #b8ffdf, #ffffff);  
 }
 
 .main-left {
@@ -150,6 +149,10 @@ main {
     min-height: 0;
     min-width: 0;
     background-color: rgb(168, 168, 168);
+    background-image: url(Assets/satono-diamond.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .main-right textarea {
