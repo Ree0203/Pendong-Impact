@@ -60,7 +60,7 @@ main {
 }
 
 .profile-pic {
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
     aspect-ratio: 1/1;
     max-width: auto;
@@ -154,6 +154,9 @@ main {
     min-height: 0;
     min-width: 0;
     background-color: rgb(168, 168, 168);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .main-right textarea {

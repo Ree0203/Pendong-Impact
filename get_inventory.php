@@ -1,9 +1,9 @@
 <?php
 session_start();
-include "database.php";
+$userId = $_SESSION['userId'];
 header('Content-Type: application/json');
 
-$userId = $_SESSION['userId'];
+require_once "database.php";
 
 $stmt1 = $conn->prepare("SELECT Characters.* FROM Inventory INNER JOIN Characters ON Inventory.character_id = Characters.character_id WHERE Inventory.user_id = ?");
 $stmt1->bind_param('i', $userId);

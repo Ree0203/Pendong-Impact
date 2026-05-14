@@ -19,13 +19,13 @@
                 
                 <div class="profile-info">
 
-                    <h1>AmazingPlayer</h1>
+                    <h1 id="username">AmazingPlayer</h1>
                     <div class="profile-info-secondary">
                         <h3>UserID</h3>
-                        <h2>202800180812</h2>
+                        <h2 id="user-id">202800180812</h2>
 
                         <h3>Date Joined</h3>
-                        <h2>2026-01-05</h2>
+                        <h2 id="date-joined">2026-01-05</h2>
                     </div>
 
                 </div>
@@ -34,9 +34,9 @@
             <div class="profile-stats-container">
 
                 <div class="profile-stats">
-                    <h2>Students <span>9</span></h2>
-                    <h2>Wins <span>11</span></h2>
-                    <h2>Loses <span>3</span></h2>
+                    <h2>Students <span id="number-of-students">9</span></h2>
+                    <h2>Wins <span id="wins">11</span></h2>
+                    <h2>Loses <span id="loses">3</span></h2>
                 </div>
 
             </div>
@@ -72,8 +72,59 @@
         <section></section>
 
         <section class="main-right">
-            <textarea></textarea>
+            <textarea id="message-box"></textarea>
         </section>
     </main>
+
+    <script>
+        
+        getAccountInfo();
+        async function getAccountInfo() {
+            const response1 = await fetch('get_account.php');
+            const account = await response1.json();
+            
+            const response2 = await fetch('get_inventory.php');
+            const data2 = await response2.json();
+            const accountInv = data2.owned;
+
+            const response3 = await fetch('get_account_favorites.php');
+            const favorites = await response3.json();
+
+            displayAccountInfo(account, accountInv, favorites);
+        }
+
+
+
+
+        const profilePic = document.querySelector('.profile-pic');
+        const username = document.getElementById('username');
+        const userId = document.getElementById('user-id');
+        const dateJoined = document.getElementById('date-joined');
+        const numOfStudents = document.getElementById('number-of-students');
+        const wins = document.getElementById('wins');
+        const loses = document.getElementById('loses');
+        const messageBox = document.getElementById('message-box');
+        const studentShowcaseBoxes = document.querySelectorAll('.student-showcase-down div');
+
+        
+        function displayAccountInfo(account, accountInv, favorites) {
+            profilePic.style.backgroundImage = `url('Assets/${account.profile_pic}')`;
+            username.textContent = account.username;
+            userId.textContent = 202600256269 + account.user_id;
+            dateJoined.textContent = account.date_created;
+            numOfStudents.textContent = accountInv.length;
+            wins.textContent = account.wins;
+            loses.textContent = account.loses;
+            messageBox.value = account.message;
+
+            for(let i = 0; i < favorites.length; i++) {
+                const character = accountInv[accountInv.findIndex(char => char.character_id == favorites[i])];
+                studentShowcaseBoxes[i].style.backgroundImage = `url('Assets/${character.picture}')`;
+            }
+
+        }
+
+
+    </script>
 </body>
 </html>
