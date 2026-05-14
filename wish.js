@@ -208,16 +208,22 @@ function showConversionContainer() {
     purchaseContainer.style.display = "flex"; 
 }
 
-fetch('get_currency.php')
-    .then(response=>response.json())    
-    .then(data=> { 
-        this.cvsuCoinsValue = data.coins; 
-        this.cvsuGems = data.gems; 
-    });
-
 let cvsuCoinsValue;
 let cvsuGems; 
 
-cvsucoins.textContent = cvsuGems; 
-coins3.textContent = cvsuCoinsValue;
+fetch('get_currency.php')
+    .then(response=>response.json())    
+    .then(data=> { 
+        cvsuCoinsValue = data.coins; 
+        cvsuGems = data.gems; 
+
+        console.log("Coins: ", cvsuCoinsValue); 
+        console.log("Gems: ", cvsuGems); 
+        cvsucoins.textContent = cvsuGems; 
+        coins3.textContent = cvsuCoinsValue;
+        
+    });
+
+
+
 

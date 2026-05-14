@@ -1,5 +1,7 @@
 <?php 
 
+require_once("database.php");
+
 $user_id = 19; 
 
 $query = "SELECT gems, coins FROM user_currency WHERE user_id = ?";
