@@ -9,8 +9,12 @@ const priceContainer = document.getElementById("product-price")
 const amountContainer = document.getElementById("product-description"); 
 
 
+const purchaseButton = document.getElementById("purchase-button"); 
 let coins; 
 let price; 
+
+
+getCurrency(); 
 
 for(let i = 0; i<paymentTypeButtons.length; i++) { 
     paymentTypeButtons[i].addEventListener("click", colorButton); 
@@ -40,10 +44,11 @@ for(let i = 0; i<exchangeContainer.length; i++) {
     exchangeContainer[i].addEventListener("click", function() { 
 
         coins = exchangeContainer[i].dataset.coins; 
-        gems = exchangeContainer[i].dataset.price; 
+        price = exchangeContainer[i].dataset.price; 
 
         priceContainer.textContent = coins + " DASH 3 coins"; 
-        amountContainer.textContent = "₱" + gems; 
+        amountContainer.textContent = "₱" + price; 
+
         showConfirmContainer(); 
     }); 
 }
@@ -51,15 +56,46 @@ for(let i = 0; i<exchangeContainer.length; i++) {
 let cvsuCoinsValue;
 let cvsuGems; 
 
-fetch('get_currency.php')
-    .then(response=>response.json())    
-    .then(data=> { 
-        cvsuCoinsValue = data.coins; 
-        cvsuGems = data.gems; 
+function getCurrency() { 
+    fetch('get_currency.php')
+        .then(response=>response.json())    
+        .then(data=> { 
+            cvsuCoinsValue = data.coins; 
+            cvsuGems = data.gems; 
 
-        console.log("Coins: ", cvsuCoinsValue); 
-        console.log("Gems: ", cvsuGems); 
+            console.log("Coins: ", cvsuCoinsValue); 
+            console.log("Gems: ", cvsuGems); 
 
-        gemsContainer.textContent = cvsuGems; 
-        coinsContainer.textContent = cvsuCoinsValue;
+            gemsContainer.textContent = cvsuGems; 
+            coinsContainer.textContent = cvsuCoinsValue;
     });
+}
+
+purchaseButton.addEventListener("click", function() { 
+    purchaseCoins(coins);
+}); 
+
+function purchaseCoins(coins) { 
+
+    fetch('update_currency.php', { 
+        method: "POST", 
+        headers: { 
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify({
+            coins: coins
+        })
+    })
+    .then(response => response.json())
+    .then(data => { 
+
+        if(data.status === "success") { 
+            alert("purchase completed"); 
+            getCurrency(); 
+        } else { 
+            alert("errorr"); 
+        }
+    })
+    
+
+}
