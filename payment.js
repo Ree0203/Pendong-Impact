@@ -90,12 +90,10 @@ function purchaseCoins(coins) {
     .then(data => { 
 
         if(data.status === "success") { 
-            alert("purchase completed"); 
+            console.log("Purchased " + coins + " coins"); 
             getCurrency(); 
         } else { 
-            alert("errorr"); 
+            alert("error"); 
         }
     })
-    
-
 }
