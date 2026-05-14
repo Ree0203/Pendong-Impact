@@ -219,11 +219,15 @@ fetch('get_currency.php')
 
         console.log("Coins: ", cvsuCoinsValue); 
         console.log("Gems: ", cvsuGems); 
+
         cvsucoins.textContent = cvsuGems; 
         coins3.textContent = cvsuCoinsValue;
-        
     });
 
+const shopButton = document.getElementById("shop"); 
 
-
+shopButton.addEventListener("click", function() { 
+    window.location.href = "payment.html";
+}); 
+ 
 
