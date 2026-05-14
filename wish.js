@@ -162,10 +162,10 @@ jamesBox.addEventListener("click", function() {
     jaysonBanner.style.display = "none"; 
 }); 
 
-var cvsuCoinsValue = 21245; 
+
 var minValue = 0; 
 var maxValue = 0; 
-var cvsuGems = 20; 
+
 
 var conversionamount = 0; 
 amountdiv.textContent = 0; 
@@ -207,8 +207,17 @@ function hideConversionContainer() {
 function showConversionContainer() { 
     purchaseContainer.style.display = "flex"; 
 }
+
+fetch('get_currency.php')
+    .then(response=>response.json())    
+    .then(data=> { 
+        this.cvsuCoinsValue = data.coins; 
+        this.cvsuGems = data.gems; 
+    });
+
+let cvsuCoinsValue;
+let cvsuGems; 
+
 cvsucoins.textContent = cvsuGems; 
 coins3.textContent = cvsuCoinsValue;
-
-
 
