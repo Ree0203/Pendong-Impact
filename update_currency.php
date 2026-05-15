@@ -3,7 +3,7 @@
 require_once('database.php');
 header('Content-Type: application/json');
 
-$user_id = 19; 
+$user_id = 18; 
 
 $data = json_decode(file_get_contents('php://input'), true);
 

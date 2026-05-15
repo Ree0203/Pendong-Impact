@@ -2,7 +2,7 @@
 
 require_once("database.php");
 
-$user_id = 19; 
+$user_id = 18; 
 
 $query = "SELECT gems, coins FROM user_currency WHERE user_id = ?";
 $stmt = $conn->prepare($query); 

@@ -49,6 +49,8 @@ shopErrorButton.addEventListener("click", function() {
 wishButton1.addEventListener("click", function() {
     if(cvsuGems >= 1){ 
         singlePull(); 
+
+        updateCurrency(0, -1); 
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
@@ -70,6 +72,8 @@ function multipull(){
         }
 
         showImages(selectedCharacters); 
+
+        updateCurrency(0, -10); 
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
