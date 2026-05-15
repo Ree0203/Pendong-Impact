@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="wish.css">
     <title>Pull for characters</title>
 </head>
@@ -12,6 +11,27 @@
     <div class="obtainedCharacters" id="obtainedCharacters">
 
     </div>
+
+    <div class="error-container "id="insuff-gem-container">
+        <div class="inner-container">
+            <div class="inner-inner-container">
+                <span class="error-title">Error!</span>
+                <hr>
+                <span class="error-description">Insufficient gems!</span>
+                <span>Please convert your coins to gems</span>
+                <span>or go to shop to buy more coins.</span>
+
+                <div class="button-container">
+                    <hr>
+                    <div class="button-inner-container">
+                        <button id="shop-error">Go to shop</button>
+                        <button id="wish-error">Wish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="banner-container">
         <div class="banner-box active-banner" id="jayson">
             <img src="Assets/jayson.png" alt="" id="hero-icon-jayson" class="hero-icons">

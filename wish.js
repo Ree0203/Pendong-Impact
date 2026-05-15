@@ -33,24 +33,47 @@ const wishButton1 = document.getElementById("wish1")
 const wishButton10 = document.getElementById("wish10");
 
 
+const insuffGemContainer = document.getElementById("insuff-gem-container"); 
+const shopErrorButton = document.getElementById("shop-error"); 
+const wishErrorButton = document.getElementById("wish-error"); 
 
+wishErrorButton.addEventListener("click", function() { 
+    insuffGemContainer.style.display = "none"; 
+});
 
-wishButton1.addEventListener("click", singlePull);
+shopErrorButton.addEventListener("click", function() { 
+    window.location.href = "payment.html";
+
+}); 
+
+wishButton1.addEventListener("click", function() {
+    if(cvsuGems >= 1){ 
+        singlePull(); 
+    } else { 
+        insuffGemContainer.style.display = "flex"; 
+    }
+});
+
 wishButton10.addEventListener("click", multipull);
 
 let selectedCharacters = [];
 let currentImageIndex = 0; 
 
 function multipull(){ 
-    selectedCharacters = [];
+    if(cvsuGems >= 10) { 
+        selectedCharacters = [];
 
-    currentImageIndex = 0; 
+        currentImageIndex = 0; 
 
-    for(let i = 0; i<10; i++) { 
-        pullCharacter(); 
+        for(let i = 0; i<10; i++) { 
+            pullCharacter(); 
+        }
+
+        showImages(selectedCharacters); 
+    } else { 
+        insuffGemContainer.style.display = "flex"; 
     }
-
-    showImages(selectedCharacters); 
+    
 }
 
 function singlePull(){
