@@ -44,6 +44,8 @@ let currentImageIndex = 0;
 function multipull(){ 
     selectedCharacters = [];
 
+    currentImageIndex = 0; 
+
     for(let i = 0; i<10; i++) { 
         pullCharacter(); 
     }
@@ -102,9 +104,16 @@ function showImages(selected) {
 
 function renderImage() { 
     const container = document.getElementById("obtainedCharacters");
+
+    if(!selectedCharacters || selectedCharacters.length === 0) { 
+        container.style.display = "none"; 
+        return; 
+    }
+
     container.style.display = "flex"; 
+    container.style.pointerEvents = "auto"; 
     container.style.zIndex = "3"; 
-    container.innerHtml = ""; 
+    container.innerHTML = ""; 
     container.textContent = currentImageIndex+1; 
     const character = selectedCharacters[currentImageIndex]; 
 
@@ -114,18 +123,20 @@ function renderImage() {
     container.appendChild(img); 
 
     setTimeout(() => {
-            img.classList.add("fade-in");
+        img.classList.add("fade-in");
     }, 10);
     
-    container.onclick = () => { 
+    container.onclick = (e) => { 
+        e.stopPropagation(); 
         currentImageIndex++; 
 
         if(selectedCharacters.length > currentImageIndex) { 
             container.innerHTML = "";
             renderImage(); 
         } else { 
-            container.style.zIndex = -1;
             container.style.display = "none"; 
+            container.style.pointerEvents = "none"; 
+            container.style.zIndex = "-1"; 
             currentImageIndex = 0; 
 
         } 
