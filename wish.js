@@ -194,10 +194,9 @@ cancelPurchase.addEventListener("click", function() {
 }); 
 
 function convertGem() { 
-
     purchaseContainer.style.display = "none"; 
-
-    updateCurrency(-1*(conversionamount*100), conversionamount); 
+    const conversionPrice = -1*(conversionamount*100); 
+    updateCurrency(conversionPrice, conversionamount); 
 }
 
 function hideConversionContainer() { 
@@ -242,7 +241,13 @@ function updateCurrency(coins, gems) {
     })
     .then(response => response.json())
     .then(data => {
-        getCurrency(); 
+        if(data.status === "success") {
+            console.log("Converted " + gems + " gems"); 
+            console.log("Subtracted " + coins + " from coins");  
+            getCurrency(); 
+        } else { 
+            console.log("There was an error during the conversion"); 
+        }
     })
 }
 const shopButton = document.getElementById("shop"); 
