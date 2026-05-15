@@ -192,12 +192,12 @@ slider.addEventListener("input", function() {
 cancelPurchase.addEventListener("click", function() { 
     purchaseContainer.style.display = "none"; 
 }); 
+
 function convertGem() { 
-    cvsuGems = cvsuGems + conversionamount; 
-    cvsucoins.textContent = cvsuGems; 
-    cvsuCoinsValue -= conversionamount*100; 
-    coins3.textContent = cvsuCoinsValue; 
+
     purchaseContainer.style.display = "none"; 
+
+    updateCurrency(-1*(conversionamount*100), conversionamount); 
 }
 
 function hideConversionContainer() { 
@@ -211,19 +211,40 @@ function showConversionContainer() {
 let cvsuCoinsValue;
 let cvsuGems; 
 
-fetch('get_currency.php')
-    .then(response=>response.json())    
-    .then(data=> { 
-        cvsuCoinsValue = data.coins; 
-        cvsuGems = data.gems; 
+getCurrency(); 
 
-        console.log("Coins: ", cvsuCoinsValue); 
-        console.log("Gems: ", cvsuGems); 
+function getCurrency() { 
+    fetch('get_currency.php')
+        .then(response=>response.json())    
+        .then(data=> { 
+            cvsuCoinsValue = data.coins; 
+            cvsuGems = data.gems; 
 
-        cvsucoins.textContent = cvsuGems; 
-        coins3.textContent = cvsuCoinsValue;
-    });
+            console.log("Coins: ", cvsuCoinsValue); 
+            console.log("Gems: ", cvsuGems); 
 
+            cvsucoins.textContent = cvsuGems; 
+            coins3.textContent = cvsuCoinsValue;
+        });
+}
+
+function updateCurrency(coins, gems) { 
+
+    fetch("update_currency.php", { 
+        method: "POST", 
+        headers: { 
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify({
+            coins: coins,
+            gems: gems
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        getCurrency(); 
+    })
+}
 const shopButton = document.getElementById("shop"); 
 
 shopButton.addEventListener("click", function() { 

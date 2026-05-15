@@ -12,6 +12,7 @@ const amountContainer = document.getElementById("product-description");
 const purchaseButton = document.getElementById("purchase-button"); 
 let coins; 
 let price; 
+let gems = 0; 
 
 
 getCurrency(); 
@@ -72,10 +73,10 @@ function getCurrency() {
 }
 
 purchaseButton.addEventListener("click", function() { 
-    purchaseCoins(coins);
+    purchaseCoins(coins, gems);
 }); 
 
-function purchaseCoins(coins) { 
+function purchaseCoins(coins, gems) { 
 
     fetch('update_currency.php', { 
         method: "POST", 
@@ -83,7 +84,8 @@ function purchaseCoins(coins) {
             "Content-Type": "application/json"
         }, 
         body: JSON.stringify({
-            coins: coins
+            coins: coins,
+            gems: gems
         })
     })
     .then(response => response.json())
