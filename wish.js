@@ -39,7 +39,10 @@ const wishErrorButton = document.getElementById("wish-error");
 
 const video = document.getElementById("pull-animation"); 
 
-
+video.addEventListener("click", function() { 
+    video.currentTime = video.duration; 
+    video.style.display = "none"; 
+});
 wishErrorButton.addEventListener("click", function() { 
     insuffGemContainer.style.display = "none"; 
 });
