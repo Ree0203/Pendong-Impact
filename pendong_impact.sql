@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2026 at 11:33 AM
+-- Generation Time: May 16, 2026 at 11:52 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -59,7 +59,7 @@ CREATE TABLE `characters` (
   `last_name` varchar(50) NOT NULL,
   `rarity` int(11) NOT NULL,
   `attack` int(11) NOT NULL,
-  `defence` int(11) NOT NULL,
+  `defense` int(11) DEFAULT NULL,
   `speed` int(11) NOT NULL,
   `luck` int(11) NOT NULL,
   `picture` varchar(50) DEFAULT NULL
@@ -69,7 +69,7 @@ CREATE TABLE `characters` (
 -- Dumping data for table `characters`
 --
 
-INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defence`, `speed`, `luck`, `picture`) VALUES
+INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defense`, `speed`, `luck`, `picture`) VALUES
 (1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, NULL),
 (2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, NULL),
 (3, 'James', 'Mareau Santos', 5, 60, 80, 40, 50, NULL),
@@ -98,10 +98,7 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
-(18, 1, '2026-05-16'),
-(18, 5, '2026-05-16'),
-(18, 6, '2026-05-16'),
-(18, 10, '2026-05-16');
+(18, 6, '2026-05-16');
 
 -- --------------------------------------------------------
 
@@ -122,7 +119,7 @@ CREATE TABLE `user_currency` (
 
 INSERT INTO `user_currency` (`user_id`, `gems`, `coins`) VALUES
 (17, 0, 0),
-(18, 78, 0);
+(18, 60, 0);
 
 --
 -- Indexes for dumped tables
