@@ -9,10 +9,12 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $js_coins = $data['coins'];
 $js_gems = $data['gems']; 
+$js_pity = $data['pity']; 
 
-$query = "UPDATE user_currency SET coins = ?, gems = ? WHERE user_id = ?";
+$query = "UPDATE user_currency SET coins = ?, gems = ?, pity = ? WHERE user_id = ?";
 $stmt = $conn->prepare($query);
 
+//add coins
 $query1 = "SELECT coins FROM user_currency WHERE user_id = ?";
 $stmt1 = $conn->prepare($query1); 
 $stmt1->bind_param("s", $user_id);
@@ -22,6 +24,7 @@ $row = $result->fetch_assoc();
 $db_coins = $row["coins"];
 $coins = $db_coins+$js_coins; 
 
+//add gems
 $get_db_gems_query = "SELECT gems
                       FROM user_currency
                       WHERE user_id = ?"; 
@@ -33,7 +36,17 @@ $gem_row = $gem_result->fetch_assoc();
 $db_gems = $gem_row["gems"]; 
 $gems = $db_gems+$js_gems; 
 
-$stmt->bind_param("iii", $coins, $gems, $user_id);
+//add pity
+$pity_query = "SELECT pity FROM user_currency WHERE user_id = ?";
+$get_db_pity = $conn->prepare($pity_query); 
+$get_db_pity->bind_param("i", $user_id); 
+$get_db_pity->execute(); 
+$pity_result = $get_db_pity->get_result(); 
+$pity_row = $pity_result->fetch_assoc(); 
+$db_pity = $pity_row["pity"]; 
+$pity = $db_pity+$js_pity; 
+
+$stmt->bind_param("iiii", $coins, $gems, $pity, $user_id);
 
 if( $stmt->execute() ){
     echo json_encode([

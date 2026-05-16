@@ -24,15 +24,8 @@
             $stmt1 = $conn->prepare($query1); 
             $stmt1->bind_param("ii", $user_id, $character_id); 
 
-            if($stmt1->execute()) { 
-                echo json_encode([
-                    "status" => "success",
-                ]);
-            } else { 
-                echo json_encode([
-                    "status" => "error"
-                ]);
-            }
+            $stmt1->execute();
         }
     }
+    echo json_encode(["status" => "success",]);
 ?>

@@ -63,11 +63,11 @@ wishButton1.addEventListener("click", function() {
 
         video.onended = function() { 
             video.style.display = "none"; 
+
             singlePull(); 
 
-            updateCurrency(0, -1);
+            setPity(pity); 
         }
-        
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
@@ -121,14 +121,18 @@ function multipull(){
 
             currentImageIndex = 0; 
 
+            updateCurrency(0, -10, 0); 
+
             for(let i = 0; i<10; i++) { 
                 pullCharacter(); 
             }
 
+            setPity(pity); 
+
             console.log(selectedCharacters); 
             showImages(selectedCharacters); 
 
-            updateCurrency(0, -10); 
+            
 
             filterTrashFromCharacters(selectedCharacters); 
 
@@ -143,7 +147,9 @@ function singlePull(){
     selectedCharacters = [];
 
     pullCharacter();
-    
+
+    updateCurrency(0, -1, 0); 
+
     showImages(selectedCharacters); 
 
     insertCharactersIntoDatabase(selectedCharacters); 
@@ -152,15 +158,26 @@ function singlePull(){
 function pullCharacter() { 
 
     let rarity; 
+    let fiveStarChance = 0.6; 
+
+
+    if(pity > 73) { 
+        fiveStarChance = (pity - 73)*6; 
+    }
 
     var random = Math.random()*100; 
 
-    if(random<0.6) { 
+
+    if(random<fiveStarChance) { 
         rarity = 5; 
+        setPity(0);  
+        pity = 0;    
     } else if (random<5.6) { 
         rarity = 4; 
+        pity++; 
     } else { 
         rarity = 3; 
+        pity++; 
     }
 
     let filteredCharacters;
@@ -169,6 +186,7 @@ function pullCharacter() {
     
     var selected = filteredCharacters[Math.floor(Math.random() * filteredCharacters.length)];
     selectedCharacters.push(selected); 
+
 
     return selected; 
 }
@@ -203,7 +221,6 @@ function renderImage() {
     container.style.pointerEvents = "auto"; 
     container.style.zIndex = "3"; 
     container.innerHTML = ""; 
-    container.textContent = currentImageIndex+1; 
     const character = selectedCharacters[currentImageIndex]; 
 
     const img = document.createElement("img"); 
@@ -296,7 +313,7 @@ cancelPurchase.addEventListener("click", function() {
 function convertGem() { 
     purchaseContainer.style.display = "none"; 
     const conversionPrice = -1*(conversionamount*100); 
-    updateCurrency(conversionPrice, conversionamount); 
+    updateCurrency(conversionPrice, conversionamount, 0); 
 }
 
 function hideConversionContainer() { 
@@ -309,6 +326,7 @@ function showConversionContainer() {
 
 let cvsuCoinsValue;
 let cvsuGems; 
+let pity; 
 
 getCurrency(); 
 
@@ -318,16 +336,16 @@ function getCurrency() {
         .then(data=> { 
             cvsuCoinsValue = data.coins; 
             cvsuGems = data.gems; 
+            pity = data.pity; 
 
-            console.log("Coins: ", cvsuCoinsValue); 
-            console.log("Gems: ", cvsuGems); 
+            console.log(pity); 
 
             cvsucoins.textContent = cvsuGems; 
             coins3.textContent = cvsuCoinsValue;
         });
 }
 
-function updateCurrency(coins, gems) { 
+function updateCurrency(coins, gems, pity) { 
 
     fetch("update_currency.php", { 
         method: "POST", 
@@ -336,7 +354,8 @@ function updateCurrency(coins, gems) {
         }, 
         body: JSON.stringify({
             coins: coins,
-            gems: gems
+            gems: gems,
+            pity: pity
         })
     })
     .then(response => response.json())
@@ -356,6 +375,26 @@ shopButton.addEventListener("click", function() {
     window.location.href = "payment.html";
 }); 
  
+function setPity(pity) { 
+    fetch("update_pity.php", { 
+        method: "POST", 
+        headers: { 
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify({ 
+            pity: pity
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status === "success") { 
+            console.log("Set pity to " + pity); 
+            window.pity = pity; 
+        } else { 
+            console.log("There was an error while setting pity"); 
+        }
+    })
+}
 
 
 

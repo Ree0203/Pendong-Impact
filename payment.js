@@ -90,7 +90,8 @@ function purchaseCoins(coins, gems) {
         }, 
         body: JSON.stringify({
             coins: coins,
-            gems: gems
+            gems: gems,
+            pity: 0
         })
     })
     .then(response => response.json())
