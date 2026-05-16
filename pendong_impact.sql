@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2026 at 02:13 PM
+-- Generation Time: May 16, 2026 at 11:27 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pendong_impact`
 --
-CREATE DATABASE IF NOT EXISTS `pendong_impact` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `pendong_impact`;
 
 -- --------------------------------------------------------
 
@@ -46,8 +44,7 @@ CREATE TABLE `accounts` (
 INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_created`, `profile_pic`) VALUES
 (10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', NULL),
 (17, 'Ryan', '$2y$10$qatTKjgJWttWQYliT1i1KO7MyKMJLC3gFDf.y.1NGnQ4M9/m4/H.i', 'ryan@gmail.com', '2026-05-14', NULL),
-(18, 'Ryan', '$2y$10$YTjVQYeUgqsIGpWtsG6Hee.ZxFn.d8RQZLbUoB49J8Ywz3O5DeXbq', 'ryan1@gmail.com', '2026-05-14', NULL),
-(19, 'ry', '$2y$10$r.S0i59xJlIEENARU4M/bORWHspyI40Q1Gc7lBABtoNdkiRfXeRES', 'ry@gmail.com', '2026-05-14', NULL);
+(18, 'Ryan', '$2y$10$YTjVQYeUgqsIGpWtsG6Hee.ZxFn.d8RQZLbUoB49J8Ywz3O5DeXbq', 'ryan1@gmail.com', '2026-05-14', NULL);
 
 -- --------------------------------------------------------
 
@@ -75,7 +72,13 @@ CREATE TABLE `characters` (
 INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defence`, `speed`, `luck`, `picture`) VALUES
 (1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, NULL),
 (2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, NULL),
-(3, 'Johanes', 'Leyran', 4, 45, 38, 70, 59, NULL);
+(3, 'James', 'Mareau Santos', 5, 60, 80, 40, 50, NULL),
+(5, 'Ryan', 'Donceras', 0, 0, 0, 0, 0, NULL),
+(6, 'Johanes', 'Leyran', 0, 0, 0, 0, 0, NULL),
+(7, 'Tayog', 'Basallo', 0, 0, 0, 0, 0, NULL),
+(8, 'Lawrence', 'Mojica', 0, 0, 0, 0, 0, NULL),
+(9, 'Chlowen', 'Patambang', 0, 0, 0, 0, 0, NULL),
+(10, 'Marcus', 'Matic', 0, 0, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -89,6 +92,14 @@ CREATE TABLE `inventory` (
   `character_id` int(11) NOT NULL,
   `date_acquired` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `inventory`
+--
+
+INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
+(18, 6, '2026-05-16'),
+(18, 10, '2026-05-16');
 
 -- --------------------------------------------------------
 
@@ -109,8 +120,7 @@ CREATE TABLE `user_currency` (
 
 INSERT INTO `user_currency` (`user_id`, `gems`, `coins`) VALUES
 (17, 0, 0),
-(18, 0, 0),
-(19, 0, 0);
+(18, 88, 0);
 
 --
 -- Indexes for dumped tables
@@ -156,7 +166,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `characters`
 --
 ALTER TABLE `characters`
-  MODIFY `character_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `character_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

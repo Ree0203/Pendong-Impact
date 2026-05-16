@@ -50,7 +50,8 @@ wishButton1.addEventListener("click", function() {
     if(cvsuGems >= 1){ 
         singlePull(); 
 
-        updateCurrency(0, -1); 
+        updateCurrency(0, -1);
+        
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
@@ -76,17 +77,19 @@ let currentImageIndex = 0;
 
 function insertCharactersIntoDatabase(characters) { 
 
-    fetch("insert_character.php", {
-        method: "POST", 
-        headers: {
-            "Content-Type": "application/json"
-        }, 
-        body: JSON.stringify(characters)
-    })
-    .then(response => response.json())
-    .then(data => {
+    if(characters.length !== 0) { 
+        fetch("insert_character.php", {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json"
+            }, 
+            body: JSON.stringify(characters)
+        })
+        .then(response => response.json())
+        .then(data => {
 
-    })
+        })
+    }
 }
 
 
@@ -107,9 +110,8 @@ function multipull(){
 
         filterTrashFromCharacters(selectedCharacters); 
 
-        if(selectedCharactersNoTrash.length !== 0) { 
-            insertCharactersIntoDatabase(selectedCharactersNoTrash); 
-        }
+        insertCharactersIntoDatabase(selectedCharactersNoTrash); 
+        
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
@@ -121,6 +123,8 @@ function singlePull(){
     pullCharacter();
     
     showImages(selectedCharacters); 
+
+    insertCharactersIntoDatabase(selectedCharacters); 
 }
 
 function pullCharacter() { 
