@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2026 at 11:52 AM
+-- Generation Time: May 16, 2026 at 12:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -27,7 +27,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `accounts`
 --
 
-DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -52,7 +51,6 @@ INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_create
 -- Table structure for table `characters`
 --
 
-DROP TABLE IF EXISTS `characters`;
 CREATE TABLE `characters` (
   `character_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
@@ -70,15 +68,15 @@ CREATE TABLE `characters` (
 --
 
 INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defense`, `speed`, `luck`, `picture`) VALUES
-(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, NULL),
-(2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, NULL),
-(3, 'James', 'Mareau Santos', 5, 60, 80, 40, 50, NULL),
-(5, 'Ryan', 'Donceras', 4, 0, 0, 0, 0, NULL),
-(6, 'Johanes', 'Leyran', 4, 0, 0, 0, 0, NULL),
-(7, 'Tayog', 'Basallo', 4, 0, 0, 0, 0, NULL),
-(8, 'Lawrence', 'Mojica', 4, 0, 0, 0, 0, NULL),
-(9, 'Chlowen', 'Patambang', 4, 0, 0, 0, 0, NULL),
-(10, 'Marcus', 'Matic', 4, 0, 0, 0, 0, NULL);
+(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, 'jayson.png'),
+(2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, 'demy.png'),
+(3, 'James', 'Mareau Santos', 5, 60, 80, 40, 50, 'james.png'),
+(5, 'Ryan', 'Donceras', 4, 0, 0, 0, 0, 'ryan.png'),
+(6, 'Johanes', 'Leyran', 4, 0, 0, 0, 0, 'johan.png'),
+(7, 'Tayog', 'Basallo', 4, 0, 0, 0, 0, 'tayog.png'),
+(8, 'Lawrence', 'Mojica', 4, 0, 0, 0, 0, 'lawrence.png'),
+(9, 'Chlowen', 'Patambang', 4, 0, 0, 0, 0, 'chlowen.png'),
+(10, 'Marcus', 'Matic', 4, 0, 0, 0, 0, 'marcus.png');
 
 -- --------------------------------------------------------
 
@@ -86,7 +84,6 @@ INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `
 -- Table structure for table `inventory`
 --
 
-DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
   `user_id` int(11) NOT NULL,
   `character_id` int(11) NOT NULL,
@@ -106,7 +103,6 @@ INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
 -- Table structure for table `user_currency`
 --
 
-DROP TABLE IF EXISTS `user_currency`;
 CREATE TABLE `user_currency` (
   `user_id` int(11) NOT NULL,
   `gems` int(11) DEFAULT NULL,
