@@ -27,7 +27,7 @@ const characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"},
                     {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
                     {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
                     {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                    {id:10, name:"marcus", rarity:4, image:"marcus.jpg"}]; 
+                    {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
 
 const wishButton1 = document.getElementById("wish1")
 const wishButton10 = document.getElementById("wish10");
@@ -36,6 +36,9 @@ const wishButton10 = document.getElementById("wish10");
 const insuffGemContainer = document.getElementById("insuff-gem-container"); 
 const shopErrorButton = document.getElementById("shop-error"); 
 const wishErrorButton = document.getElementById("wish-error"); 
+
+const video = document.getElementById("pull-animation"); 
+
 
 wishErrorButton.addEventListener("click", function() { 
     insuffGemContainer.style.display = "none"; 
@@ -47,17 +50,27 @@ shopErrorButton.addEventListener("click", function() {
 }); 
 
 wishButton1.addEventListener("click", function() {
-    if(cvsuGems >= 1){ 
-        singlePull(); 
+    
 
-        updateCurrency(0, -1);
+    if(cvsuGems >= 1){ 
+
+        video.style.display= "block"; 
+        video.currentTime = 0; 
+        video.play(); 
+
+        video.onended = function() { 
+            video.style.display = "none"; 
+            singlePull(); 
+
+            updateCurrency(0, -1);
+        }
         
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
 });
 
-wishButton10.addEventListener("click", multipull);
+wishButton10.addEventListener("click", multipull); 
 
 let selectedCharactersNoTrash = []; 
 
@@ -95,23 +108,29 @@ function insertCharactersIntoDatabase(characters) {
 
 function multipull(){ 
     if(cvsuGems >= 10) { 
-        selectedCharacters = [];
+        video.style.display = "block";
+        video.currentTime = 0; 
+        video.play(); 
 
-        currentImageIndex = 0; 
+        video.onended = function() {
+            video.style.display = "none";             
+            selectedCharacters = [];
 
-        for(let i = 0; i<10; i++) { 
-            pullCharacter(); 
+            currentImageIndex = 0; 
+
+            for(let i = 0; i<10; i++) { 
+                pullCharacter(); 
+            }
+
+            console.log(selectedCharacters); 
+            showImages(selectedCharacters); 
+
+            updateCurrency(0, -10); 
+
+            filterTrashFromCharacters(selectedCharacters); 
+
+            insertCharactersIntoDatabase(selectedCharactersNoTrash);
         }
-
-        console.log(selectedCharacters); 
-        showImages(selectedCharacters); 
-
-        updateCurrency(0, -10); 
-
-        filterTrashFromCharacters(selectedCharacters); 
-
-        insertCharactersIntoDatabase(selectedCharactersNoTrash); 
-        
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
