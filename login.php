@@ -56,7 +56,7 @@
 
         $newUserId = $conn->insert_id;
         
-        $stmt = $conn->prepare("INSERT INTO user_currency(user_id, gems, coins) VALUES(?, 0, 0)");
+        $stmt = $conn->prepare("INSERT INTO user_currency(user_id, gems, coins, pity) VALUES(?, 0, 0, 0)");
         $stmt->bind_param('i', $newUserId);
 
         if($stmt->execute()) {
