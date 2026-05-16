@@ -4,7 +4,7 @@ require_once("database.php");
 
     $user_id = 18; 
 
-    $query = "SELECT gems, coins, pity FROM user_currency WHERE user_id = ?";
+    $query = "SELECT gems, coins, pity, four_star_pity FROM user_currency WHERE user_id = ?";
     $stmt = $conn->prepare($query); 
     $stmt->bind_param("i", $user_id);
     $stmt->execute();

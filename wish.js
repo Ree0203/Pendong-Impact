@@ -67,6 +67,8 @@ wishButton1.addEventListener("click", function() {
             singlePull(); 
 
             setPity(pity); 
+            setFourStarPity(fourpity); 
+
         }
     } else { 
         insuffGemContainer.style.display = "flex"; 
@@ -79,7 +81,6 @@ let selectedCharactersNoTrash = [];
 
 function filterTrashFromCharacters(selectedCharacters){ 
     selectedCharactersNoTrash = []; 
-
     for(let i = 0; i<selectedCharacters.length; i++) { 
         if(selectedCharacters[i].name !== "trash") { 
             selectedCharactersNoTrash.push(selectedCharacters[i]); 
@@ -123,13 +124,14 @@ function multipull(){
 
             updateCurrency(0, -10, 0); 
 
+
             for(let i = 0; i<10; i++) { 
                 pullCharacter(); 
             }
 
             setPity(pity); 
+            setFourStarPity(fourpity);
 
-            console.log(selectedCharacters); 
             showImages(selectedCharacters); 
 
             
@@ -159,10 +161,14 @@ function pullCharacter() {
 
     let rarity; 
     let fiveStarChance = 0.6; 
-
+    let fourStarChance = 5.6; 
 
     if(pity > 73) { 
         fiveStarChance = (pity - 73)*6; 
+    }
+
+    if(fourpity >= 9) { 
+        fourStarChance = 100; 
     }
 
     var random = Math.random()*100; 
@@ -171,13 +177,17 @@ function pullCharacter() {
     if(random<fiveStarChance) { 
         rarity = 5; 
         setPity(0);  
-        pity = 0;    
-    } else if (random<5.6) { 
+        pity = 0;
+        fourpity++;     
+    } else if (random<fourStarChance) { 
         rarity = 4; 
         pity++; 
+        setFourStarPity(0); 
+        fourpity = 0; 
     } else { 
         rarity = 3; 
         pity++; 
+        fourpity++; 
     }
 
     let filteredCharacters;
@@ -221,7 +231,7 @@ function renderImage() {
     container.style.pointerEvents = "auto"; 
     container.style.zIndex = "3"; 
     container.innerHTML = ""; 
-    const character = selectedCharacters[currentImageIndex]; 
+    const character = selectedCharacters[currentImageIndex];    
 
     const img = document.createElement("img"); 
     img.src = `Assets/${character.image}`; 
@@ -327,6 +337,7 @@ function showConversionContainer() {
 let cvsuCoinsValue;
 let cvsuGems; 
 let pity; 
+let fourpity; 
 
 getCurrency(); 
 
@@ -337,8 +348,11 @@ function getCurrency() {
             cvsuCoinsValue = data.coins; 
             cvsuGems = data.gems; 
             pity = data.pity; 
+            fourpity = data.four_star_pity; 
 
-            console.log(pity); 
+            console.log("Four star pity: " + fourpity); 
+            console.log("Five star pity: " + pity); 
+            console.log(" ")
 
             cvsucoins.textContent = cvsuGems; 
             coins3.textContent = cvsuCoinsValue;
@@ -382,19 +396,36 @@ function setPity(pity) {
             "Content-Type": "application/json"
         }, 
         body: JSON.stringify({ 
-            pity: pity
+            pity: pity,
         })
     })
     .then(response => response.json())
     .then(data => {
         if(data.status === "success") { 
-            console.log("Set pity to " + pity); 
-            window.pity = pity; 
         } else { 
             console.log("There was an error while setting pity"); 
         }
     })
 }
 
+function setFourStarPity(fourPity) { 
+
+    fetch("update_fourpity.php", {
+         method: "POST", 
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            fourPity: fourPity 
+        })
+    })
+    .then(response => response.json()) 
+    .then(data => {
+        if(data.status === "success") { 
+        } else { 
+            console.log("There was an error while setting four star pity.")
+        }
+    })
+}
 
 
