@@ -58,8 +58,37 @@ wishButton1.addEventListener("click", function() {
 
 wishButton10.addEventListener("click", multipull);
 
+let selectedCharactersNoTrash = []; 
+
+function filterTrashFromCharacters(selectedCharacters){ 
+    selectedCharactersNoTrash = []; 
+
+    for(let i = 0; i<selectedCharacters.length; i++) { 
+        if(selectedCharacters[i].name !== "trash") { 
+            selectedCharactersNoTrash.push(selectedCharacters[i]); 
+        }
+    }
+}
+
+
 let selectedCharacters = [];
 let currentImageIndex = 0; 
+
+function insertCharactersIntoDatabase(characters) { 
+
+    fetch("insert_character.php", {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify(characters)
+    })
+    .then(response => response.json())
+    .then(data => {
+
+    })
+}
+
 
 function multipull(){ 
     if(cvsuGems >= 10) { 
@@ -71,13 +100,19 @@ function multipull(){
             pullCharacter(); 
         }
 
+        console.log(selectedCharacters); 
         showImages(selectedCharacters); 
 
         updateCurrency(0, -10); 
+
+        filterTrashFromCharacters(selectedCharacters); 
+
+        if(selectedCharactersNoTrash.length !== 0) { 
+            insertCharactersIntoDatabase(selectedCharactersNoTrash); 
+        }
     } else { 
         insuffGemContainer.style.display = "flex"; 
     }
-    
 }
 
 function singlePull(){
@@ -87,6 +122,7 @@ function singlePull(){
     
     showImages(selectedCharacters); 
 }
+
 function pullCharacter() { 
 
     let rarity; 
@@ -294,5 +330,6 @@ shopButton.addEventListener("click", function() {
     window.location.href = "payment.html";
 }); 
  
+
 
 
