@@ -57,6 +57,32 @@ body {
     position: relative;
 }
 
+
+.demy-container, .jayson-container, .james-container { 
+    transition: 0.5s all;
+    transform: translateX(15px);
+    opacity: 0;
+}
+
+
+
+.demy-container.fade-in, .jayson-container.fade-in, .james-container.fade-in { 
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.description { 
+    transition: 0.5s all;
+    transform: translateX(15px);
+    opacity: 0;
+}
+
+
+.description.fade-in { 
+    transform: translateX(0);
+    opacity: 1;
+}
+
 .detail-buttons-container { 
     width: 25vw;
     height: 6vh;
@@ -555,6 +581,15 @@ body {
     position: absolute;
     display: flex;
     top: 25%;
+}
+.gdescription { 
+    margin-top: 3%;
+    height: 40%;
+    width: 50%;
+    position: absolute;
+    display: flex;
+    top: 25%;
+    font-size: 1rem;
 }
 
 .limited { 

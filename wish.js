@@ -260,6 +260,7 @@ function renderImage() {
     }
 }
 
+
 jaysonBox.addEventListener("click", function() {
     jamesBox.classList.remove("active-banner"); 
     demyBox.classList.remove("active-banner"); 
@@ -267,6 +268,13 @@ jaysonBox.addEventListener("click", function() {
 
     demyBanner.style.display = "none"; 
     jamesBanner.style.display = "none";  
+
+    demyBanner.classList.remove("fade-in"); 
+    jamesBanner.classList.remove("fade-in");
+
+    setTimeout(() => {
+        jaysonBanner.classList.add("fade-in"); 
+    }, 100); 
     jaysonBanner.style.display = "block"; 
 
     characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
@@ -285,10 +293,16 @@ demyBox.addEventListener("click", function() {
     jaysonBox.classList.remove("active-banner"); 
     demyBox.classList.add("active-banner"); 
 
-    demyBanner.style.display = "block"; 
     jamesBanner.style.display = "none";  
     jaysonBanner.style.display = "none"; 
 
+    jamesBanner.classList.remove("fade-in");
+    jaysonBanner.classList.remove("fade-in"); 
+
+    setTimeout(() => { 
+        demyBanner.classList.add("fade-in");
+    }, 30);
+    demyBanner.style.display = "block"; 
     characters = [{id:2, name:"demy", rarity:5, image: "demy.png"}, 
                 {id:4, name:"trash", rarity:3, image:"trash.png"},
                 {id:5, name:"ryan", rarity:4, image: "ryan.png"},
@@ -306,8 +320,15 @@ jamesBox.addEventListener("click", function() {
     jaysonBox.classList.remove("active-banner"); 
 
     demyBanner.style.display = "none"; 
-    jamesBanner.style.display = "block";  
     jaysonBanner.style.display = "none"; 
+
+    demyBanner.classList.remove("fade-in");
+    jaysonBanner.classList.remove("fade-in"); 
+
+    setTimeout(() => { 
+        jamesBanner.classList.add("fade-in"); 
+    }, 30); 
+    jamesBanner.style.display = "block";  
 
     characters = [{id:3, name:"james", rarity:5, image:"james.png"},
                 {id:4, name:"trash", rarity:3, image:"trash.png"},
