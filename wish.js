@@ -18,9 +18,7 @@ const jaysonBox = document.getElementById("jayson");
 const demyBox = document.getElementById("demy"); 
 const jamesBox = document.getElementById("james"); 
 
-const characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
-                    {id:2, name:"demy", rarity:5, image: "demy.png"}, 
-                    {id:3, name:"james", rarity:5, image:"james.png"},
+let characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
                     {id:4, name:"trash", rarity:3, image:"trash.png"},
                     {id:5, name:"ryan", rarity:4, image: "ryan.png"},
                     {id:6, name:"johan", rarity:4, image:"johan.png"},
@@ -28,6 +26,7 @@ const characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"},
                     {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
                     {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
                     {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+
 
 const wishButton1 = document.getElementById("wish1")
 const wishButton10 = document.getElementById("wish10");
@@ -165,6 +164,7 @@ function pullCharacter() {
 
     if(pity > 73) { 
         fiveStarChance = (pity - 73)*6; 
+        console.log(fiveStarChance); 
     }
 
     if(fourpity >= 9) { 
@@ -267,6 +267,16 @@ jaysonBox.addEventListener("click", function() {
     demyBanner.style.display = "none"; 
     jamesBanner.style.display = "none";  
     jaysonBanner.style.display = "block"; 
+
+    characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
+                {id:4, name:"trash", rarity:3, image:"trash.png"},
+                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
+                {id:6, name:"johan", rarity:4, image:"johan.png"},
+                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
+                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
+                {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+
 }); 
 
 demyBox.addEventListener("click", function() {
@@ -277,6 +287,16 @@ demyBox.addEventListener("click", function() {
     demyBanner.style.display = "block"; 
     jamesBanner.style.display = "none";  
     jaysonBanner.style.display = "none"; 
+
+    characters = [{id:2, name:"demy", rarity:5, image: "demy.png"}, 
+                {id:4, name:"trash", rarity:3, image:"trash.png"},
+                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
+                {id:6, name:"johan", rarity:4, image:"johan.png"},
+                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
+                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
+                {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+
 }); 
 
 jamesBox.addEventListener("click", function() {
@@ -287,6 +307,15 @@ jamesBox.addEventListener("click", function() {
     demyBanner.style.display = "none"; 
     jamesBanner.style.display = "block";  
     jaysonBanner.style.display = "none"; 
+
+    characters = [{id:3, name:"james", rarity:5, image:"james.png"},
+                {id:4, name:"trash", rarity:3, image:"trash.png"},
+                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
+                {id:6, name:"johan", rarity:4, image:"johan.png"},
+                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
+                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
+                {id:10, name:"marcus", rarity:4, image:"marcus.png"}];    
 }); 
 
 
