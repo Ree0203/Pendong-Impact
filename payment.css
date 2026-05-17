@@ -347,3 +347,34 @@ hr {
     display: none;
     height: 100vh;
 }
+
+#payment-x { 
+    position: absolute;
+    background-color: #00df6d;
+    outline: none;
+    border: none;
+    width: 5%;
+    aspect-ratio: 1/1;
+    top: 3%;
+    right: 3%;
+    border-radius: 50%;   
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #034d2600;
+    transition: 0.3s all;
+}
+
+
+#payment-x svg { 
+    width: 70%;
+}
+
+#payment-x:hover { 
+    border: 3px solid #034d26a8;
+}
+
+#payment-x:active { 
+    transform: scale(0.9);
+}

@@ -9,11 +9,15 @@ const confirmOuterContainer = document.getElementById("confirm-outer");
 const priceContainer = document.getElementById("product-price")
 const amountContainer = document.getElementById("product-description"); 
 
+const confirmBack = document.getElementById("payment-x"); 
 
 const purchaseButton = document.getElementById("purchase-button"); 
 let coins; 
 let price; 
 let gems = 0; 
+
+
+getCurrency(); 
 
 const xButton = document.getElementById("x-icon"); 
 
@@ -21,7 +25,7 @@ xButton.addEventListener("click", function() {
     window.location.href = "wish.html"; 
 }); 
 
-getCurrency(); 
+confirmBack.addEventListener("click", hideConfirmContainer); 
 
 for(let i = 0; i<paymentTypeButtons.length; i++) { 
     paymentTypeButtons[i].addEventListener("click", colorButton); 
