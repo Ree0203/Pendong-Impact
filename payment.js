@@ -4,6 +4,7 @@ const confirmContainer = document.getElementById("confirm-container");
 const paymentTypeButtons = document.getElementsByClassName("payment-type-buttons");
 const gemsContainer = document.getElementById("cvsu-coins-amount-payment");
 const coinsContainer = document.getElementById("3-coins-amount"); 
+const confirmOuterContainer = document.getElementById("confirm-outer"); 
 
 const priceContainer = document.getElementById("product-price")
 const amountContainer = document.getElementById("product-description"); 
@@ -31,17 +32,22 @@ function colorButton(event) {
         paymentTypeButtons[i].classList.remove("active-button"); 
     }
 
-    event.target.classList.add("active-button")
+    event.target.classList.add("active-button");
 }
 
 confirmButton.addEventListener("click", hideConfirmContainer); 
 
 function hideConfirmContainer() { 
-    confirmContainer.style.display = "none"; 
+    confirmOuterContainer.style.display = "none"; 
+    confirmContainer.classList.remove("fade-in"); 
 }
 
 function showConfirmContainer() { 
-    confirmContainer.style.display = "flex"; 
+    confirmOuterContainer.style.display = "block"; 
+
+    setTimeout(() => { 
+        confirmContainer.classList.add("fade-in"); 
+    }, 10);
 }
 
 console.log("hello world"); 
