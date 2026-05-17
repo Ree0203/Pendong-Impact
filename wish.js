@@ -10,6 +10,7 @@ const purchaseButton = document.getElementById("purchase");
 const addGemButton = document.getElementById("purchase-cvsu"); 
 const purchaseContainer = document.getElementById("conversion-container"); 
 const cancelPurchase = document.getElementById("cancel"); 
+const purchaseOuter = document.getElementById("conversion-outer-container");
 
 const demyBanner = document.getElementById("demy-container"); 
 const jaysonBanner = document.getElementById("jayson-container"); 
@@ -335,7 +336,7 @@ addGemButton.addEventListener("click", function() {
 
     min.textContent = minValue; 
     max.textContent = maxValue; 
-    purchaseContainer.style.display = "flex"; 
+    purchaseOuter.style.display = "block"; 
 });
 
 purchaseButton.addEventListener("click", convertGem); 
@@ -346,21 +347,21 @@ slider.addEventListener("input", function() {
 }); 
 
 cancelPurchase.addEventListener("click", function() { 
-    purchaseContainer.style.display = "none"; 
+    purchaseOuter.style.display = "none"; 
 }); 
 
 function convertGem() { 
-    purchaseContainer.style.display = "none"; 
+    purchaseOuter.style.display = "none"; 
     const conversionPrice = -1*(conversionamount*100); 
     updateCurrency(conversionPrice, conversionamount, 0); 
 }
 
 function hideConversionContainer() { 
-    purchaseContainer.style.display = "none"; 
+    purchaseOuter.style.display = "none"; 
 }
 
 function showConversionContainer() { 
-    purchaseContainer.style.display = "flex"; 
+    purchaseOuter.style.display = "block"; 
 }
 
 let cvsuCoinsValue;

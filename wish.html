@@ -64,35 +64,38 @@
         </div>
     </div>
 
-    <div class="purchase-cvsu-slider" id="conversion-container">
-        <div class="slider-title">
-            Purchase CVSU gems
-            <hr>
-        </div>
-        <div class="hero-icon-cvsu-container">
-            <img src="Assets/cvsu-icon.png" alt="">
-            <div class="hero-icon-cvsu-name">
-                <div class="gem">
-                    CvSU gem
-                    <div class="currency-exchange">
-                        <img src="Assets/3-icon.png" class="icons-3-exchange" alt="">
-                        100
+    <div class="conversion-outer-container" id="conversion-outer-container">
+        <div class="purchase-cvsu-slider" id="conversion-container">
+            <div class="slider-title">
+                Purchase CVSU gems
+                <hr>
+            </div>
+            <div class="hero-icon-cvsu-container">
+                <img src="Assets/cvsu-icon.png" alt="">
+                <div class="hero-icon-cvsu-name">
+                    <div class="gem">
+                        CvSU gem
+                        <div class="currency-exchange">
+                            <img src="Assets/3-icon.png" class="icons-3-exchange" alt="">
+                            100
+                        </div>
                     </div>
+                    <div class="description">Gem used to pull for 2-3 characters</div>
                 </div>
-                <div class="description">Gem used to pull for 2-3 characters</div>
+            </div>
+            <div id="amount-to-convert"></div>
+            <div class="slider-container">
+                <div id="min"></div>
+                <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
+                <div id="max"></div>
+            </div>
+            <div class="slider-buttons">
+                <button id="cancel" class="purchase-buttons">Cancel</button>
+                <button id="purchase" class="purchase-buttons">Purchase</button>
             </div>
         </div>
-        <div id="amount-to-convert"></div>
-        <div class="slider-container">
-            <div id="min"></div>
-            <input type="range" min="0" max="100" value="0" class="slider" id="myRange">
-            <div id="max"></div>
-        </div>
-        <div class="slider-buttons">
-            <button id="cancel" class="purchase-buttons">Cancel</button>
-            <button id="purchase" class="purchase-buttons">Purchase</button>
-        </div>
     </div>
+    
 
 
     <div id="selected-banner">
