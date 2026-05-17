@@ -75,8 +75,37 @@
             <textarea id="message-box"></textarea>
         </section>
     </main>
+    <div class="overlay">
+        <div class="overlay-box">
+            <h1>Change Profile</h1>
+            <div class="overlay-menu">
+                <div class="overlay-menu-left">
+                    <div class="overlay-menu-students-square-container">                   
+                        <div class="overlay-menu-student-square" id="default" data-owned="true">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="overlay-menu-right">
+                    <div class="preview-picture">
+
+                    </div>
+                    <h2 class="preview-name">
+                        Chlowen Patambang
+                    </h2>
+                </div>
+            </div>
+            <div class="overlay-menu-buttons">
+                <button id="cancel-button">Cancel</button>
+                <button id="confirm-button">Confirm</button>
+            </div>
+        </div>
+    </div>
 
     <script>
+
+        let allCharacters;
         
         getAccountInfo();
         async function getAccountInfo() {
@@ -85,14 +114,16 @@
             
             const response2 = await fetch('get_inventory.php');
             const data2 = await response2.json();
-            const accountInv = data2.owned;
+            const owned = data2.owned;
+            const unowned = data2.unowned;
 
             const response3 = await fetch('get_account_favorites.php');
             const favorites = await response3.json();
 
-            displayAccountInfo(account, accountInv, favorites);
+            displayAccountInfo(account, owned, favorites);
+            setupOverlayMenu([...owned, ...unowned], owned);
+            allCharacters = [...owned, ...unowned];
         }
-
 
 
 
@@ -105,8 +136,8 @@
         const loses = document.getElementById('loses');
         const messageBox = document.getElementById('message-box');
         const studentShowcaseBoxes = document.querySelectorAll('.student-showcase-down div');
+        let profileCharId;
 
-        
         function displayAccountInfo(account, accountInv, favorites) {
             profilePic.style.backgroundImage = `url('Assets/${account.profile_pic}')`;
             username.textContent = account.username;
@@ -118,10 +149,125 @@
             messageBox.value = account.message;
 
             for(let i = 0; i < favorites.length; i++) {
-                const character = accountInv[accountInv.findIndex(char => char.character_id == favorites[i])];
+                const character = accountInv.find(char => char.character_id == favorites[i]);
                 studentShowcaseBoxes[i].style.backgroundImage = `url('Assets/${character.picture}')`;
             }
 
+            const profileChar = accountInv.find(char => char.picture == account.profile_pic);
+            profileCharId = profileChar ? profileChar.character_id : 'default';
+        }
+
+
+        const overlay = document.querySelector('.overlay');
+        const overlayStudentSquaresContainer = document.querySelector('.overlay-menu-students-square-container')
+        const overlayStudentSquareOrig = document.querySelector('.overlay-menu-student-square');
+        const previewPicture = document.querySelector('.preview-picture');
+        const previewName = document.querySelector('.preview-name');
+        let overlayStudentSquares;
+
+        function setupOverlayMenu(characters, owned) {
+            characters = characters.sort((a, b) => a.character_id - b.character_id);
+
+            for(let i = 0; i < characters.length; i++) {
+                const studentSquareCopy = overlayStudentSquareOrig.cloneNode(true);
+                studentSquareCopy.id = characters[i].character_id
+                studentSquareCopy.style.backgroundImage = `url('Assets/${characters[i].picture}')`
+
+                if(owned.find(char => char == characters[i])) {
+                    studentSquareCopy.dataset.owned = 'true';
+                }
+                else {
+                    studentSquareCopy.dataset.owned = 'false';
+                }
+
+                overlayStudentSquaresContainer.append(studentSquareCopy);
+            }
+            overlayStudentSquares = document.querySelectorAll('.overlay-menu-student-square');
+        }
+
+        profilePic.addEventListener('click', changeProfilePicture);
+        const confirmButton = document.getElementById('confirm-button');
+        const cancelButton = document.getElementById('cancel-button');
+        let profilePicTemp;
+
+        function changeProfilePicture() {
+            overlay.style.display = 'flex';
+            overlayStudentSquareOrig.style.display = 'block';
+            overlayStudentSquares.forEach(square => square.classList.remove('click'));
+            profilePicTemp = profileCharId;
+
+            if(profileCharId == 'default') {
+                overlayStudentSquareOrig.classList.add('click');
+                previewPicture.style.backgroundImage = "url('Assets/default-profile.png')"
+                previewName.textContent = "Default"
+            }
+            else {
+                const character = allCharacters.find(char => char.character_id == profilePicTemp);
+                document.getElementById(profileCharId).classList.add('click');
+                previewPicture.style.backgroundImage = `url('Assets/${character.picture}')`;
+                previewName.textContent = `${character.first_name} ${character.last_name}`;
+            }
+
+            overlayStudentSquares.forEach(square => square.addEventListener('click', profileStudentSquareClick));
+            cancelButton.addEventListener('click', cancelButtonClick);
+            confirmButton.addEventListener('click', confirmProfilePic);
+            
+        }
+
+        function profileStudentSquareClick(e) {
+            overlayStudentSquares.forEach(square => square.classList.remove('click'));
+            e.currentTarget.classList.add('click');
+            profilePicTemp = e.currentTarget.id;
+            const isOwned = e.currentTarget.dataset.owned;
+        
+            if(profilePicTemp == 'default') {
+                previewPicture.style.backgroundImage = "url('Assets/default-profile.png')"
+                previewName.textContent = "Default"
+            }
+            else {
+                const character = allCharacters.find(char => char.character_id == profilePicTemp);
+                previewPicture.style.backgroundImage = `url('Assets/${character.picture}')`;
+                previewName.textContent = `${character.first_name} ${character.last_name}`;
+            }
+
+            if(isOwned == 'true') {
+                confirmButton.classList.remove('blocked');
+                confirmButton.addEventListener('click', confirmProfilePic);
+            }
+            else {
+                confirmButton.classList.add('blocked');
+                confirmButton.removeEventListener('click', confirmProfilePic);
+            }
+
+
+
+            
+        }
+
+        function cancelButtonClick() {
+            overlayStudentSquares.forEach(square => square.removeEventListener('click', profileStudentSquareClick));
+            confirmButton.addEventListener('click', confirmProfilePic);
+            overlay.style.display = 'none';
+        }
+
+        async function confirmProfilePic() {
+            const character = allCharacters.find(char => char.character_id == profilePicTemp);
+            const characterPicture = character ? character.picture : 'default-profile.png';
+            
+            const response = await fetch('change_profile_picture.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({profilePicture: characterPicture})
+            });
+            const data = await response.json();
+
+            if(data.status == 'success') {
+                profileCharId = profilePicTemp;
+                profilePic.style.backgroundImage = `url('Assets/${characterPicture}')`;
+                overlayStudentSquares.forEach(square => square.removeEventListener('click', profileStudentSquareClick));
+                confirmButton.addEventListener('click', confirmProfilePic);
+                overlay.style.display = 'none';
+            }
         }
 
 
