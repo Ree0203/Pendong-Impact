@@ -72,7 +72,7 @@
         <section></section>
 
         <section class="main-right">
-            <textarea id="message-box"></textarea>
+            <textarea id="message-box" maxlength="100" spellcheck="false"></textarea>
         </section>
     </main>
     <div class="overlay">
@@ -106,23 +106,29 @@
     <script>
 
         let allCharacters;
+        let favorites;
+        let message;
         
         getAccountInfo();
         async function getAccountInfo() {
             const response1 = await fetch('get_account.php');
             const account = await response1.json();
+            message = account.message;
             
             const response2 = await fetch('get_inventory.php');
             const data2 = await response2.json();
             const owned = data2.owned;
             const unowned = data2.unowned;
+            allCharacters = [...owned, ...unowned];
 
             const response3 = await fetch('get_account_favorites.php');
-            const favorites = await response3.json();
+            favorites = await response3.json();
 
             displayAccountInfo(account, owned, favorites);
-            setupOverlayMenu([...owned, ...unowned], owned);
-            allCharacters = [...owned, ...unowned];
+            setupOverlayMenu(allCharacters, owned);
+            profilePic.addEventListener('click', changeProfilePicture);
+            studentShowcaseBoxes.forEach(box => box.addEventListener('click', changeStudentFavorites));
+            messageBox.addEventListener('blur', saveMessage);
         }
 
 
@@ -159,11 +165,13 @@
 
 
         const overlay = document.querySelector('.overlay');
+        const overlayBoxTitle = document.querySelector('.overlay-box h1');
         const overlayStudentSquaresContainer = document.querySelector('.overlay-menu-students-square-container')
         const overlayStudentSquareOrig = document.querySelector('.overlay-menu-student-square');
         const previewPicture = document.querySelector('.preview-picture');
         const previewName = document.querySelector('.preview-name');
         let overlayStudentSquares;
+        let overlayStudentSquaresUnowned;
 
         function setupOverlayMenu(characters, owned) {
             characters = characters.sort((a, b) => a.character_id - b.character_id);
@@ -183,17 +191,19 @@
                 overlayStudentSquaresContainer.append(studentSquareCopy);
             }
             overlayStudentSquares = document.querySelectorAll('.overlay-menu-student-square');
+            overlayStudentSquaresUnowned = document.querySelectorAll(".overlay-menu-student-square[data-owned='false']")
         }
 
-        profilePic.addEventListener('click', changeProfilePicture);
         const confirmButton = document.getElementById('confirm-button');
         const cancelButton = document.getElementById('cancel-button');
         let profilePicTemp;
 
         function changeProfilePicture() {
             overlay.style.display = 'flex';
+            overlayBoxTitle.textContent = 'Change Profile';
             overlayStudentSquareOrig.style.display = 'block';
             overlayStudentSquares.forEach(square => square.classList.remove('click'));
+            overlayStudentSquaresUnowned.forEach(square => square.style.display = 'block');
             profilePicTemp = profileCharId;
 
             if(profileCharId == 'default') {
@@ -238,15 +248,14 @@
                 confirmButton.classList.add('blocked');
                 confirmButton.removeEventListener('click', confirmProfilePic);
             }
-
-
-
             
         }
 
         function cancelButtonClick() {
             overlayStudentSquares.forEach(square => square.removeEventListener('click', profileStudentSquareClick));
-            confirmButton.addEventListener('click', confirmProfilePic);
+            overlayStudentSquares.forEach(square => square.removeEventListener('click', favoriteStudentSquareClick));
+            confirmButton.removeEventListener('click', confirmProfilePic);
+            confirmButton.removeEventListener('click', confirmFavoriteStudents);
             overlay.style.display = 'none';
         }
 
@@ -264,10 +273,96 @@
             if(data.status == 'success') {
                 profileCharId = profilePicTemp;
                 profilePic.style.backgroundImage = `url('Assets/${characterPicture}')`;
-                overlayStudentSquares.forEach(square => square.removeEventListener('click', profileStudentSquareClick));
-                confirmButton.addEventListener('click', confirmProfilePic);
-                overlay.style.display = 'none';
+                cancelButtonClick();
             }
+        }
+
+
+        let clickedNum;
+        let favoritesTemp;
+        function changeStudentFavorites() {
+            clickedNum = 0;
+            overlay.style.display = 'flex';
+            overlayBoxTitle.textContent = 'Choose Students to Showcase'
+            overlayStudentSquareOrig.style.display = 'none';
+            overlayStudentSquares.forEach(square => square.classList.remove('click'));
+            overlayStudentSquaresUnowned.forEach(square => square.style.display = 'none');
+            previewPicture.style.backgroundImage = '';
+            previewName.textContent = '';
+            favoritesTemp = favorites;
+
+            for(let i = 0; i < favorites.length; i++) {
+                const studentSquare = document.getElementById(favorites[i]);
+                studentSquare.classList.add('click');
+                clickedNum++;
+            }
+
+            overlayStudentSquares.forEach(square => square.addEventListener('click', favoriteStudentSquareClick));
+            cancelButton.addEventListener('click', cancelButtonClick);
+            confirmButton.addEventListener('click', confirmFavoriteStudents);
+        }
+
+        function favoriteStudentSquareClick(e) {
+            const targetStudent = e.currentTarget;
+            const targetStudentId = Number(targetStudent.id);
+            const character = allCharacters.find(char => char.character_id == targetStudentId);
+
+            if(targetStudent.classList.contains('click')) {
+                targetStudent.classList.remove('click');
+                clickedNum--;
+                favoritesTemp = favoritesTemp.filter(favorite => favorite != targetStudentId);
+
+            }
+            else if (!targetStudent.classList.contains('click') && clickedNum < 5) {
+                targetStudent.classList.add('click');
+                clickedNum++;
+                favoritesTemp.push(targetStudentId);
+            }
+            
+            previewPicture.style.backgroundImage = `url('Assets/${character.picture}')`;
+            previewName.textContent = `${character.first_name} ${character.last_name}`;
+        }
+
+        async function confirmFavoriteStudents() {
+            const response = await fetch('change_favorites.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(favoritesTemp)
+            });
+            const data = await response.json();
+            
+            if(data.status == 'success') {
+                favorites = favoritesTemp;
+                for(let i = 0; i < studentShowcaseBoxes.length; i++) {
+                    const character = allCharacters.find(char => char.character_id == favorites[i]);
+
+                    if(character) {
+                        studentShowcaseBoxes[i].style.backgroundImage = `url('Assets/${character.picture}')`;
+                    }
+                    else {
+                        studentShowcaseBoxes[i].style.backgroundImage = '';
+                    }
+                    
+                }
+                cancelButtonClick();
+            }
+
+        }
+
+        async function saveMessage() {
+
+            if(message != messageBox.value) {
+                const response = await fetch('change_profile_message.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({message: messageBox.value})
+                });
+                const data = await response.json();
+                
+                if(data.status == 'success') message = messageBox.value;
+                console.log(data);
+            }
+
         }
 
 

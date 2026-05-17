@@ -153,7 +153,7 @@ main {
     aspect-ratio: 1/1;
     min-height: 0;
     min-width: 0;
-    background-color: rgb(168, 168, 168);
+    background-color: #93b8a6;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -162,7 +162,8 @@ main {
 .main-right textarea {
     margin-top: 30px;
     background-color: #f4fffa;
-    border: 2px solid #d8ffeb;
+    border: 0;
+    outline: 2px solid #8ee0b9;
     border-radius: 10px;
     resize: none;
     width: 80%;
@@ -244,7 +245,8 @@ main {
 }
 
 .overlay-menu-student-square[data-owned='false'] {
-    filter: grayscale(100%);
+    filter: grayscale(100%); 
+    background-color: rgb(160, 160, 160);
 }
 
 .overlay-menu-right {
@@ -258,7 +260,7 @@ main {
 .preview-picture {
     width: 160px;
     aspect-ratio: 1/1;
-    background-color: gray;
+    background-color: white;
     margin-bottom: 10px;
     background-repeat: no-repeat;
     background-position: center;
