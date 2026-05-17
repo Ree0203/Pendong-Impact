@@ -336,6 +336,10 @@ addGemButton.addEventListener("click", function() {
 
     min.textContent = minValue; 
     max.textContent = maxValue; 
+
+    setTimeout(() => {
+        purchaseContainer.classList.add("fade-in");
+    }, 10);
     purchaseOuter.style.display = "block"; 
 });
 
@@ -347,20 +351,24 @@ slider.addEventListener("input", function() {
 }); 
 
 cancelPurchase.addEventListener("click", function() { 
+    purchaseContainer.classList.remove("fade-in"); 
     purchaseOuter.style.display = "none"; 
 }); 
 
 function convertGem() { 
+    purchaseContainer.classList.remove("fade-in"); 
     purchaseOuter.style.display = "none"; 
     const conversionPrice = -1*(conversionamount*100); 
     updateCurrency(conversionPrice, conversionamount, 0); 
 }
 
 function hideConversionContainer() { 
+    purchaseContainer.classList.remove("fade-in"); 
     purchaseOuter.style.display = "none"; 
 }
 
 function showConversionContainer() { 
+    purchaseContainer.classList.add("fade-in"); 
     purchaseOuter.style.display = "block"; 
 }
 

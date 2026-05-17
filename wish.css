@@ -219,22 +219,6 @@ body {
     transition: 0.3s all;
 }
 
-.purchase-cvsu-slider { 
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 33vw;
-    height: 45vh;
-    border-radius: 30px;
-    background-color: white;
-    display: flex;
-    align-items: center;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-    flex-direction: column;
-    z-index: 101;
-}
-
 .slider-title {
     padding-top: 2%;
     display: flex;
@@ -247,6 +231,29 @@ body {
     color: #00df6d;
     font-size: 1.3rem;
     font-weight: bold;
+}
+
+.purchase-cvsu-slider { 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateX(15px);
+    width: 33vw;
+    height: 45vh;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    flex-direction: column;
+    z-index: 101;
+    opacity: 0;
+    transition: 0.3s all;
+}
+
+.purchase-cvsu-slider.fade-in { 
+    opacity: 1;
+    transform: translate(-50%, -50%) translateX(0);
 }
 
 .slider-title hr { 
@@ -544,7 +551,7 @@ body {
 
 .description { 
     height: 40%;
-    width: 33%;
+    width: 40%;
     position: absolute;
     display: flex;
     top: 25%;
@@ -654,6 +661,7 @@ body {
     opacity: 1;
     transform: scale(1);
 }
+
 
 .error-container { 
     position: absolute;
