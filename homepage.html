@@ -56,14 +56,14 @@
       <div class="ba-icon">
         <img src="assets/profile.jpg" alt="Profile">
       </div>
-      <div class="ba-num">100</div>
+      <div class="ba-num" id="gems">100</div>
       <div class="ba-add">＋</div>
     </div>
     <div class="ba-currency-bar coin-bar" title="Credits">
       <div class="ba-icon">
         <img src="Assets/profile.jpg" alt="Profile">
       </div>
-      <div class="ba-num">100</div>
+      <div class="ba-num" id="coins">100</div>
       <div class="ba-add">＋</div>
     </div>
   </div>
@@ -137,30 +137,6 @@
     </div>
   </nav>
 
-  <script>
-    /* Clock */
-    function updateClock() {
-      const now = new Date(); 
-      let h = now.getHours();
-      let m = now.getMinutes();
-      const ampm = h >= 12 ? 'PM' : 'AM'; 
-      
-      h = h % 12 || 12;
-      document.getElementById('clock').textContent = `${h}:${String(m).padStart(2,'0')} ${ampm}`;
-    }
-    
-    updateClock(); 
-    setInterval(updateClock, 1000);
-
-    /* Nav Interaction */
-    document.querySelectorAll('.nav-item').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.nav-item').forEach((b) => {
-          b.classList.remove('active');
-        });
-        btn.classList.add('active');
-      });
-    });
-  </script>
+  <script src="homepage.js"></script>
 </body>
 </html>
