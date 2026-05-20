@@ -19,12 +19,16 @@
   --ba-pink-tag:      #f472b6; 
 }
 
+@font-face {
+  font-family: Lexend;
+  src: url(Assets/Lexend-VariableFont_wght.ttf);
+}
 html, 
 body { 
   width: 100%; 
   height: 100%; 
   overflow: hidden; 
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+  font-family: Lexend; 
 }
 
 /* ── BACKGROUND ── */
@@ -159,6 +163,35 @@ body {
   margin-top: 2px; 
 }
 
+.drop-down { 
+  position: absolute;
+  top: 93%;
+  height: 120px;
+  width: 100%;
+  z-index: 3;
+  background: var(--ba-glass);
+  box-shadow: var(--ba-shadow-soft);
+  border: var(--ba-white);
+  backdrop-filter: blur(12px);
+  padding-left: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 5%;
+  padding-top: 3%;
+}
+
+.drop-down svg { 
+  width: 30px;
+}
+
+.drop-down-element { 
+  display: flex; 
+  align-items: center;
+}
+
+.drop-down-element span {
+  padding-left: 10%;
+}
 /* ── LEFT SIDE FLOATING ICONS ── */
 #left-side-icons { 
   position: fixed; 
