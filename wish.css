@@ -822,3 +822,11 @@ body {
     z-index: 99;
     background-color: rgba(0, 0, 0, 0.226);
 }
+
+
+
+@media (max-width: 945px) {
+    .guarantee-description span{ 
+        font-size: 0.9rem;
+    }
+}
