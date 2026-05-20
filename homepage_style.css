@@ -180,11 +180,10 @@ body {
   overflow: hidden;
   visibility: hidden;
   opacity: 0;
-  transition: height 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  transition: 0.3s all;
 }
 
 .drop-down.fade-in { 
-
   opacity: 1;
   display: flex; 
   height: 120px;
@@ -202,6 +201,12 @@ body {
 
 .drop-down-element span {
   padding-left: 10%;
+  transition: 0.3s all;
+}
+
+.drop-down-element:hover { 
+  color: var(--ba-primary);
+  cursor: pointer;
 }
 /* ── LEFT SIDE FLOATING ICONS ── */
 #left-side-icons { 

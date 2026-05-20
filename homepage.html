@@ -128,7 +128,7 @@
 
   <div id="bottom-hud-layer">
     <div id="banner-area">
-      <div class="banner-frame" title="Current Event">
+      <div class="banner-frame" title="Current Event" id="event-board">
         <img class="banner-img" src="Assets/banner.jpg" alt="Event Banner Placeholder" />
       </div>
     </div>
@@ -151,13 +151,13 @@
   <nav id="bottom-nav">
     <div class="ba-nav-inner">
       <div class="nav-items">
-        <div class="nav-item active">
-          <div class="nav-icon">
+        <div class="nav-item active" id="profile-nav">
+          <div class="nav-icon" >
             <img src="Assets/profile.jpg" alt="Profile">
           </div>
           <div class="nav-label">Profile</div>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" id="wish-nav">
           <div class="nav-icon">
             <svg viewBox="0 0 24 24">
               <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z"></path>
@@ -165,7 +165,7 @@
           </div>
           <div class="nav-label">Gacha</div>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" id="inventory-nav">
           <div class="nav-icon">
             <svg viewBox="0 0 24 24">
               <rect x="4" y="9" width="16" height="13" rx="2" ry="2"></rect>
@@ -176,7 +176,7 @@
           </div>
           <div class="nav-label">Inventory</div>
         </div>
-        <div class="nav-item">
+        <div class="nav-item" id="shop-nav">
           <div class="nav-icon"> 
             <svg viewBox="0 0 24 24">
               <path d="M3 3h18v4H3z"></path>

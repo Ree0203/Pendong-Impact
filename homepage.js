@@ -61,5 +61,35 @@ hamburgerButton.addEventListener("click", function() {
     }, 10); 
 });
 
+//hrefs 
+
+const profileNavButton = document.getElementById("profile-nav"); 
+const wishNav = document.getElementById("wish-nav"); 
+const inventoryNav = document.getElementById("inventory-nav"); 
+const shopNav = document.getElementById("shop-nav"); 
+const eventBoard = document.getElementById("event-board"); 
+
+profileNavButton.addEventListener("click", function(){ 
+    window.location.href = "profile.html"; 
+});
+
+wishNav.addEventListener("click", function() { 
+    window.location.href = "wish.html"; 
+}); 
+    
+inventoryNav.addEventListener("click", function() { 
+    window.location.href = "inventory.html"; 
+});
+
+shopNav.addEventListener("click", function() { 
+    window.location.href = "payment.html"; 
+}); 
+
+eventBoard.addEventListener("click", function() { 
+    window.location.href = "wish.html"; 
+}); 
+
+
+
 
 
