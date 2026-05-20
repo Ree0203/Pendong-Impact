@@ -47,3 +47,19 @@ function getCurrency() {
         gemContainer.textContent = gems; 
     })
 }
+
+
+//dropdown 
+
+const hamburgerButton = document.getElementById("hamburger-btn"); 
+const dropdownContainer = document.getElementById("dropdown-Container"); 
+
+hamburgerButton.addEventListener("click", function() { 
+
+    setTimeout(() => { 
+        dropdownContainer.classList.toggle("fade-in"); 
+    }, 10); 
+});
+
+
+
