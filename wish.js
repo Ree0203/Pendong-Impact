@@ -165,7 +165,7 @@ function pullCharacter() {
 
     if(pity > 73) { 
         fiveStarChance = (pity - 73)*6; 
-        console.log(fiveStarChance); 
+        console.log("Five Star Chance: " + fiveStarChance); 
     }
 
     if(fourpity >= 9) { 
