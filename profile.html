@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="modal.css">
 </head>
 <body>
     <header>
         <h1>Profile</h1>
     </header>
     <main>
+        <div class="uni-modal">
+            <img src="Assets/cross-icon.svg" class="uni-modal-icon"><h4 class="uni-modal-message">Please fill up all fields.</h4>
+        </div>
+        
         <section class="main-left">
             <div class="profile">
                 <div class="profile-pic">
@@ -103,7 +108,11 @@
         </div>
     </div>
 
+    <script src="modal.js"></script>
     <script>
+        fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+            if(!loggedIn.loggedIn) window.location.replace('login.html')})
+            .catch((error) => console.error(error));
 
         let allCharacters;
         let favorites;
@@ -271,6 +280,7 @@
             const data = await response.json();
 
             if(data.status == 'success') {
+                showModal('success', 'Profile Picture changed.')
                 profileCharId = profilePicTemp;
                 profilePic.style.backgroundImage = `url('Assets/${characterPicture}')`;
                 cancelButtonClick();
@@ -332,6 +342,7 @@
             const data = await response.json();
             
             if(data.status == 'success') {
+                showModal('success', 'Student Showcase updated.')
                 favorites = favoritesTemp;
                 for(let i = 0; i < studentShowcaseBoxes.length; i++) {
                     const character = allCharacters.find(char => char.character_id == favorites[i]);
@@ -359,8 +370,10 @@
                 });
                 const data = await response.json();
                 
-                if(data.status == 'success') message = messageBox.value;
-                console.log(data);
+                if(data.status == 'success') {
+                    showModal('success', 'Profile Message changed.')
+                    message = messageBox.value;
+                }
             }
 
         }

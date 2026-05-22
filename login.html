@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Registration</title>
+    <link rel="stylesheet" href="modal.css">
     <style>
         * { box-sizing: border-box; }
         body {
@@ -15,6 +16,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            position: relative;
         }
         .form-container {
             background: rgb(238, 243, 241);
@@ -34,13 +36,6 @@
             outline: none;
         }
         input:focus { border-color: #007bff; }
-        
-        .error-msg {
-            color: #ff4d4d;
-            font-size: 0.75rem;
-            display: none; 
-            margin-top: 5px;
-        }
 
         button {
             width: 100%;
@@ -60,10 +55,14 @@
             font-size: 0.85rem;
         }
         .toggle-text span { color: #0031b9; cursor: pointer; font-weight: bold; }
-        .hidden { display: none; }
+        .hidden { display: none; }      
     </style>
 </head>
 <body>
+<div class="uni-modal">
+    <img src="Assets/cross-icon.svg" class="uni-modal-icon"><h4 class="uni-modal-message">Please fill up all fields.</h4>
+</div>
+
 <div class="form-container">
     <div id="login-section">
         <h2>Login</h2>
@@ -107,6 +106,8 @@
     </div>
 </div>
 
+<script src="modal.js"></script>
+
 <script>
     fetch('check_session.php').then(response => response.json()).then(loggedIn => {
         if(loggedIn.loggedIn) window.location.replace('homepage.html')})
@@ -120,6 +121,7 @@
         formGroupInput.forEach(input => input.value = '');
     }
 
+    const formContainer = document.querySelector('.form-container')
     const regForm = document.getElementById('register-form');
     const loginForm = document.getElementById('login-form');
     regForm.addEventListener('submit', formValidate);
@@ -135,21 +137,19 @@
         })
         .then(response => response.json())
         .then(data => {
-            
-            if(data.status === 'error') {
-                alert(data.message);
-            } 
-            else if(data.status === 'logged') {
-                alert(data.message);
-                window.location.replace('homepage.html');
+
+            showModal(data.status, data.message);
+
+            if(data.status === 'logged') {
+                formContainer.setAttribute('inert', '')
+                setTimeout(() => window.location.replace('homepage.html'), 2000);
             }
-            else {
-                alert(data.message);
+            else if(data.status === 'registered') {
                 toggleForms();
             }
+
         }).catch(() => alert('Error. Please try again.'));
     }
-    
 </script>
 
 </body>

@@ -90,6 +90,16 @@ eventBoard.addEventListener("click", function() {
 }); 
 
 
+const logout = document.getElementById('logout');
+
+logout.addEventListener('click', function(){
+    fetch('destroy_session.php', {method: 'POST'})
+    .then(response => response.json())
+    .then(data => showModal(data.status, data.message))
+    .catch(error => console.error(error));
+});
+
+
 
 
 
