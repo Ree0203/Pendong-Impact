@@ -109,7 +109,7 @@
 
 <script>
     fetch('check_session.php').then(response => response.json()).then(loggedIn => {
-        if(loggedIn.loggedIn) window.location.replace('inventory.html')})
+        if(loggedIn.loggedIn) window.location.replace('homepage.html')})
         .catch((error) => console.error(error));
     
     const formGroupInput = document.querySelectorAll('.form-group input');
@@ -141,7 +141,7 @@
             } 
             else if(data.status === 'logged') {
                 alert(data.message);
-                window.location.replace('inventory.html');
+                window.location.replace('homepage.html');
             }
             else {
                 alert(data.message);

@@ -8,7 +8,14 @@
 </head>
 <body>
     <header>
-        <button>Back</button>
+        <div class="x-icon">
+            <button class="x-button" id="x-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="" height="">
+                <line x1="4" y1="4" x2="20" y2="20" stroke="white" stroke-width="3.5" stroke-linecap="round" />
+                <line x1="20" y1="4" x2="4" y2="20" stroke="white" stroke-width="3.5" stroke-linecap="round" />
+            </svg>            
+            </button>
+        </div>
     </header>
     <main>
         <div class="student-list">
@@ -201,6 +208,12 @@
             const studentInfoSections = document.querySelectorAll('.student-info > section');
             studentInfoSections.forEach(section => section.classList.remove('hiddenChildren'));
         }
+
+        const xButton = document.getElementById("x-icon"); 
+
+        xButton.addEventListener("click", function() { 
+            window.location.href = "homepage.html"; 
+        }); 
 
     </script>
 </body>
