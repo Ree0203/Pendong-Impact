@@ -106,11 +106,12 @@ main {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: 0.3s all; 
 }
 
 .student-list-square.click {
     border-color: #00b859;
-    width: 98%;
+    transform: scale(1.05); 
 }
 
 .student-list-stars {
