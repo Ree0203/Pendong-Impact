@@ -1,9 +1,11 @@
 <?php
+    session_start(); 
+
     header('Content-Type: application/json');  
     require_once "database.php"; 
 
-
-    $user_id = 18; 
+    $user_id = $_SESSION['userId'];
+ 
     $characters_array = json_decode(file_get_contents('php://input'), true); 
 
     for($i = 0; $i<count($characters_array); $i++) { 

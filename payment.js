@@ -17,7 +17,6 @@ let price;
 let gems = 0; 
 
 
-getCurrency(); 
 
 const xButton = document.getElementById("x-icon"); 
 
@@ -115,3 +114,12 @@ function purchaseCoins(coins, gems) {
         }
     })
 }
+
+fetch('check_session.php')
+.then(response => response.json())
+.then(loggedIn => {
+    if(!loggedIn.loggedIn) { 
+        window.location.replace('login.html')
+    }
+})
+.catch((error) => console.error(error));

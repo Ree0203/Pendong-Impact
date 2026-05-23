@@ -11,6 +11,7 @@ const addGemButton = document.getElementById("purchase-cvsu");
 const purchaseContainer = document.getElementById("conversion-container"); 
 const cancelPurchase = document.getElementById("cancel"); 
 const purchaseOuter = document.getElementById("conversion-outer-container");
+const xButton = document.getElementById("x-icon"); 
 
 const demyBanner = document.getElementById("demy-container"); 
 const jaysonBanner = document.getElementById("jayson-container"); 
@@ -50,6 +51,10 @@ wishErrorButton.addEventListener("click", function() {
 shopErrorButton.addEventListener("click", function() { 
     window.location.href = "payment.html";
 
+}); 
+
+xButton.addEventListener("click", function() { 
+    window.location.href = "homepage.html"; 
 }); 
 
 wishButton1.addEventListener("click", function() {
@@ -487,4 +492,7 @@ function setFourStarPity(fourPity) {
     })
 }
 
+fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+            if(!loggedIn.loggedIn) window.location.replace('login.html')})
+            .catch((error) => console.error(error));
 

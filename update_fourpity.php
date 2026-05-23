@@ -1,9 +1,10 @@
 <?php
 
+session_start(); 
 
 require_once("database.php"); 
 
-$user_id = 18; 
+$user_id = $_SESSION['userId']; 
 
 $data = json_decode(file_get_contents('php://input'), true); 
 

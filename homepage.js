@@ -68,7 +68,16 @@ const wishNav = document.getElementById("wish-nav");
 const inventoryNav = document.getElementById("inventory-nav"); 
 const shopNav = document.getElementById("shop-nav"); 
 const eventBoard = document.getElementById("event-board"); 
+const profileDropDown = document.getElementById("profile"); 
+const accountSettings = document.getElementById("account-settings"); 
 
+profileDropDown.addEventListener("click", function() { 
+    window.location.href = "profile.html"; 
+}); 
+
+accountSettings.addEventListener("click", function() { 
+    window.location.href = "settings.html"; 
+})
 profileNavButton.addEventListener("click", function(){ 
     window.location.href = "profile.html"; 
 });
@@ -121,7 +130,8 @@ function getAccount() {
         profilePic = data.profile_pic; 
 
         setProfile(username, userId, profilePic); 
-    }); 
+    })
+    .catch(error => console.error("Error fetching account, ", error)); 
 }
 
 function setProfile(username, userId, profilePic) { 

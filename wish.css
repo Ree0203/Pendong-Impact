@@ -830,3 +830,36 @@ body {
         font-size: 0.9rem;
     }
 }
+
+.x-button-container { 
+    position: absolute;
+    top: 3%;
+    left: 2%;
+}
+
+.x-button { 
+    aspect-ratio: 1/1;
+    height: 5vh;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background-color: #00df6d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(255, 255, 255, 0);
+    transition: 0.3s all;
+}
+
+
+.x-button svg { 
+    width: 50%; 
+}
+
+.x-button:hover { 
+    border: 3px solid rgb(255, 255, 255);
+}
+
+.x-button:active { 
+    transform: scale(0.9);
+}
