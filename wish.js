@@ -20,14 +20,14 @@ const jaysonBox = document.getElementById("jayson");
 const demyBox = document.getElementById("demy"); 
 const jamesBox = document.getElementById("james"); 
 
-let characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
-                    {id:4, name:"trash", rarity:3, image:"trash.png"},
-                    {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                    {id:6, name:"johan", rarity:4, image:"johan.png"},
-                    {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                    {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                    {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                    {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+let characters = [{id:1, name:"Jayson Bustaleno", rarity:5, image: "jayson.png"}, 
+                    {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                    {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                    {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                    {id:7, name:"Bantayog Basallo", rarity:4, image:"tayog.png"}, 
+                    {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                    {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                    {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}]; 
 
 
 const wishButton1 = document.getElementById("wish1")
@@ -37,6 +37,7 @@ const wishButton10 = document.getElementById("wish10");
 const insuffGemContainer = document.getElementById("insuff-gem-container"); 
 const shopErrorButton = document.getElementById("shop-error"); 
 const wishErrorButton = document.getElementById("wish-error"); 
+const insuffInner = document.getElementById("inner-container"); 
 
 const video = document.getElementById("pull-animation"); 
 
@@ -44,8 +45,21 @@ video.addEventListener("click", function() {
     video.currentTime = video.duration; 
     video.style.display = "none"; 
 });
-wishErrorButton.addEventListener("click", function() { 
+
+function showErrorContainer() { 
+    insuffGemContainer.style.display = "flex"; 
+
+    setTimeout(() => { 
+        insuffInner.classList.add("fade-in"); 
+    }, 10); 
+}
+
+function hideErrorContainer() { 
+    insuffInner.classList.remove("fade-in"); 
     insuffGemContainer.style.display = "none"; 
+}
+wishErrorButton.addEventListener("click", function() { 
+    hideErrorContainer(); 
 });
 
 shopErrorButton.addEventListener("click", function() { 
@@ -76,7 +90,7 @@ wishButton1.addEventListener("click", function() {
 
         }
     } else { 
-        insuffGemContainer.style.display = "flex"; 
+        showErrorContainer(); 
     }
 });
 
@@ -146,7 +160,7 @@ function multipull(){
             insertCharactersIntoDatabase(selectedCharactersNoTrash);
         }
     } else { 
-        insuffGemContainer.style.display = "flex"; 
+        showErrorContainer(); 
     }
 }
 
@@ -241,12 +255,25 @@ function renderImage() {
 
     const img = document.createElement("img"); 
     img.src = `Assets/${character.image}`; 
+    img.classList.add("characterImage"); 
     img.style.width = "30%"; 
     container.appendChild(img); 
+
+    const characterName = document.createElement("div"); 
+    characterName.textContent = character.name; 
+    characterName.classList.add("character-name"); 
+    container.appendChild(characterName); 
+
+    displayStars(character, characterName); 
+
+    setTimeout(() => { 
+        characterName.classList.add("fade-in");    
+    }, 10);
 
     setTimeout(() => {
         img.classList.add("fade-in");
     }, 10);
+
     
     container.onclick = (e) => { 
         e.stopPropagation(); 
@@ -265,6 +292,21 @@ function renderImage() {
     }
 }
 
+function displayStars(character, container){ 
+    const starContainer = document.createElement("div"); 
+    starContainer.classList.add("star-container"); 
+
+    for(let i = 0; i<character.rarity; i++) { 
+        const star = document.createElement("img");
+        star.style.opacity = "1"; 
+        star.src = "Assets/star-icon.svg";
+        star.classList.add("star-character"); 
+       
+        starContainer.appendChild(star);
+    }
+
+    container.appendChild(starContainer); 
+}
 
 jaysonBox.addEventListener("click", function() {
     jamesBox.classList.remove("active-banner"); 
@@ -282,14 +324,14 @@ jaysonBox.addEventListener("click", function() {
     }, 100); 
     jaysonBanner.style.display = "block"; 
 
-    characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
-                {id:4, name:"trash", rarity:3, image:"trash.png"},
-                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                {id:6, name:"johan", rarity:4, image:"johan.png"},
-                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+    characters = [{id:1, name:"Jayson Bustaleno", rarity:5, image: "jayson.png"}, 
+                {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                {id:7, name:"Tayog Basallo", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}]; 
 
 }); 
 
@@ -308,14 +350,14 @@ demyBox.addEventListener("click", function() {
         demyBanner.classList.add("fade-in");
     }, 30);
     demyBanner.style.display = "block"; 
-    characters = [{id:2, name:"demy", rarity:5, image: "demy.png"}, 
-                {id:4, name:"trash", rarity:3, image:"trash.png"},
-                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                {id:6, name:"johan", rarity:4, image:"johan.png"},
-                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+    characters = [{id:2, name:"Demy Moya", rarity:5, image: "demy.png"}, 
+                {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                {id:7, name:"Tayog Basallo", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}]; 
 
 }); 
 
@@ -335,14 +377,14 @@ jamesBox.addEventListener("click", function() {
     }, 30); 
     jamesBanner.style.display = "block";  
 
-    characters = [{id:3, name:"james", rarity:5, image:"james.png"},
-                {id:4, name:"trash", rarity:3, image:"trash.png"},
-                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                {id:6, name:"johan", rarity:4, image:"johan.png"},
-                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                {id:10, name:"marcus", rarity:4, image:"marcus.png"}];    
+    characters = [{id:3, name:"James Mareau Santos", rarity:5, image:"james.png"},
+                {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                {id:7, name:"Tayog Basallo", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}];    
 }); 
 
 
