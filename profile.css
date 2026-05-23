@@ -99,11 +99,12 @@ main {
     background-size: cover;
 }
 
-.profile-pic:hover {
+.profile-pic:hover.change {
     filter: brightness(90%);
 }
 
-.profile-pic:active {
+
+.profile-pic:active.change {
     filter: brightness(80%);
 }
 
@@ -183,11 +184,11 @@ main {
     
 }
 
-.student-showcase-down:hover div {
+.student-showcase-down:hover.change div {
     filter: brightness(90%);
 }
 
-.student-showcase-down:active div {
+.student-showcase-down:active.change div {
     filter: brightness(80%);
 }
 
@@ -214,11 +215,15 @@ main {
     padding: 30px 20px;
 }
 
-.main-right textarea:hover {
+.main-right textarea:disabled {
+    color: black;
+}
+
+.main-right textarea:hover.change {
     background-color: #e6f0ec
 }
 
-.main-right textarea:focus {
+.main-right textarea:focus.change {
     outline: 2px solid #78be9c;
     background-color: #e6f0ec
 }

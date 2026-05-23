@@ -131,7 +131,7 @@ function getAccount() {
     .then(response => response.json())
     .then(data => { 
         username = data.username; 
-        userId = "202400" + data.user_id; 
+        userId = 202600256269 + data.user_id; 
         profilePic = data.profile_pic; 
 
         setProfile(username, userId, profilePic); 

@@ -86,7 +86,7 @@
         <section></section>
 
         <section class="main-right">
-            <textarea id="message-box" maxlength="100" spellcheck="false"></textarea>
+            <textarea id="message-box" maxlength="100" spellcheck="false" disabled></textarea>
         </section>
     </main>
     <div class="overlay">
@@ -121,51 +121,87 @@
     <script>
         fetch('check_session.php').then(response => response.json()).then(loggedIn => {
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
-            .catch((error) => console.error(error));
+        .catch((error) => console.error(error));
+
+
+        let sessionId;
+
+        getSessionInfo();
+        async function getSessionInfo() {
+            const response = await fetch('get_session_data.php', {method: 'POST'});
+            const data = await response.json();
+
+            sessionId = data.userId;
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('id') ?? sessionId;
+            getAccountInfo(userId);
+        }
+
+        
+
 
         let allCharacters;
         let favorites;
         let message;
         
-        getAccountInfo();
-        async function getAccountInfo() {
-            const response1 = await fetch('get_account.php');
+        async function getAccountInfo(userId) {
+            const response1 = await fetch('get_account.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({userId: userId})
+            });
             const account = await response1.json();
             message = account.message;
             
-            const response2 = await fetch('get_inventory.php');
+            const response2 = await fetch('get_inventory.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({userId: userId})
+            });
             const data2 = await response2.json();
             const owned = data2.owned;
             const unowned = data2.unowned;
             allCharacters = [...owned, ...unowned];
 
-            const response3 = await fetch('get_account_favorites.php');
+            const response3 = await fetch('get_account_favorites.php', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({userId: userId})
+            });
             favorites = await response3.json();
 
             displayAccountInfo(account, owned, favorites);
+
+            if(sessionId === userId) {
             setupOverlayMenu(allCharacters, owned);
+            profilePic.classList.add('change');
             profilePic.addEventListener('click', changeProfilePicture);
             studentShowcaseBoxes.forEach(box => box.addEventListener('click', changeStudentFavorites));
+            studentShowcaseDown.classList.add('change');
             messageBox.addEventListener('blur', saveMessage);
+            messageBox.classList.add('change');
+            messageBox.disabled = false;
+            }
         }
 
 
 
         const profilePic = document.querySelector('.profile-pic');
         const username = document.getElementById('username');
-        const userId = document.getElementById('user-id');
+        const userIdDisplay = document.getElementById('user-id');
         const dateJoined = document.getElementById('date-joined');
         const numOfStudents = document.getElementById('number-of-students');
         const wins = document.getElementById('wins');
         const loses = document.getElementById('loses');
         const messageBox = document.getElementById('message-box');
+        const studentShowcaseDown = document.querySelector('.student-showcase-down');
         const studentShowcaseBoxes = document.querySelectorAll('.student-showcase-down div');
         let profileCharId;
 
         function displayAccountInfo(account, accountInv, favorites) {
             profilePic.style.backgroundImage = `url('Assets/${account.profile_pic}')`;
             username.textContent = account.username;
-            userId.textContent = 202600256269 + account.user_id;
+            userIdDisplay.textContent = 202600256269 + account.user_id;
             dateJoined.textContent = account.date_created;
             numOfStudents.textContent = accountInv.length;
             wins.textContent = account.wins;

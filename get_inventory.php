@@ -1,7 +1,8 @@
 <?php
 session_start();
-$userId = $_SESSION['userId'];
 header('Content-Type: application/json');
+$data = json_decode(file_get_contents('php://input'), true) ?? [];
+$userId = $data['userId'] ?? $_SESSION['userId'];
 
 require_once "database.php";
 
