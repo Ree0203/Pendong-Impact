@@ -27,13 +27,39 @@ header {
     background-color: var(--color1);
     align-items: center;
     padding: 0 20px;
-    position: relative;
+    justify-content: space-between;
 }
 
 header h1 {
     color: white;
     font-size: 40px;
     font-weight: normal;
+}
+
+.x-button { 
+    aspect-ratio: 1/1;
+    height: 6vh;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    background-color: rgb(231, 231, 231);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid rgba(255, 255, 255, 0);
+    transition: 0.3s all;
+}
+
+.x-button svg { 
+    width: 50%; 
+}
+
+.x-button:hover { 
+    border: 3px solid rgb(255, 255, 255);
+}
+
+.x-button:active { 
+    transform: scale(0.9);
 }
 
 main {
@@ -61,16 +87,24 @@ main {
 
 .profile-pic {
     background-color: rgb(255, 255, 255);
+    border: 2px solid #00753d;
     border-radius: 10px;
     aspect-ratio: 1/1;
     max-width: auto;
     max-height: auto;
     justify-self: center;
-    
     background-image: url(Assets/satono-diamond.gif);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.profile-pic:hover {
+    filter: brightness(90%);
+}
+
+.profile-pic:active {
+    filter: brightness(80%);
 }
 
 .profile-info {
@@ -149,6 +183,14 @@ main {
     
 }
 
+.student-showcase-down:hover div {
+    filter: brightness(90%);
+}
+
+.student-showcase-down:active div {
+    filter: brightness(80%);
+}
+
 .student-showcase-down div {
     aspect-ratio: 1/1;
     min-height: 0;
@@ -172,8 +214,13 @@ main {
     padding: 30px 20px;
 }
 
+.main-right textarea:hover {
+    background-color: #e6f0ec
+}
+
 .main-right textarea:focus {
     outline: 2px solid #78be9c;
+    background-color: #e6f0ec
 }
 
 .overlay {
@@ -238,10 +285,28 @@ main {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    position: relative;
+}
+
+.overlay-menu-student-square:hover {
+    filter: brightness(90%);
+}
+
+.overlay-menu-student-square:active {
+    filter: brightness(80%);
 }
 
 .overlay-menu-student-square.click {
     border: 4px solid #00b859;
+}
+
+.student-lock-icon {
+    display: none;
+    position: absolute;
+    right: 1%;
+    top: 3%;
+    height: 20px;
+    filter: brightness(20%);
 }
 
 .overlay-menu-student-square[data-owned='false'] {

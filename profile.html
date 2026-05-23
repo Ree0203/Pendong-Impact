@@ -10,6 +10,15 @@
 <body>
     <header>
         <h1>Profile</h1>
+
+        <div class="x-icon">
+            <button class="x-button" id="x-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <line x1="4" y1="4" x2="20" y2="20" stroke="#00753d" stroke-width="3.5" stroke-linecap="round" />
+                <line x1="20" y1="4" x2="4" y2="20" stroke="#00753d" stroke-width="3.5" stroke-linecap="round" />
+            </svg>            
+            </button>
+        </div>
     </header>
     <main>
         <div class="uni-modal">
@@ -87,7 +96,7 @@
                 <div class="overlay-menu-left">
                     <div class="overlay-menu-students-square-container">                   
                         <div class="overlay-menu-student-square" id="default" data-owned="true">
-
+                            <img src="Assets/lock-icon.svg" class="student-lock-icon">
                         </div>
 
                     </div>
@@ -199,8 +208,14 @@
 
                 overlayStudentSquaresContainer.append(studentSquareCopy);
             }
+
             overlayStudentSquares = document.querySelectorAll('.overlay-menu-student-square');
             overlayStudentSquaresUnowned = document.querySelectorAll(".overlay-menu-student-square[data-owned='false']")
+
+            for(const unownedStudent of overlayStudentSquaresUnowned) {
+                const lock = unownedStudent.querySelector('.student-lock-icon');
+                lock.style.display = 'inline';
+            }
         }
 
         const confirmButton = document.getElementById('confirm-button');
@@ -299,7 +314,7 @@
             overlayStudentSquaresUnowned.forEach(square => square.style.display = 'none');
             previewPicture.style.backgroundImage = '';
             previewName.textContent = '';
-            favoritesTemp = favorites;
+            favoritesTemp = [...favorites];
 
             for(let i = 0; i < favorites.length; i++) {
                 const studentSquare = document.getElementById(favorites[i]);
@@ -378,6 +393,11 @@
 
         }
 
+        const xButton = document.getElementById("x-icon"); 
+
+        xButton.addEventListener("click", function() { 
+            window.location.href = "homepage.html"; 
+        });
 
     </script>
 </body>

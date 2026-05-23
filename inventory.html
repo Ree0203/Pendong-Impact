@@ -10,7 +10,7 @@
     <header>
         <div class="x-icon">
             <button class="x-button" id="x-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="" height="">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <line x1="4" y1="4" x2="20" y2="20" stroke="white" stroke-width="3.5" stroke-linecap="round" />
                 <line x1="20" y1="4" x2="4" y2="20" stroke="white" stroke-width="3.5" stroke-linecap="round" />
             </svg>            
@@ -153,6 +153,7 @@
             }
         }
 
+        const studentInfo = document.querySelector('.student-info');
         const studentInfoPic = document.querySelector('.student-info-pic');
         const studentInfoName = document.querySelector('.student-info-name');
         const statBoxes = document.querySelectorAll('.stat-box-down h1');
@@ -172,7 +173,7 @@
                 statBox.textContent = character[stats[index]]
             });
             
-            fetch('Assets/json/characters.json').then(response => response.json()).then(array => {
+            fetch(`Assets/json/characters.json?v=${new Date().getTime()}`).then(response => response.json()).then(array => {
                 characterJson = array[array.findIndex(object => character.first_name == object.firstName)];
                 
                 studentInfoName.querySelector('h3').textContent = characterJson.quote;
@@ -183,6 +184,9 @@
             .catch((error) => console.error(error));
 
             showStudentInfo();
+            studentInfo.classList.remove('showDetails');
+            void studentInfo.offsetWidth;
+            studentInfo.classList.add('showDetails');
         }
 
 

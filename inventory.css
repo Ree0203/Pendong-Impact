@@ -138,6 +138,19 @@ main {
     overflow: hidden;
 }
 
+.student-info.showDetails {
+    animation: detailsPopout 0.2s ease;
+}
+
+@keyframes detailsPopout {
+    50% {
+        scale: 0.99;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
 .student-info > .hiddenChildren > * {
     display: none;
 }
