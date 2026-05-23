@@ -71,6 +71,8 @@ for(let i = 0; i<exchangeContainer.length; i++) {
 let cvsuCoinsValue;
 let cvsuGems; 
 
+getCurrency(); 
+
 function getCurrency() { 
     fetch('get_currency.php')
         .then(response=>response.json())    

@@ -448,11 +448,15 @@ function updateCurrency(coins, gems, pity) {
     })
 }
 const shopButton = document.getElementById("shop"); 
+const inventoryButton = document.getElementById("inventory"); 
 
 shopButton.addEventListener("click", function() { 
     window.location.href = "payment.html";
 }); 
  
+inventoryButton.addEventListener("click", function() { 
+    window.location.href = "inventory.html"; 
+}); 
 function setPity(pity) { 
     fetch("update_pity.php", { 
         method: "POST", 

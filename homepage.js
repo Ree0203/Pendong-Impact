@@ -105,7 +105,12 @@ const logout = document.getElementById('logout');
 logout.addEventListener('click', function(){
     fetch('destroy_session.php', {method: 'POST'})
     .then(response => response.json())
-    .then(data => showModal(data.status, data.message))
+    .then(data => { 
+        showModal(data.status, data.message); 
+        setTimeout(() => { 
+            window.location.replace("login.html"); 
+        }, 2000); 
+    })
     .catch(error => console.error(error));
 });
 
