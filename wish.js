@@ -310,14 +310,14 @@ jaysonBox.addEventListener("click", function() {
     }, 100); 
     jaysonBanner.style.display = "block"; 
 
-    characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
-                {id:4, name:"trash", rarity:3, image:"trash.png"},
-                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                {id:6, name:"johan", rarity:4, image:"johan.png"},
-                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+    characters = [{id:1, name:"Jayson Bustaleno", rarity:5, image: "jayson.png"}, 
+                {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                {id:7, name:"Tayog Basallo", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}]; 
 
 }); 
 
@@ -336,14 +336,14 @@ demyBox.addEventListener("click", function() {
         demyBanner.classList.add("fade-in");
     }, 30);
     demyBanner.style.display = "block"; 
-    characters = [{id:2, name:"demy", rarity:5, image: "demy.png"}, 
-                {id:4, name:"trash", rarity:3, image:"trash.png"},
-                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                {id:6, name:"johan", rarity:4, image:"johan.png"},
-                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+    characters = [{id:2, name:"Demy Moya", rarity:5, image: "demy.png"}, 
+                {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                {id:7, name:"Tayog Basallo", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}]; 
 
 }); 
 
@@ -363,14 +363,14 @@ jamesBox.addEventListener("click", function() {
     }, 30); 
     jamesBanner.style.display = "block";  
 
-    characters = [{id:3, name:"james", rarity:5, image:"james.png"},
-                {id:4, name:"trash", rarity:3, image:"trash.png"},
-                {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                {id:6, name:"johan", rarity:4, image:"johan.png"},
-                {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                {id:10, name:"marcus", rarity:4, image:"marcus.png"}];    
+    characters = [{id:3, name:"James Mareau Santos", rarity:5, image:"james.png"},
+                {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                {id:7, name:"Tayog Basallo", rarity:4, image:"tayog.png"}, 
+                {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}];    
 }); 
 
 
