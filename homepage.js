@@ -89,6 +89,7 @@ eventBoard.addEventListener("click", function() {
     window.location.href = "wish.html"; 
 }); 
 
+//logout
 
 const logout = document.getElementById('logout');
 
@@ -98,6 +99,48 @@ logout.addEventListener('click', function(){
     .then(data => showModal(data.status, data.message))
     .catch(error => console.error(error));
 });
+
+//profile 
+
+let username; 
+let userId; 
+let profilePic;
+
+const profileName = document.getElementById("profile-name"); 
+const profileId = document.getElementById("profile-id"); 
+const profilePicContainer = document.getElementById("profile-picture"); 
+
+getAccount(); 
+
+function getAccount() { 
+    fetch("get_account.php")
+    .then(response => response.json())
+    .then(data => { 
+        username = data.username; 
+        userId = "202400" + data.user_id; 
+        profilePic = data.profile_pic; 
+
+        setProfile(username, userId, profilePic); 
+    }); 
+}
+
+function setProfile(username, userId, profilePic) { 
+    profileName.textContent = username; 
+    profileId.textContent = userId; 
+    console.log(profilePic); 
+
+    if(profilePic !== null) { 
+        profilePicContainer.src = "Assets/james.png"; 
+    } else { 
+        profilePicContainer.src = "Assets/profile.jpg"; 
+    }
+} 
+
+//session
+
+fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+            if(!loggedIn.loggedIn) window.location.replace('login.html')})
+            .catch((error) => console.error(error));
 
 
 
