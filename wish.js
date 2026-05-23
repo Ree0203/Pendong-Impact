@@ -37,6 +37,7 @@ const wishButton10 = document.getElementById("wish10");
 const insuffGemContainer = document.getElementById("insuff-gem-container"); 
 const shopErrorButton = document.getElementById("shop-error"); 
 const wishErrorButton = document.getElementById("wish-error"); 
+const insuffInner = document.getElementById("inner-container"); 
 
 const video = document.getElementById("pull-animation"); 
 
@@ -44,8 +45,21 @@ video.addEventListener("click", function() {
     video.currentTime = video.duration; 
     video.style.display = "none"; 
 });
-wishErrorButton.addEventListener("click", function() { 
+
+function showErrorContainer() { 
+    insuffGemContainer.style.display = "flex"; 
+
+    setTimeout(() => { 
+        insuffInner.classList.add("fade-in"); 
+    }, 10); 
+}
+
+function hideErrorContainer() { 
+    insuffInner.classList.remove("fade-in"); 
     insuffGemContainer.style.display = "none"; 
+}
+wishErrorButton.addEventListener("click", function() { 
+    hideErrorContainer(); 
 });
 
 shopErrorButton.addEventListener("click", function() { 
@@ -76,7 +90,7 @@ wishButton1.addEventListener("click", function() {
 
         }
     } else { 
-        insuffGemContainer.style.display = "flex"; 
+        showErrorContainer(); 
     }
 });
 
@@ -146,7 +160,7 @@ function multipull(){
             insertCharactersIntoDatabase(selectedCharactersNoTrash);
         }
     } else { 
-        insuffGemContainer.style.display = "flex"; 
+        showErrorContainer(); 
     }
 }
 
