@@ -20,14 +20,14 @@ const jaysonBox = document.getElementById("jayson");
 const demyBox = document.getElementById("demy"); 
 const jamesBox = document.getElementById("james"); 
 
-let characters = [{id:1, name:"jayson", rarity:5, image: "jayson.png"}, 
-                    {id:4, name:"trash", rarity:3, image:"trash.png"},
-                    {id:5, name:"ryan", rarity:4, image: "ryan.png"},
-                    {id:6, name:"johan", rarity:4, image:"johan.png"},
-                    {id:7, name:"tayog", rarity:4, image:"tayog.png"}, 
-                    {id:8, name:"lawrence", rarity:4, image:"lawrence.png"},
-                    {id:9, name:"chlowen", rarity:4, image:"chlowen.png"},
-                    {id:10, name:"marcus", rarity:4, image:"marcus.png"}]; 
+let characters = [{id:1, name:"Jayson Bustaleno", rarity:5, image: "jayson.png"}, 
+                    {id:4, name:"Trash", rarity:3, image:"trash.png"},
+                    {id:5, name:"Ryan Donceras", rarity:4, image: "ryan.png"},
+                    {id:6, name:"Johanes Leyran", rarity:4, image:"johan.png"},
+                    {id:7, name:"Bantayog Basallo", rarity:4, image:"tayog.png"}, 
+                    {id:8, name:"Lawrence Mojica", rarity:4, image:"lawrence.png"},
+                    {id:9, name:"Chlowen Patambang", rarity:4, image:"chlowen.png"},
+                    {id:10, name:"Marcus Matic", rarity:4, image:"marcus.png"}]; 
 
 
 const wishButton1 = document.getElementById("wish1")
@@ -241,12 +241,25 @@ function renderImage() {
 
     const img = document.createElement("img"); 
     img.src = `Assets/${character.image}`; 
+    img.classList.add("characterImage"); 
     img.style.width = "30%"; 
     container.appendChild(img); 
+
+    const characterName = document.createElement("div"); 
+    characterName.textContent = character.name; 
+    characterName.classList.add("character-name"); 
+    container.appendChild(characterName); 
+
+    displayStars(character, characterName); 
+
+    setTimeout(() => { 
+        characterName.classList.add("fade-in");    
+    }, 10);
 
     setTimeout(() => {
         img.classList.add("fade-in");
     }, 10);
+
     
     container.onclick = (e) => { 
         e.stopPropagation(); 
@@ -265,6 +278,21 @@ function renderImage() {
     }
 }
 
+function displayStars(character, container){ 
+    const starContainer = document.createElement("div"); 
+    starContainer.classList.add("star-container"); 
+
+    for(let i = 0; i<character.rarity; i++) { 
+        const star = document.createElement("img");
+        star.style.opacity = "1"; 
+        star.src = "Assets/star-icon.svg";
+        star.classList.add("star-character"); 
+       
+        starContainer.appendChild(star);
+    }
+
+    container.appendChild(starContainer); 
+}
 
 jaysonBox.addEventListener("click", function() {
     jamesBox.classList.remove("active-banner"); 
