@@ -12,11 +12,11 @@
 
 
     $type = $_POST['type'];
-    $username = $_POST['username'] ?? '';
+    $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
     if($type === 'register') {
-        $email = $_POST['email'] ?? '';
+        $username = $_POST['username'] ?? '';
         $confirmPassword = $_POST['confirm-password'] ?? '';
 
         if(empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
@@ -68,18 +68,22 @@
         
     }
     elseif($type === 'login') {
-        if(empty($username) || empty($password)) {
+        if(empty($email) || empty($password)) {
             sendResponse('error', 'Please fill up all fields.');
         }
 
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            sendResponse('error', 'Invalid Email format.');
+        }
+
         require_once 'database.php';
-        $stmt = $conn->prepare('SELECT user_id, username, password FROM Accounts WHERE username = ?');
-        $stmt->bind_param('s', $username);
+        $stmt = $conn->prepare('SELECT user_id, username, password FROM Accounts WHERE email = ?');
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_assoc();
 
         if(!$result) {
-            sendResponse('error', 'Username not found.');
+            sendResponse('error', 'Email not found.');
         }
 
         if(!password_verify($password, $result['password'])) {
@@ -95,7 +99,7 @@
         }
         
         $_SESSION['userId'] = $result['user_id'];
-        $_SESSION['username'] = $username;
+        $_SESSION['username'] = $result['username'];
         sendResponse('logged', 'Successfully logged in. Redirecting...');
         
     }

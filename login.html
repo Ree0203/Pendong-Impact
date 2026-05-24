@@ -89,14 +89,14 @@
         <h2>Login</h2>
         <form id="login-form">
             <div class="form-group">
-                <input type="text" placeholder="Username" name="username" autocomplete="off" spellcheck="false">
-                <label>Username</label>
+                <input type="text" placeholder="Email" name="email" autocomplete="off" spellcheck="false">
+                <label>Email</label>
             </div>
             <div class="form-group">
                 <input type="password" placeholder="Password" name="password" autocomplete="off" spellcheck="false">
                 <label>Password</label>
             </div>
-            <input type="hidden" name="type" value="login">
+            <input type="hidden" name="type" value="login" class="hidden-login">
             <button type="submit">Login</button>
         </form>
         <p class="toggle-text">New here? <span onclick="toggleForms()">Register</span></p>
@@ -120,7 +120,7 @@
                 <input type="password" placeholder="Repeat password" name="confirm-password" autocomplete="off" spellcheck="false">
                 <label>Repeat password</label>
             </div>
-            <input type="hidden" name="type" value="register">
+            <input type="hidden" name="type" value="register" class="hidden-register">
             <button type="submit">Create Account</button>
         </form>
         <p class="toggle-text">Already have an account? <span onclick="toggleForms()">Login</span></p>
@@ -137,6 +137,8 @@
         document.getElementById('login-section').classList.toggle('hidden');
         document.getElementById('register-section').classList.toggle('hidden');
         document.querySelectorAll('input').forEach(input => input.value = '');
+        document.querySelector('.hidden-login').value = 'register';
+        document.querySelector('.hidden-register').value = 'register';
     }
 
     const formContainer = document.querySelector('.form-container');
@@ -158,7 +160,11 @@
             } else if(data.status === 'registered') {
                 toggleForms();
             }
-        }).catch(() => showModal('error', 'An error has occurred. Please try again.'));
+        }).catch((error) => {
+            console.error(error);
+            showModal('error', 'An error has occurred. Please try again.')
+        });
+            
     }
 </script>
 </body>
