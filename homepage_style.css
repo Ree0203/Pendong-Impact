@@ -641,7 +641,7 @@ body {
   bottom: 20%;
   left: 25%;
   right: 25%;
-  padding: 80px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
 }
 
 .visit-menu-container.show {
@@ -659,6 +659,7 @@ body {
   border-radius: 50px 50px 0 0;
   z-index: 30;
   justify-content: center;
+  padding: 20px;
 }
 
 #visit-menu-title .x-button { 
@@ -696,6 +697,7 @@ body {
   border: 2px dashed var(--ba-primary);
   padding: 20px;
   padding-right: 10px;
+  padding-bottom: 0;
 }
 
 .visit-menu {
@@ -705,6 +707,7 @@ body {
   row-gap: 10px;
   flex-grow: 1;
   overflow: auto;
+  padding-top: 50px;
 }
 
 .player-card {
