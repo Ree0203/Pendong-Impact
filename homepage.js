@@ -183,17 +183,20 @@ function displayPlayers(accounts) {
         const clonePicture = playerCardClone.querySelector('.player-card-picture');
         const cloneUsername = playerCardClone.querySelector('.player-card-username');
         const cloneUserId = playerCardClone.querySelector('.player-card-id');
+        const cloneOnline = playerCardClone.querySelector('.player-card-online');
         const cloneButton = playerCardClone.querySelector('.player-card-button img');
 
         playerCardClone.dataset.userId = account.user_id;
         clonePicture.style.backgroundImage = `url('Assets/${account.profile_pic}')`
         cloneUsername.textContent = account.username;
         cloneUserId.textContent = 202600256269 + account.user_id;
+        cloneOnline.textContent = getLastLogin(account.last_login);
         
         cloneButton.addEventListener('click', () => window.location.href = `profile.html?id=${account.user_id}`);
         playerCardClone.style.display = 'flex';
         visitMenu.append(playerCardClone);
     }
+
     
 }
 
@@ -204,7 +207,31 @@ const visitMenuContainer = document.querySelector('.visit-menu-container');
 visitButton.addEventListener('click', () => visitMenuContainer.classList.toggle('show'));
 visitCloseButton.addEventListener('click', () => visitMenuContainer.classList.remove('show'));
 
+//Get last login
 
+function getLastLogin(lastLogin) {
+    const now = new Date();
+    const msTimeOffset = now - new Date(lastLogin);
+    
+    const msMinutes = 60 * 1000;
+    const msHours = 60 * msMinutes;
+    const msDays = 24 * msHours;
+
+    const days = Math.floor(msTimeOffset / msDays);
+    const hours = Math.floor((msTimeOffset % msDays) / msHours);
+    const minutes = Math.floor((msTimeOffset % msHours) / msMinutes);
+    
+    
+    if(days === 0 && hours === 0 && minutes === 0) return 'Just now';
+
+    const total = [];
+
+    if(days > 0) total.push(`${days}d`);
+    if(hours > 0) total.push(`${hours}h`);
+    if(minutes > 0) total.push(`${minutes}m`)
+
+    return `${total.join(' ')} ago`
+}
 
 
 

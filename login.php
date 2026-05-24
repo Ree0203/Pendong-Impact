@@ -82,14 +82,21 @@
             sendResponse('error', 'Username not found.');
         }
 
-        if(password_verify($password, $result['password'])) {
-            $_SESSION['userId'] = $result['user_id'];
-            $_SESSION['username'] = $username;
-            sendResponse('logged', 'Successfully logged in. Redirecting...');
-        }
-        else {
+        if(!password_verify($password, $result['password'])) {
             sendResponse('error', 'Incorrect Password.');
+            
         }
+
+        $stmt = $conn->prepare('UPDATE accounts SET last_login = NOW() WHERE user_id = ?');
+        $stmt->bind_param('i', $result['user_id']);
+
+        if(!$stmt->execute()) {
+            sendResponse('error', 'Error during login. Please try again.');
+        }
+        
+        $_SESSION['userId'] = $result['user_id'];
+        $_SESSION['username'] = $username;
+        sendResponse('logged', 'Successfully logged in. Redirecting...');
         
     }
     
