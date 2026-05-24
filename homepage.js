@@ -123,6 +123,7 @@ let profilePic;
 const profileName = document.getElementById("profile-name"); 
 const profileId = document.getElementById("profile-id"); 
 const profilePicContainer = document.getElementById("profile-picture"); 
+const navProfileContainer = document.getElementById("nav-profile-icon"); 
 
 getAccount(); 
 
@@ -146,6 +147,7 @@ function setProfile(username, userId, profilePic) {
 
     if(profilePic !== null) { 
         profilePicContainer.src = "Assets/" + profilePic; 
+        navProfileContainer.src = "Assets/" + profilePic; 
     } else { 
         profilePicContainer.src = "Assets/profile.jpg"; 
     }
