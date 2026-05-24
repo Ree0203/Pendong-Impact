@@ -189,6 +189,15 @@ function displayPlayers(accounts) {
     
 }
 
+const visitButton = document.querySelector('.visit-icon');
+const visitCloseButton = document.querySelector('#visit-menu-title .x-button');
+const visitMenuContainer = document.querySelector('.visit-menu-container');
+
+visitButton.addEventListener('click', () => visitMenuContainer.classList.toggle('show'));
+visitCloseButton.addEventListener('click', () => visitMenuContainer.classList.remove('show'));
+
+
+
 
 
 

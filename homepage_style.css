@@ -42,7 +42,6 @@ body {
   z-index: 0;
   background: linear-gradient(rgba(255, 255, 255, 0.123), rgba(0, 0, 0, 0.233)), url('Assets/homepage-background2.png') center/cover no-repeat;
   background-color: #e2e8f0;
-  filter: brightness(1.05) contrast(1.05);
 }
 
 #bg::after {
@@ -626,7 +625,6 @@ body {
 
 .overlay {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.397);
     top: 0;
     bottom: 0;
     left: 0;
@@ -634,7 +632,7 @@ body {
 }
 
 .visit-menu-container {
-  display: flex;
+  display: none;
   position: absolute;
   background-color: var(--ba-glass);
   border: 2px solid var(--ba-primary);
@@ -644,6 +642,10 @@ body {
   left: 25%;
   right: 25%;
   padding: 80px 20px 20px 20px;
+}
+
+.visit-menu-container.show {
+  display: flex;
 }
 
 #visit-menu-title {
@@ -657,6 +659,34 @@ body {
   border-radius: 50px 50px 0 0;
   z-index: 30;
   justify-content: center;
+}
+
+#visit-menu-title .x-button { 
+  position: absolute;
+  right: 2%;
+  aspect-ratio: 1/1;
+  height: 5vh;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid rgba(255, 255, 255, 0);
+  transition: 0.3s all;
+}
+
+#visit-menu-title .x-button svg { 
+  width: 50%; 
+}
+
+#visit-menu-title .x-button:hover { 
+  border: 3px solid rgb(255, 255, 255);
+}
+
+#visit-menu-title .x-button:active { 
+  transform: scale(0.9);
 }
 
 .visit-menu-container > div {
@@ -677,7 +707,7 @@ body {
 }
 
 .player-card {
-  display: flex;
+  display: none;
   border-radius: 5px;
   align-items: center;
 }
