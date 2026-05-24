@@ -2,6 +2,11 @@
 
 session_start(); 
 
+if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: homepage.html');
+    exit;
+}
+
 require_once('database.php');
 header('Content-Type: application/json');
 

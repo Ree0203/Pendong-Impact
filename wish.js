@@ -448,7 +448,7 @@ let fourpity;
 getCurrency(); 
 
 function getCurrency() { 
-    fetch('get_currency.php')
+    fetch('get_currency.php', {method: 'POST'})
         .then(response=>response.json())    
         .then(data=> { 
             cvsuCoinsValue = data.coins; 
@@ -538,7 +538,7 @@ function setFourStarPity(fourPity) {
     })
 }
 
-fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+fetch('check_session.php', {method: 'POST'}).then(response => response.json()).then(loggedIn => {
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
             .catch((error) => console.error(error));
 

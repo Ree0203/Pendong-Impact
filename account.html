@@ -60,7 +60,7 @@
 
         getUsername();
         async function getUsername() {
-            const response = await fetch('get_account.php');
+            const response = await fetch('get_account.php', {method: 'POST'});
             const account = await response.json();
 
             usernameField.value = account.username;

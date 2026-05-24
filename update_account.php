@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: homepage.html');
+    exit;
+}
+
 $userId = $_SESSION['userId'];
 $newUsername = $_POST['username'] ?? '';
 $newPassword = $_POST['password'] ?? '';

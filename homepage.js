@@ -34,7 +34,7 @@ getCurrency();
 
 function getCurrency() { 
 
-    fetch("get_currency.php")
+    fetch("get_currency.php", {method: 'POST'})
     .then(response => response.json())
     .then(data=> {
         coins = data.coins;
@@ -135,7 +135,7 @@ const navProfileContainer = document.getElementById("nav-profile-icon");
 getAccount(); 
 
 function getAccount() { 
-    fetch("get_account.php")
+    fetch("get_account.php", {method: 'POST'})
     .then(response => response.json())
     .then(data => { 
         username = data.username; 
@@ -161,7 +161,7 @@ function setProfile(username, userId, profilePic) {
 
 //session
 
-fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+fetch('check_session.php', {method: 'POST'}).then(response => response.json()).then(loggedIn => {
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
             .catch((error) => console.error(error));
 
@@ -170,8 +170,6 @@ getAllAccounts();
 async function getAllAccounts() {
     const response = await fetch('get_all_accounts.php', {method: 'POST'});
     const accounts = await response.json();
-
-    console.log(accounts);
     displayPlayers(accounts);
 }
 

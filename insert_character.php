@@ -1,5 +1,10 @@
 <?php
-    session_start(); 
+    session_start();
+
+    if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: homepage.html');
+    exit;
+    }
 
     header('Content-Type: application/json');  
     require_once "database.php"; 

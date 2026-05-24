@@ -74,7 +74,7 @@ let cvsuGems;
 getCurrency(); 
 
 function getCurrency() { 
-    fetch('get_currency.php')
+    fetch('get_currency.php', {method: 'POST'})
         .then(response=>response.json())    
         .then(data=> { 
             cvsuCoinsValue = data.coins; 
@@ -117,7 +117,7 @@ function purchaseCoins(coins, gems) {
     })
 }
 
-fetch('check_session.php')
+fetch('check_session.php', {method: 'POST'})
 .then(response => response.json())
 .then(loggedIn => {
     if(!loggedIn.loggedIn) { 

@@ -119,7 +119,7 @@
 
     <script src="modal.js"></script>
     <script>
-        fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+        fetch('check_session.php', {method: 'POST'}).then(response => response.json()).then(loggedIn => {
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
         .catch((error) => console.error(error));
 

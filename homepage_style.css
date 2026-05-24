@@ -693,6 +693,7 @@ body {
   display: flex;
   flex-grow: 1;
   border-radius: 0 0 40px 40px;
+  border: 2px dashed var(--ba-primary);
   padding: 20px;
   padding-right: 10px;
 }
