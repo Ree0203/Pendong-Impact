@@ -29,8 +29,7 @@ body {
 }
 
 .icon-cvsu1 { 
-    width: 25%;
-    aspect-ratio: 1.5/1;
+    width: 20%;
     opacity: 100%;
     position: relative;
 }
@@ -39,7 +38,7 @@ body {
     display: flex;
     align-items: center;
     position: absolute;
-    left: 0%;
+    left: 3%;
 }
 
 .icons1 { 
