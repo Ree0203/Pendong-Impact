@@ -149,28 +149,65 @@
   <div id="left-side-icons">
     <div class="side-icon">
       <div class="side-icon-box">
-        <img src="assets/profile.jpg" alt="Notice Icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" width="100%" height="100%">
+          <!-- Handle -->
+          <rect x="35" y="55" width="10" height="30" rx="3" fill="#4CAF50" />
+          
+          <!-- Main Cone Body -->
+          <polygon points="25,45 70,20 70,80 25,55" fill="#4CAF50" />
+          
+          <!-- Mouthpiece Base -->
+          <rect x="18" y="40" width="7" height="20" rx="3" fill="#4CAF50" />
+          
+          <!-- Megaphone Front Opening (Outer) -->
+          <ellipse cx="70" cy="50" rx="8" ry="30" fill="#4CAF50" />
+          
+          <!-- Megaphone Front Opening (Inner Depth) -->
+          <ellipse cx="70" cy="50" rx="4" ry="20" fill="#4CAF50" />
+          
+          <!-- Sound Waves -->
+          <path d="M 86,35 Q 94,50 86,65" fill="none" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" />
+          <path d="M 96,22 Q 110,50 96,78" fill="none" stroke="#4CAF50" stroke-width="4" stroke-linecap="round" />
+        </svg>
       </div>
       <div class="side-icon-label">Notice</div>
     </div>
     <div class="side-icon">
       <div class="side-icon-box">
-        <img src="Assets/profile.jpg" alt="Tasks Icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="#4CAF50">
+          <path d="M19 3H14.82C14.4 1.84 13.3 1 12 1C10.7 1 9.6 1.84 9.18 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM12 3C12.55 3 13 3.45 13 4C13 4.55 12.55 5 12 5C11.45 5 11 4.55 11 4C11 3.45 11.45 3 12 3Z" fill="#4CAF50"/>
+          
+          <rect x="13" y="8" width="6" height="2" rx="1" fill="white"/>
+          <rect x="13" y="12" width="6" height="2" rx="1" fill="white"/>
+          <rect x="13" y="16" width="6" height="2" rx="1" fill="white"/>
+          
+          <path d="M7 9.5L8 10.5L10 8.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 13.5L8 14.5L10 12.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7 17.5L8 18.5L10 16.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
       <div class="side-icon-label">Tasks</div>
     </div>
     <div class="side-icon">
       <div class="side-icon-box">
-        <img src="assets/profile.jpg" alt="Pyroxene Icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="200" height="200">
+          <rect x="2" y="5" width="20" height="14" rx="2" fill="#4CAF50" />
+          
+          <circle cx="8.5" cy="10" r="2.5" fill="#ffffff" />
+          <path d="M 4.5 17 C 4.5 14.5, 6 13.5, 8.5 13.5 C 11 13.5, 12.5 14.5, 12.5 17 Z" fill="#ffffff" />
+          
+          <rect x="14" y="9.5" width="6" height="2" rx="1" fill="#ffffff" />
+          <rect x="14" y="13.5" width="4" height="2" rx="1" fill="#ffffff" />
+        </svg>
       </div>
-      <div class="side-icon-label">Pyroxene</div>
+      <div class="side-icon-label">Visit</div>
     </div>
   </div>
 
   <div id="resources">
     <div class="ba-currency-bar gem-bar" title="Pyroxene">
       <div class="ba-icon">
-        <img src="assets/profile.jpg" alt="Profile">
+        <img src="Assets/cvsu-icon.png" alt="" style="position: relative; top: 4%;">
       </div>
       <div class="ba-num" id="gems">100</div>
       <div class="ba-add">
@@ -187,7 +224,7 @@
     </div>
     <div class="ba-currency-bar coin-bar" title="Credits">
       <div class="ba-icon">
-        <img src="Assets/profile.jpg" alt="Profile">
+        <img src="assets/3-icon.png" alt="">
       </div>
       <div class="ba-num" id="coins">100</div>
       <div class="ba-add">
@@ -207,7 +244,7 @@
   <div id="bottom-hud-layer">
     <div id="banner-area">
       <div class="banner-frame" title="Current Event" id="event-board">
-        <img class="banner-img" src="Assets/banner.jpg" alt="Event Banner Placeholder" />
+        <img class="banner-img" src="Assets/banner-cover.jpg" alt="Event Banner Placeholder" style="object-fit: cover; object-position: 50% 40%;" >
       </div>
     </div>
     
@@ -218,7 +255,6 @@
           <div class="folder-red-dot"></div>
         </div>
         <div class="folder-body">
-          <img src="Assets/profile.jpg" alt="PVP BATTLE Icon" class="pvp-battle-icon">
         </div>
         <div class="pvp-battle-tag">Season in Progress</div>
         <div class="pvp-battle-label-bar">PVP BATTLE</div>
@@ -231,7 +267,7 @@
       <div class="nav-items">
         <div class="nav-item active" id="profile-nav">
           <div class="nav-icon" >
-            <img src="Assets/profile.jpg" alt="Profile">
+            <img src="Assets/profile.jpg" alt="Profile" id="nav-profile-icon">
           </div>
           <div class="nav-label">Profile</div>
         </div>
