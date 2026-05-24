@@ -70,6 +70,16 @@ const shopNav = document.getElementById("shop-nav");
 const eventBoard = document.getElementById("event-board"); 
 const profileDropDown = document.getElementById("profile"); 
 const accountSettings = document.getElementById("account-settings"); 
+const addButton = document.getElementById("ba-add"); 
+const addButton2 = document.getElementById("ba-add2");
+
+addButton2.addEventListener("click", function() { 
+    window.location.href = "wish.html"; 
+});
+
+addButton.addEventListener("click", function() { 
+    window.location.href = "wish.html"; 
+}); 
 
 profileDropDown.addEventListener("click", function() { 
     window.location.href = "profile.html"; 
