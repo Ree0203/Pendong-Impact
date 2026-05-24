@@ -30,7 +30,6 @@
         }
         h2 { text-align: center; color: #333; margin-top: 0; }
         
-        /* Floating Label Styles */
         .form-group { position: relative; margin-bottom: 25px; }
         .form-group label {
             position: absolute;
@@ -51,13 +50,16 @@
             font-size: 1rem;
         }
         
-        /* Trigger floating label */
+        /* Updated border and label color to stay consistent (no blue) */
+        input:focus { border-bottom-color: #25723f; }
         input:focus + label,
         input:not(:placeholder-shown) + label {
             top: -15px;
             left: 0;
             font-size: 0.75rem;
+            color: #25723f;
         }
+        
         input::placeholder { color: transparent; }
 
         button {
@@ -73,7 +75,7 @@
         }
         button:hover { background: #1e5a32; }
         .toggle-text { text-align: center; margin-top: 15px; font-size: 0.85rem; }
-        .toggle-text span { color: #0031b9; cursor: pointer; font-weight: bold; }
+        .toggle-text span { color: #25723f; cursor: pointer; font-weight: bold; }
         .hidden { display: none; }      
     </style>
 </head>
@@ -87,11 +89,11 @@
         <h2>Login</h2>
         <form id="login-form">
             <div class="form-group">
-                <input type="text" placeholder="Username" name="username">
+                <input type="text" placeholder="Username" name="username" autocomplete="off">
                 <label>Username</label>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Password" name="password" autocomplete="off">
                 <label>Password</label>
             </div>
             <input type="hidden" name="type" value="login">
@@ -103,19 +105,19 @@
         <h2>Register</h2>
         <form id="register-form">
             <div class="form-group">
-                <input type="text" placeholder="Username" name="username">
+                <input type="text" placeholder="Username" name="username" autocomplete="off">
                 <label>Username</label>
             </div>
             <div class="form-group">
-                <input type="text" placeholder="Email" name="email">
+                <input type="text" placeholder="Email" name="email" autocomplete="off">
                 <label>Email</label>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Password" name="password">
+                <input type="password" placeholder="Password" name="password" autocomplete="off">
                 <label>Password</label>
             </div>
             <div class="form-group">
-                <input type="password" placeholder="Repeat password" name="confirm-password">
+                <input type="password" placeholder="Repeat password" name="confirm-password" autocomplete="off">
                 <label>Repeat password</label>
             </div>
             <input type="hidden" name="type" value="register">
@@ -134,7 +136,6 @@
     function toggleForms() {
         document.getElementById('login-section').classList.toggle('hidden');
         document.getElementById('register-section').classList.toggle('hidden');
-        // Clear inputs and force re-evaluation of label state
         document.querySelectorAll('input').forEach(input => input.value = '');
     }
 
