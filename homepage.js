@@ -40,9 +40,6 @@ function getCurrency() {
         coins = data.coins;
         gems = data.gems;  
 
-        console.log("Coins: " + coins); 
-        console.log("Gems: " + gems); 
-
         coinContainer.textContent = coins; 
         gemContainer.textContent = gems; 
     })
@@ -141,8 +138,7 @@ function getAccount() {
 
 function setProfile(username, userId, profilePic) { 
     profileName.textContent = username; 
-    profileId.textContent = userId; 
-    console.log(profilePic); 
+    profileId.textContent = userId;
 
     if(profilePic !== null) { 
         profilePicContainer.src = "Assets/james.png"; 
@@ -156,6 +152,40 @@ function setProfile(username, userId, profilePic) {
 fetch('check_session.php').then(response => response.json()).then(loggedIn => {
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
             .catch((error) => console.error(error));
+
+//Visit Menu
+getAllAccounts();
+async function getAllAccounts() {
+    const response = await fetch('get_all_accounts.php', {method: 'POST'});
+    const accounts = await response.json();
+
+    console.log(accounts);
+    displayPlayers(accounts);
+}
+
+const visitMenu = document.querySelector('.visit-menu');
+const playerCardOrig = document.querySelector('.player-card');
+function displayPlayers(accounts) {
+
+    for(let i = 0; i < accounts.length; i++) {
+        const account = accounts[i];
+        const playerCardClone = playerCardOrig.cloneNode(true);
+        const clonePicture = playerCardClone.querySelector('.player-card-picture');
+        const cloneUsername = playerCardClone.querySelector('.player-card-username');
+        const cloneUserId = playerCardClone.querySelector('.player-card-id');
+        const cloneButton = playerCardClone.querySelector('.player-card-button img');
+
+        playerCardClone.dataset.userId = account.user_id;
+        clonePicture.style.backgroundImage = `url('Assets/${account.profile_pic}')`
+        cloneUsername.textContent = account.username;
+        cloneUserId.textContent = 202600256269 + account.user_id;
+        
+        cloneButton.addEventListener('click', () => window.location.href = `profile.html?id=${account.user_id}`);
+        playerCardClone.style.display = 'flex';
+        visitMenu.append(playerCardClone);
+    }
+    
+}
 
 
 
