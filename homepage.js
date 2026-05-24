@@ -76,7 +76,7 @@ profileDropDown.addEventListener("click", function() {
 }); 
 
 accountSettings.addEventListener("click", function() { 
-    window.location.href = "settings.html"; 
+    window.location.href = "account.html"; 
 })
 profileNavButton.addEventListener("click", function(){ 
     window.location.href = "profile.html"; 
@@ -145,7 +145,7 @@ function setProfile(username, userId, profilePic) {
     console.log(profilePic); 
 
     if(profilePic !== null) { 
-        profilePicContainer.src = "Assets/james.png"; 
+        profilePicContainer.src = "Assets/" + profilePic; 
     } else { 
         profilePicContainer.src = "Assets/profile.jpg"; 
     }
