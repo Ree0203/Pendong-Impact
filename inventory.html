@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+    <header>
+        <div class="x-icon">
+            <button class="x-button" id="x-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <line x1="4" y1="4" x2="20" y2="20" stroke="white" stroke-width="3.5" stroke-linecap="round" />
+                <line x1="20" y1="4" x2="4" y2="20" stroke="white" stroke-width="3.5" stroke-linecap="round" />
+            </svg>            
+            </button>
+        </div>
+    </header>
+    <main>
+        <div class="student-list">
+            <h2>Student List</h2>
+            <section class="student-list-square-container">
+                <div class="student-list-square">
+                    <section class="student-list-stars">
+                        <img src="Assets/star-icon.svg">
+                        <img src="Assets/star-icon.svg">
+                        <img src="Assets/star-icon.svg">
+                        <img src="Assets/star-icon.svg">
+                        <img src="Assets/star-icon.svg">
+                    </section>
+                </div>
+            </section>
+            <h3>Unobtained Students</h3>
+            <section class="student-list-square-container">
+                
+            </section>
+        </div>
+
+        <div></div>
+
+        <div class="student-info">
+            <section class="student-info-header">
+                <h2>Student Details</h2>
+            </section>
+            <section class="student-info-main hiddenChildren">
+                <div class="student-info-pic">
+
+                </div>
+
+                <div class="student-info-name hiddenChildren">
+                    <h1>Chlowen Patambang</h1>
+                    <h3>"Fake it til' you make it."</h3>
+                </div>
+            </section>
+
+            <section class="student-info-stats-container hiddenChildren">
+                <h2>Stats</h2>
+                <div class="student-info-stats">
+                    <section class="student-info-stats-boxes">
+                        <div class="stat-box-up">
+                            <h3>Attack</h3>
+                        </div>
+                        <div class="stat-box-down">
+                            <h1>100</h1>
+                        </div>
+                    </section>
+
+                    <section class="student-info-stats-boxes">
+                        <div class="stat-box-up">
+                            <h3>Defense</h3>
+                        </div>
+                        <div class="stat-box-down">
+                            <h1>100</h1>
+                        </div>
+                    </section>
+
+                    <section class="student-info-stats-boxes">
+                        <div class="stat-box-up">
+                            <h3>Speed</h3>
+                        </div>
+                        <div class="stat-box-down">
+                            <h1>100</h1>
+                        </div>
+                    </section>
+                    
+                    <section class="student-info-stats-boxes">
+                        <div class="stat-box-up">
+                            <h3>Luck</h3>
+                        </div>
+                        <div class="stat-box-down">
+                             <h1>100</h1>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <section class="student-info-details hiddenChildren">
+                <div class="student-info-details-buttons" >
+                    <button class="info-details-button click" data-target="skill-content">Skill</button>
+                    <button class="info-details-button" data-target="info-content">Info</button>
+                </div>
+                <div class="student-info-details-content" id="skill-content">
+                    <h3>Jakol Requiem</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia.</p>
+                </div>
+                <div class="student-info-details-content hidden" id="info-content">
+                    <h3>Background Info</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <script>
+        fetch('check_session.php').then(response => response.json()).then(loggedIn => {
+            if(!loggedIn.loggedIn) window.location.replace('login.html')})
+            .catch((error) => console.error(error));
+
+        getInventory();
+        async function getInventory() {
+            const response = await fetch('get_inventory.php');
+            const inventory = await response.json();
+
+            const owned = inventory.owned;
+            const unowned = inventory.unowned;;
+            
+            displayInventory(owned, 0);
+            displayInventory(unowned, 1);
+
+            studentSquares = document.querySelectorAll('.student-list-square');
+            studentSquares.forEach(square => square.addEventListener('click', e => studentSquareClick(e, [...owned, ...unowned])));
+        }
+
+        const studentSquareListContainer = document.querySelectorAll('.student-list-square-container');
+        const studentSquareOrig = document.querySelector('.student-list-square');
+        let studentSquares;
+
+        function displayInventory(array, container) {
+            
+            for(let i = 0; i < array.length; i++) {
+                const studentSquareCopy = studentSquareOrig.cloneNode(true);
+                const studentSquareStars = studentSquareCopy.querySelectorAll('.student-list-stars img');
+                studentSquareCopy.id = array[i].character_id;
+                studentSquareCopy.style.display = 'block';
+                studentSquareCopy.style.backgroundImage = `url('Assets/${array[i].picture}')`;
+                
+                for(let y = 0; y < array[i].rarity; y++) {
+                    studentSquareStars[y].style.display ='inline';
+                }
+                
+                studentSquareListContainer[container].append(studentSquareCopy);
+            }
+        }
+
+        const studentInfo = document.querySelector('.student-info');
+        const studentInfoPic = document.querySelector('.student-info-pic');
+        const studentInfoName = document.querySelector('.student-info-name');
+        const statBoxes = document.querySelectorAll('.stat-box-down h1');
+
+        function studentSquareClick(e, characters) {
+            const characterIndex = characters.findIndex(char => char.character_id == e.currentTarget.id);
+            const character = characters[characterIndex];
+            const stats = ['attack', 'defense', 'speed', 'luck']
+            let characterJsonIndex;
+
+            studentSquares.forEach(square => square.classList.remove('click'));
+            e.currentTarget.classList.add('click');
+            
+            studentInfoPic.style.backgroundImage = `url('Assets/${character.picture}')`
+            studentInfoName.querySelector('h1').textContent = `${character.first_name} ${character.last_name}`
+            statBoxes.forEach((statBox, index) => {
+                statBox.textContent = character[stats[index]]
+            });
+            
+            fetch(`Assets/json/characters.json?v=${new Date().getTime()}`).then(response => response.json()).then(array => {
+                characterJson = array[array.findIndex(object => character.first_name == object.firstName)];
+                
+                studentInfoName.querySelector('h3').textContent = characterJson.quote;
+                infoDetailsContents[0].querySelector('h3').textContent = characterJson.skillName;
+                infoDetailsContents[0].querySelector('p').textContent = characterJson.skillDesc;
+                infoDetailsContents[1].querySelector('p').textContent = characterJson.backgroundInfo;
+            })
+            .catch((error) => console.error(error));
+
+            showStudentInfo();
+            studentInfo.classList.remove('showDetails');
+            void studentInfo.offsetWidth;
+            studentInfo.classList.add('showDetails');
+        }
+
+
+
+        const infoDetailsButtons = document.querySelectorAll(".info-details-button");
+        const infoDetailsContents = document.querySelectorAll(".student-info-details-content")
+
+        infoDetailsButtons.forEach(
+            button => button.addEventListener("click", detailsButtonClick)
+        );
+
+        function detailsButtonClick(e){
+            infoDetailsButtons.forEach(button => button.classList.remove("click"));
+            event.target.classList.add("click");
+
+            infoDetailsContents.forEach(content => content.classList.add("hidden"));
+            const targetContent = e.currentTarget.getAttribute('data-target');
+            document.getElementById(targetContent).classList.remove('hidden');
+
+        }
+
+        function showStudentInfo() {
+            const studentInfoSections = document.querySelectorAll('.student-info > section');
+            studentInfoSections.forEach(section => section.classList.remove('hiddenChildren'));
+        }
+
+        const xButton = document.getElementById("x-icon"); 
+
+        xButton.addEventListener("click", function() { 
+            window.location.href = "homepage.html"; 
+        }); 
+
+    </script>
+</body>
+</html>
