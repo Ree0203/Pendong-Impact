@@ -22,7 +22,11 @@ const xButton = document.getElementById("x-icon");
 
 xButton.addEventListener("click", function() { 
     window.history.back(); 
-}); 
+});
+
+window.addEventListener('pageshow',(e) => {
+  if (e.persisted) window.location.reload();
+});
 
 confirmBack.addEventListener("click", hideConfirmContainer); 
 

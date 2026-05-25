@@ -1,3 +1,16 @@
+//session
+
+fetch('check_session.php', {method: 'POST'}).then(response => response.json()).then(loggedIn => {
+            if(!loggedIn.loggedIn) window.location.replace('login.html')})
+            .catch((error) => console.error(error));
+
+
+//reload
+
+window.addEventListener('pageshow',(e) => {
+  if (e.persisted) window.location.reload();
+});
+
 /* Clock */
 function updateClock() {
     const now = new Date(); 
@@ -159,12 +172,6 @@ function setProfile(username, userId, profilePic) {
     }
 } 
 
-//session
-
-fetch('check_session.php', {method: 'POST'}).then(response => response.json()).then(loggedIn => {
-            if(!loggedIn.loggedIn) window.location.replace('login.html')})
-            .catch((error) => console.error(error));
-
 //Visit Menu
 getAllAccounts();
 async function getAllAccounts() {
@@ -232,7 +239,6 @@ function getLastLogin(lastLogin) {
 
     return `${total.join(' ')} ago`
 }
-
 
 
 

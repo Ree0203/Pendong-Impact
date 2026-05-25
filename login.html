@@ -132,6 +132,10 @@
     fetch('check_session.php', {method: 'POST'}).then(response => response.json()).then(loggedIn => {
         if(loggedIn.loggedIn) window.location.replace('homepage.html')})
         .catch((error) => console.error(error));
+
+    window.addEventListener('pageshow',(e) => {
+        if (e.persisted) window.location.reload();
+    });
     
     function toggleForms() {
         document.getElementById('login-section').classList.toggle('hidden');

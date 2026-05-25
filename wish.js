@@ -569,6 +569,11 @@ fetch('check_session.php', {method: 'POST'}).then(response => response.json()).t
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
             .catch((error) => console.error(error));
 
+window.addEventListener('pageshow',(e) => {
+  if (e.persisted) window.location.reload();
+});
+
+
 //music
 const bgMusic = new Audio('Assets/wish-theme.mp3'); 
 bgMusic.volume = 0.5; 

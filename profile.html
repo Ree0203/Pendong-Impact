@@ -435,6 +435,10 @@
             window.history.back(); 
         });
 
+        window.addEventListener('pageshow',(e) => {
+            if (e.persisted) window.location.reload();
+        });
+
     </script>
 </body>
 </html>
