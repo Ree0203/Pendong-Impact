@@ -68,7 +68,7 @@ shopErrorButton.addEventListener("click", function() {
 }); 
 
 xButton.addEventListener("click", function() { 
-    window.location.href = "homepage.html"; 
+    window.history.back(); 
 }); 
 
 wishButton1.addEventListener("click", function() {
