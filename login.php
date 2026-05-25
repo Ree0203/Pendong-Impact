@@ -36,7 +36,7 @@
         }
 
         require_once 'database.php';
-        $stmt = $conn->prepare("SELECT * FROM Accounts WHERE email = ?");
+        $stmt = $conn->prepare("SELECT * FROM accounts WHERE email = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -47,7 +47,7 @@
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("INSERT INTO Accounts(username, password, email) VALUES(?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO accounts(username, password, email) VALUES(?, ?, ?)");
         $stmt->bind_param('sss', $username, $hashedPassword, $email);
         
         if(!$stmt->execute()) {
@@ -91,8 +91,6 @@
             
         }
 
-        $stmt = $conn->prepare('UPDATE accounts SET last_login = NOW() WHERE user_id = ?');
-        $stmt->bind_param('i', $result['user_id']);
 
         if(!$stmt->execute()) {
             sendResponse('error', 'Error during login. Please try again.');
