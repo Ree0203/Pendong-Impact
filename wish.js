@@ -72,13 +72,13 @@ xButton.addEventListener("click", function() {
 }); 
 
 wishButton1.addEventListener("click", function() {
-    
-
-    if(cvsuGems >= 1){ 
+        if(cvsuGems >= 1){ 
 
         video.style.display= "block"; 
         video.currentTime = 0; 
         video.play(); 
+
+        bgMusic.pause(); 
 
         video.onended = function() { 
             video.style.display = "none"; 
@@ -130,6 +130,8 @@ function insertCharactersIntoDatabase(characters) {
 
 
 function multipull(){ 
+    bgMusic.pause(); 
+
     if(cvsuGems >= 10) { 
         video.style.display = "block";
         video.currentTime = 0; 
@@ -288,6 +290,8 @@ function renderImage() {
             container.style.zIndex = "-1"; 
             currentImageIndex = 0; 
 
+            bgMusic.currentTime = 0; 
+            bgMusic.play();
         } 
     }
 }
@@ -542,3 +546,25 @@ fetch('check_session.php', {method: 'POST'}).then(response => response.json()).t
             if(!loggedIn.loggedIn) window.location.replace('login.html')})
             .catch((error) => console.error(error));
 
+//music
+const bgMusic = new Audio('Assets/wish-theme.mp3'); 
+bgMusic.loop = true; 
+
+function startAudio() {
+  bgMusic.play()
+    .then(() => {
+      console.log("Autoplay successful!");
+    })
+    .catch((error) => {
+      console.log("Autoplay blocked. Waiting for user interaction...");
+      
+      const playOnInteraction = () => {
+        bgMusic.play();
+        document.removeEventListener('click', playOnInteraction);
+      };
+      
+      document.addEventListener('click', playOnInteraction);
+    });
+}
+
+window.addEventListener("DOMContentLoaded", startAudio); 

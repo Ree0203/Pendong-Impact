@@ -91,6 +91,8 @@
             
         }
 
+        $stmt = $conn->prepare('UPDATE accounts SET last_login = NOW() WHERE user_id = ?');
+        $stmt->bind_param('i', $result['user_id']);
 
         if(!$stmt->execute()) {
             sendResponse('error', 'Error during login. Please try again.');
