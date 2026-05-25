@@ -21,7 +21,7 @@ let gems = 0;
 const xButton = document.getElementById("x-icon"); 
 
 xButton.addEventListener("click", function() { 
-    window.location.href = "wish.html"; 
+    window.history.back(); 
 }); 
 
 confirmBack.addEventListener("click", hideConfirmContainer); 
