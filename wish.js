@@ -571,6 +571,7 @@ fetch('check_session.php', {method: 'POST'}).then(response => response.json()).t
 
 //music
 const bgMusic = new Audio('Assets/wish-theme.mp3'); 
+bgMusic.volume = 0.5; 
 bgMusic.loop = true; 
 
 const se1 = new Audio('Assets/se1.mp3'); 
