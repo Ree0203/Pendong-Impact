@@ -41,9 +41,11 @@ body {
     transition: all 0.3s;
 }
 
-
+.banner-box:active { 
+    transform: scale(0.9);
+}
 .banner-box:hover { 
-    transform: scale(1.1);
+    background-color: #00df6c80;
 }
 
 #selected-banner { 

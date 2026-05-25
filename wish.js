@@ -72,23 +72,27 @@ xButton.addEventListener("click", function() {
 }); 
 
 wishButton1.addEventListener("click", function() {
-        if(cvsuGems >= 1){ 
 
-        video.style.display= "block"; 
-        video.currentTime = 0; 
-        video.play(); 
+    se2.play(); 
 
-        bgMusic.pause(); 
+    if(cvsuGems >= 1){ 
 
-        video.onended = function() { 
-            video.style.display = "none"; 
+    video.style.display= "block"; 
+    video.currentTime = 0; 
+    video.play(); 
 
-            singlePull(); 
+    bgMusic.pause(); 
 
-            setPity(pity); 
-            setFourStarPity(fourpity); 
+    video.onended = function() { 
+        video.style.display = "none"; 
 
-        }
+        singlePull(); 
+
+        setPity(pity); 
+        setFourStarPity(fourpity); 
+
+    }
+
     } else { 
         showErrorContainer(); 
     }
@@ -130,6 +134,8 @@ function insertCharactersIntoDatabase(characters) {
 
 
 function multipull(){ 
+
+    se2.play(); 
     bgMusic.pause(); 
 
     if(cvsuGems >= 10) { 
@@ -313,6 +319,8 @@ function displayStars(character, container){
 }
 
 jaysonBox.addEventListener("click", function() {
+    se2.play(); 
+
     jamesBox.classList.remove("active-banner"); 
     demyBox.classList.remove("active-banner"); 
     jaysonBox.classList.add("active-banner"); 
@@ -340,6 +348,8 @@ jaysonBox.addEventListener("click", function() {
 }); 
 
 demyBox.addEventListener("click", function() {
+    se2.play(); 
+
     jamesBox.classList.remove("active-banner"); 
     jaysonBox.classList.remove("active-banner"); 
     demyBox.classList.add("active-banner"); 
@@ -366,6 +376,8 @@ demyBox.addEventListener("click", function() {
 }); 
 
 jamesBox.addEventListener("click", function() {
+    se2.play(); 
+
     jamesBox.classList.add("active-banner"); 
     demyBox.classList.remove("active-banner"); 
     jaysonBox.classList.remove("active-banner"); 
@@ -400,6 +412,8 @@ var conversionamount = 0;
 amountdiv.textContent = 0; 
 
 addGemButton.addEventListener("click", function() { 
+
+    se2.play(); 
     slider.value = 50;
     maxValue = Math.floor(cvsuCoinsValue/100); 
 
@@ -423,11 +437,16 @@ slider.addEventListener("input", function() {
 }); 
 
 cancelPurchase.addEventListener("click", function() { 
+
+    se2.play(); 
+
     purchaseContainer.classList.remove("fade-in"); 
     purchaseOuter.style.display = "none"; 
 }); 
 
 function convertGem() { 
+    se2.play(); 
+
     purchaseContainer.classList.remove("fade-in"); 
     purchaseOuter.style.display = "none"; 
     const conversionPrice = -1*(conversionamount*100); 
@@ -496,12 +515,16 @@ function updateCurrency(coins, gems, pity) {
 const shopButton = document.getElementById("shop"); 
 const inventoryButton = document.getElementById("inventory"); 
 
-shopButton.addEventListener("click", function() { 
-    window.location.href = "payment.html";
+shopButton.addEventListener("click", function() {     
+    setTimeout(() => { 
+            window.location.href = "payment.html";
+    }, 200); 
 }); 
  
 inventoryButton.addEventListener("click", function() { 
-    window.location.href = "inventory.html"; 
+    setTimeout(() => { 
+        window.location.href = "inventory.html";
+    }, 200);
 }); 
 function setPity(pity) { 
     fetch("update_pity.php", { 
@@ -550,6 +573,24 @@ fetch('check_session.php', {method: 'POST'}).then(response => response.json()).t
 const bgMusic = new Audio('Assets/wish-theme.mp3'); 
 bgMusic.loop = true; 
 
+const se1 = new Audio('Assets/se1.mp3'); 
+const se2 = new Audio('Assets/se2.mp3'); 
+const se3 = new Audio('Assets/se3.mp3'); 
+const se4 = new Audio('Assets/se4.mp3'); 
+const se5 = new Audio('Assets/se5.mp3'); 
+const se6 = new Audio('Assets/se6.mp3'); 
+const se7 = new Audio('Assets/se7.mp3'); 
+
+const soundEffects = [se1, se2, se3, se4, se5, se6, se7]; 
+
+se2.volume = 0.8; 
+function playSoundEffect() { 
+    const random = Math.floor(Math.random()*soundEffects.length); 
+    const randomSound = soundEffects[random]; 
+    randomSound.play(); 
+}
+
+
 function startAudio() {
   bgMusic.play()
     .then(() => {
@@ -568,3 +609,11 @@ function startAudio() {
 }
 
 window.addEventListener("DOMContentLoaded", startAudio); 
+
+const detailButtons = document.getElementsByClassName("detail-buttons"); 
+
+for(let i = 0; i<detailButtons.length; i++) { 
+    detailButtons[i].addEventListener("click", function() { 
+        se2.play(); 
+    }); 
+}
