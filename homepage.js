@@ -71,11 +71,11 @@ const addButton = document.getElementById("ba-add");
 const addButton2 = document.getElementById("ba-add2");
 
 addButton2.addEventListener("click", function() { 
-    window.location.href = "wish.html"; 
+    window.location.href = "payment.html"; 
 });
 
 addButton.addEventListener("click", function() { 
-    window.location.href = "wish.html"; 
+    window.location.href = "payment.html"; 
 }); 
 
 profileDropDown.addEventListener("click", function() { 

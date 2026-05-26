@@ -68,12 +68,14 @@ shopErrorButton.addEventListener("click", function() {
 }); 
 
 xButton.addEventListener("click", function() { 
-    window.history.back(); 
+    window.location.href = "homepage.html";  
 }); 
 
 wishButton1.addEventListener("click", function() {
 
-    se2.play(); 
+    const soundEffect = new Audio("Assets/se2.mp3"); 
+    soundEffect.volume = 0.8;
+    soundEffect.play(); 
 
     if(cvsuGems >= 1){ 
 
@@ -135,7 +137,10 @@ function insertCharactersIntoDatabase(characters) {
 
 function multipull(){ 
 
-    se2.play(); 
+    const soundEffect = new Audio("Assets/se2.mp3"); 
+    soundEffect.volume = 0.8; 
+    soundEffect.play(); 
+
     bgMusic.pause(); 
 
     if(cvsuGems >= 10) { 
@@ -319,7 +324,9 @@ function displayStars(character, container){
 }
 
 jaysonBox.addEventListener("click", function() {
-    se2.play(); 
+    const soundEffect = new Audio("Assets/se2.mp3"); 
+    soundEffect.volume = 0.8;
+    soundEffect.play(); 
 
     jamesBox.classList.remove("active-banner"); 
     demyBox.classList.remove("active-banner"); 
@@ -348,7 +355,9 @@ jaysonBox.addEventListener("click", function() {
 }); 
 
 demyBox.addEventListener("click", function() {
-    se2.play(); 
+    const soundEffect = new Audio("Assets/se2.mp3"); 
+    soundEffect.volume = 0.8;
+    soundEffect.play(); 
 
     jamesBox.classList.remove("active-banner"); 
     jaysonBox.classList.remove("active-banner"); 
@@ -376,7 +385,9 @@ demyBox.addEventListener("click", function() {
 }); 
 
 jamesBox.addEventListener("click", function() {
-    se2.play(); 
+    const soundEffect = new Audio("Assets/se2.mp3"); 
+    soundEffect.volume = 0.8; 
+    soundEffect.play(); 
 
     jamesBox.classList.add("active-banner"); 
     demyBox.classList.remove("active-banner"); 
@@ -615,6 +626,8 @@ const detailButtons = document.getElementsByClassName("detail-buttons");
 
 for(let i = 0; i<detailButtons.length; i++) { 
     detailButtons[i].addEventListener("click", function() { 
-        se2.play(); 
+        const soundEffect = new Audio("Assets/se2.mp3"); 
+        soundEffect.volume = 0.8;
+        soundEffect.play();  
     }); 
 }

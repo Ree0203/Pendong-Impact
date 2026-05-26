@@ -21,7 +21,11 @@ let gems = 0;
 const xButton = document.getElementById("x-icon"); 
 
 xButton.addEventListener("click", function() { 
-    window.history.back(); 
+    if(document.referrer){ 
+        window.location.href = document.referrer
+    } else { 
+        window.location.href = "homepage.html"
+    }
 }); 
 
 confirmBack.addEventListener("click", hideConfirmContainer); 
