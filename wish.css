@@ -46,6 +46,7 @@ body {
 }
 .banner-box:hover { 
     background-color: #00df6c80;
+    cursor: pointer;
 }
 
 #selected-banner { 
@@ -98,7 +99,8 @@ body {
 
 
 .detail-buttons-container button:hover { 
-    border: 3px rgb(255, 255, 255, 0.8) solid; 
+    border: 3px rgb(255, 255, 255, 0.8) solid;
+    cursor: pointer;
 }
 
 .detail-buttons-container button:active { 
@@ -148,6 +150,7 @@ body {
 .wish-buttons:hover {
     background-color: white;
     border: 3px #00df6d solid;
+    cursor: pointer;
 }
 
 .wish-buttons:active { 
@@ -243,6 +246,7 @@ body {
 .purchase:hover { 
     box-shadow: 0 0 5px 5px rgba(252, 252, 252, 0.582);
     transition: 0.3s all;
+    cursor: pointer;
 }
 
 .slider-title {
@@ -348,6 +352,7 @@ body {
 .slider::-webkit-slider-thumb:hover { 
     box-shadow: 0 0 0 3px #00df6d,
                 0 0 0 6px white; 
+    cursor: pointer;
 }
 
 .slider::-webkit-slider-thumb:active { 
@@ -445,6 +450,7 @@ body {
 
 .slider-buttons button:hover { 
     border: 3px solid rgba(31, 77, 27, 0.637);
+    cursor: pointer;
 }
 
 .slider-buttons button:active { 

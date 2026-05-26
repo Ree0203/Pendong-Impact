@@ -171,6 +171,7 @@
             favorites = await response3.json();
 
             displayAccountInfo(account, owned, favorites);
+            document.title = `${account.username}${(account.username.endsWith('s')) ? "'" : "'s"} Profile`;
 
             if(sessionId === userId) {
             setupOverlayMenu(allCharacters, owned);
@@ -181,6 +182,7 @@
             messageBox.addEventListener('blur', saveMessage);
             messageBox.classList.add('change');
             messageBox.disabled = false;
+            document.title = 'Your Profile';
             }
         }
 

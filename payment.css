@@ -114,6 +114,7 @@ hr {
 }
 .exchange:hover { 
     box-shadow: 0 0 0 7px #00df6d;
+    cursor: pointer;
 }
 
 .exchange { 
@@ -271,6 +272,7 @@ hr {
 
 .button-container button:hover { 
     border: 3px #00df6d solid;
+    cursor: pointer;
 }
 
 .confirm-button { 
@@ -296,6 +298,7 @@ hr {
 
 .confirm:hover { 
     border: 3px rgb(255, 255, 255, 0.8) solid;
+    cursor: pointer;
 }
 
 .confirm:active { 
@@ -332,6 +335,7 @@ hr {
 
 .x-button:hover { 
     border: 3px solid rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .x-button:active { 
@@ -372,6 +376,7 @@ hr {
 
 #payment-x:hover { 
     border: 3px solid #034d26a8;
+    cursor: pointer;
 }
 
 #payment-x:active { 

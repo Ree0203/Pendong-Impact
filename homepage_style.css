@@ -642,10 +642,36 @@ body {
   left: 25%;
   right: 25%;
   padding: 20px 20px 20px 20px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .visit-menu-container.show {
   display: flex;
+  animation: showVisit 0.5s ease;
+}
+
+@keyframes showVisit {
+  0% {
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+  }
+
+  50% {
+    top: 20%;
+    left: 43%;
+    right: 43%;
+    bottom: 20%;
+  }
+
+  100% {
+    top: 20%;
+    bottom: 20%;
+    left: 25%;
+    right: 25%;
+  }
 }
 
 #visit-menu-title {
@@ -783,10 +809,19 @@ body {
 .visit-profile-button {
   height: 50%;
   width: auto;
+  cursor: pointer;
+}
+
+.visit-profile-button:hover {
+  filter: brightness(90%);
+}
+
+.visit-profile-button:active {
+  filter: brightness(80%);
 }
 
 
-/* ── CONSOLIDATED RESPONSIVE MEDIA QUERIES ── */
+
 @media(max-width:800px) {
   #bottom-hud-layer { 
     padding: 0 20px; 

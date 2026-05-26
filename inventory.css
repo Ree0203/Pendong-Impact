@@ -51,6 +51,7 @@ header {
 
 .x-button:hover { 
     border: 3px solid rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .x-button:active { 
@@ -107,6 +108,7 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     transition: 0.3s all; 
+    cursor: pointer;
 }
 
 .student-list-square.click {
@@ -270,6 +272,7 @@ main {
 
 .info-details-button:hover {
     background-color: #d8d8d8;
+    cursor: pointer;
 }
 
 .info-details-button:active {

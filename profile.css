@@ -56,6 +56,7 @@ header h1 {
 
 .x-button:hover { 
     border: 3px solid rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 .x-button:active { 
@@ -100,6 +101,7 @@ main {
 
 .profile-pic:hover.change {
     filter: brightness(90%);
+    cursor: pointer;
 }
 
 
@@ -185,6 +187,7 @@ main {
 
 .student-showcase-down:hover.change div {
     filter: brightness(90%);
+    cursor: pointer;
 }
 
 .student-showcase-down:active.change div {
@@ -294,6 +297,7 @@ main {
 
 .overlay-menu-student-square:hover {
     filter: brightness(90%);
+    cursor: pointer;
 }
 
 .overlay-menu-student-square:active {
@@ -363,6 +367,7 @@ main {
 
 #confirm-button:hover {
     background-color: #00eb71;
+    cursor: pointer;
 }
 
 #confirm-button:active {
@@ -371,6 +376,7 @@ main {
 
 #confirm-button.blocked {
     background-color: #3f3f3f;
+    cursor: default;
 }
 
 #cancel-button {
@@ -379,6 +385,7 @@ main {
 
 #cancel-button:hover {
     background-color: #ff5454;
+    cursor: pointer;
 }
 
 #cancel-button:active {
