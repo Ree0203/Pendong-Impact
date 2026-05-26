@@ -21,21 +21,12 @@ let gems = 0;
 const xButton = document.getElementById("x-icon"); 
 
 xButton.addEventListener("click", function() { 
-<<<<<<< HEAD
-    if(document.referrer){ 
-        window.location.href = document.referrer
-    } else { 
-        window.location.href = "homepage.html"
-    }
-}); 
-=======
     window.history.back(); 
 });
 
 window.addEventListener('pageshow',(e) => {
   if (e.persisted) window.location.reload();
 });
->>>>>>> 36a56b70abf6b7a54268cfc8611131871ef71003
 
 confirmBack.addEventListener("click", hideConfirmContainer); 
 
