@@ -68,7 +68,12 @@ shopErrorButton.addEventListener("click", function() {
 }); 
 
 xButton.addEventListener("click", function() { 
-    window.location.href = "homepage.html";  
+    const soundEffect = new Audio("Assets/se2.mp3"); 
+    soundEffect.play(); 
+
+    setTimeout(() => {
+        window.location.href = "homepage.html"; 
+    },300);
 }); 
 
 wishButton1.addEventListener("click", function() {
@@ -287,6 +292,10 @@ function renderImage() {
         img.classList.add("fade-in");
     }, 10);
 
+    setTimeout(() => { 
+        const soundEffect = new Audio("Assets/obtained-sound.mp3"); 
+        soundEffect.play();
+    }, 50); 
     
     container.onclick = (e) => { 
         e.stopPropagation(); 
@@ -324,7 +333,7 @@ function displayStars(character, container){
 }
 
 jaysonBox.addEventListener("click", function() {
-    const soundEffect = new Audio("Assets/se2.mp3"); 
+    const soundEffect = new Audio("Assets/se8.mp3"); 
     soundEffect.volume = 0.8;
     soundEffect.play(); 
 
@@ -355,7 +364,7 @@ jaysonBox.addEventListener("click", function() {
 }); 
 
 demyBox.addEventListener("click", function() {
-    const soundEffect = new Audio("Assets/se2.mp3"); 
+    const soundEffect = new Audio("Assets/se8.mp3"); 
     soundEffect.volume = 0.8;
     soundEffect.play(); 
 
@@ -385,7 +394,7 @@ demyBox.addEventListener("click", function() {
 }); 
 
 jamesBox.addEventListener("click", function() {
-    const soundEffect = new Audio("Assets/se2.mp3"); 
+    const soundEffect = new Audio("Assets/se8.mp3"); 
     soundEffect.volume = 0.8; 
     soundEffect.play(); 
 
