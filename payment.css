@@ -113,8 +113,8 @@ hr {
     transform: scale(.95);
 }
 .exchange:hover { 
-    box-shadow: 0 0 0 7px #00df6d;
     cursor: pointer;
+    transform: translateY(-10px);
 }
 
 .exchange { 
