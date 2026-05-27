@@ -434,7 +434,7 @@ amountdiv.textContent = 0;
 addGemButton.addEventListener("click", function() { 
 
     se2.play(); 
-    slider.value = 50;
+    slider.value = 0;
     maxValue = Math.floor(cvsuCoinsValue/100); 
 
     conversionamount = Math.floor((slider.value/100)*maxValue); 
