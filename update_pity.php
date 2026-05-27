@@ -6,27 +6,43 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: homepage.html');
     exit;
 }
-
 require_once("database.php"); 
+header('Content-Type: application/json');
 
 $user_id = $_SESSION['userId']; 
 
 $data = json_decode(file_get_contents('php://input'), true); 
 
-$pity = $data['pity']; 
+// 3. Cast to integer and default to 0 if missing
+$pity= isset($data['pity']) ? (int)$data['pity'] : 0; 
 
-$stmt = $conn->prepare("UPDATE user_currency SET pity = ? WHERE user_id = ?");
-$stmt->bind_param("ii", $pity, $user_id); 
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-if($stmt->execute()) { 
+try {
+    $conn->begin_transaction();
+
+    $query = "UPDATE user_currency 
+              SET pity = ? 
+              WHERE user_id = ?";
+              
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ii", $pity, $user_id); 
+
+    $stmt->execute();
+
+    $conn->commit();
+
     echo json_encode([
         "status" => "success",
-        "message" => "pity set successful"
+        "message" => "pity updated successfully"
     ]); 
-} else { 
+
+} catch (Exception $e) {
+    $conn->rollback();
+
     echo json_encode([
         "status" => "error",
-        "message" => "there was an error during setting of pity"
+        "message" => "there was an error updating pity"
     ]);
 }
 ?>
