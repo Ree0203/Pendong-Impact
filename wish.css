@@ -481,7 +481,6 @@ body {
 
 .demy-container img { 
     width: 100%;
-    height: 70%;
 }
 
 .jayson-container img { 
@@ -914,6 +913,52 @@ body {
     transform: translateX(0); 
 }
 
+@media (max-width: 1552px), (max-height:762px){
+    .full-name-demy { 
+        font-size: 1.2rem !important;
+    }
 
+    .jayson-title, .demy-title, .james-title { 
+        width: 30%;
+    }
+}
 
+@media (max-width: 1244px) {
+    .full-name-demy { 
+        font-size: 1rem !important;
+    }
+
+    .guarantee-description span { 
+        font-size: 0.9rem;
+    }
+
+    .jayson-title, .demy-title, .james-title { 
+        width: 50%;
+    }
+}
+
+@media (max-width:1024px) { 
+    #bannerDescDemy { 
+        display: none !important;
+    }
+
+    .jayson-title, .demy-title, .james-title { 
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .demy-hero-banner, .jayson-hero-banner, .james-hero-banner{ 
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    .demy-name-container, .jayson-name-container, .james-name-container { 
+        
+    }
+
+}
 
