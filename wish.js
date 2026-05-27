@@ -112,7 +112,7 @@ let selectedCharactersNoTrash = [];
 function filterTrashFromCharacters(selectedCharacters){ 
     selectedCharactersNoTrash = []; 
     for(let i = 0; i<selectedCharacters.length; i++) { 
-        if(selectedCharacters[i].name !== "trash") { 
+        if(selectedCharacters[i].name !== "Trash") { 
             selectedCharactersNoTrash.push(selectedCharacters[i]); 
         }
     }
@@ -434,7 +434,7 @@ amountdiv.textContent = 0;
 addGemButton.addEventListener("click", function() { 
 
     se2.play(); 
-    slider.value = 0;
+    slider.value = 50;
     maxValue = Math.floor(cvsuCoinsValue/100); 
 
     conversionamount = Math.floor((slider.value/100)*maxValue); 
