@@ -152,7 +152,7 @@ function getAccount() {
     .then(response => response.json())
     .then(data => { 
         username = data.username; 
-        userId = 202600256269 + data.user_id; 
+        userId = 202600569810 + data.user_id; 
         profilePic = data.profile_pic; 
 
         setProfile(username, userId, profilePic); 
@@ -196,7 +196,7 @@ function displayPlayers(accounts) {
         playerCardClone.dataset.userId = account.user_id;
         clonePicture.style.backgroundImage = `url('Assets/${account.profile_pic}')`
         cloneUsername.textContent = account.username;
-        cloneUserId.textContent = 202600256269 + account.user_id;
+        cloneUserId.textContent = 202600569810 + account.user_id;
         cloneOnline.textContent = getLastLogin(account.last_login);
         
         cloneButton.addEventListener('click', () => window.location.href = `profile.html?id=${account.user_id}`);
