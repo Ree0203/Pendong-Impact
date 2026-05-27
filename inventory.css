@@ -260,6 +260,7 @@ main {
     display: grid;
     margin: 0.625rem 1.25rem;
     grid-template-rows: 2.5rem 1fr;
+    min-height: 0;
 }
 
 .student-info-details-buttons {
@@ -292,6 +293,7 @@ main {
 .student-info-details-content {
     margin: 0.3125rem 0.625rem;
     text-align: justify;
+    overflow-y: auto;
 }
 
 .student-info-details-content.hidden {
