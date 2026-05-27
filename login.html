@@ -77,6 +77,24 @@
         .toggle-text { text-align: center; margin-top: 15px; font-size: 0.85rem; }
         .toggle-text span { color: #25723f; cursor: pointer; font-weight: bold; }
         .hidden { display: none; }      
+
+        .title { 
+            width: 50%;
+            height: 15%;
+            position: absolute;
+            top: 20%;
+            right: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .title img{ 
+            position: absolute; 
+            color: #333;
+            width: 50%;
+        }
     </style>
 </head>
 <body>
@@ -84,6 +102,9 @@
     <img src="Assets/cross-icon.svg" class="uni-modal-icon"><h4 class="uni-modal-message">Please fill up all fields.</h4>
 </div>
 
+<div class="title">
+    <img src="Assets/title-logo.png" alt="">
+</div>
 <div class="form-container">
     <div id="login-section">
         <h2>Login</h2>
