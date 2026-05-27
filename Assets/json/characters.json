@@ -41,7 +41,7 @@
 
     {
         "firstName": "Tayog",
-        "quote": "\"Don't judge the book by it's cover. Put your hand inside and discover.\"",
+        "quote": "\"Saksi ang butiki,fetc Sa aking pag ngiti, Saksi din ang ipis, Kung gaano kita namimiss\"",
         "skillName": "Memory Leak",
         "skillDesc": "Tayog executes a poorly managed system command that fails to release allocated hardware resources. A continuous wave of digital fragmentation spreads outward, hitting the entire enemy lineup. This unresolved loop forces the targets to take damage immediately upon activation. The lingering system instability continues to deal damage at the start of every turn. This continuous damage over time persists for a total duration of 3 turns.",
         "backgroundInfo": "A senior specializing in Systems Programming. He writes everything in C or Assembly, absolutely loathes Python, and judges anyone who uses a heavy modern IDE instead of coding directly in the terminal using Vim."

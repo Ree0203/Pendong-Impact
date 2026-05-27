@@ -191,7 +191,9 @@ function singlePull(){
 
     showImages(selectedCharacters); 
 
-    insertCharactersIntoDatabase(selectedCharacters); 
+    filterTrashFromCharacters(selectedCharacters);
+
+    insertCharactersIntoDatabase(selectedCharactersNoTrash); 
 }
 
 function pullCharacter() { 
