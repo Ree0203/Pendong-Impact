@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2026 at 12:03 PM
+-- Generation Time: May 27, 2026 at 09:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `pendong_impact`
 --
+CREATE DATABASE IF NOT EXISTS `pendong_impact` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `pendong_impact`;
 
 -- --------------------------------------------------------
 
@@ -33,17 +35,49 @@ CREATE TABLE `accounts` (
   `password` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `date_created` date NOT NULL DEFAULT current_timestamp(),
-  `profile_pic` varchar(50) DEFAULT NULL
+  `profile_pic` varchar(50) DEFAULT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `wins` int(11) DEFAULT NULL,
+  `loses` int(11) DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `accounts`
 --
 
-INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_created`, `profile_pic`) VALUES
-(10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', NULL),
-(17, 'Ryan', '$2y$10$qatTKjgJWttWQYliT1i1KO7MyKMJLC3gFDf.y.1NGnQ4M9/m4/H.i', 'ryan@gmail.com', '2026-05-14', NULL),
-(18, 'Ryan', '$2y$10$YTjVQYeUgqsIGpWtsG6Hee.ZxFn.d8RQZLbUoB49J8Ywz3O5DeXbq', 'ryan1@gmail.com', '2026-05-14', NULL);
+INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_created`, `profile_pic`, `message`, `wins`, `loses`, `last_login`) VALUES
+(10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', 'default-profile.png', NULL, NULL, NULL, NULL),
+(17, 'Ryan', '$2y$10$qatTKjgJWttWQYliT1i1KO7MyKMJLC3gFDf.y.1NGnQ4M9/m4/H.i', 'ryan@gmail.com', '2026-05-14', 'default-profile.png', NULL, NULL, NULL, NULL),
+(18, 'Ryan', '$2y$10$YTjVQYeUgqsIGpWtsG6Hee.ZxFn.d8RQZLbUoB49J8Ywz3O5DeXbq', 'ryan1@gmail.com', '2026-05-14', 'default-profile.png', NULL, NULL, NULL, NULL),
+(20, 'ryry', '$2y$10$LLZGmKlocy8zNeGKEpjIRO6LAEMYRcEUqkoPuSUBiSxjP5a5KyPBW', 'ryry@gmail.com', '2026-05-16', 'default-profile.png', NULL, NULL, NULL, NULL),
+(21, 'Reee', '$2y$10$MQ3VtrQnwymA84oSCjnMNOOkT6/KUXQKtAhWi8.vyDho.ZOvSksE2', 'Reee@gmail.com', '2026-05-23', 'jayson.png', 'alksdjf', NULL, NULL, '2026-05-27 12:37:44'),
+(22, 'lawrence', '$2y$10$KBEW8IjK/cwN0dWDX0nJc.aoqkGlAqJzrBePZA4.bCilrnVfTY6LG', 'lawrence@gmail.com', '2026-05-23', 'default-profile.png', NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_favorites`
+--
+
+CREATE TABLE `account_favorites` (
+  `user_id` int(11) NOT NULL,
+  `position` int(11) NOT NULL,
+  `character_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `account_favorites`
+--
+
+INSERT INTO `account_favorites` (`user_id`, `position`, `character_id`) VALUES
+(4, 1, 1),
+(21, 5, 1),
+(21, 4, 2),
+(4, 2, 3),
+(21, 1, 3),
+(21, 2, 5),
+(21, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -95,7 +129,48 @@ CREATE TABLE `inventory` (
 --
 
 INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
-(18, 6, '2026-05-16');
+(10, 2, '2026-05-23'),
+(10, 3, '2026-05-23'),
+(10, 5, '2026-05-23'),
+(10, 6, '2026-05-23'),
+(10, 7, '2026-05-23'),
+(10, 8, '2026-05-23'),
+(10, 9, '2026-05-23'),
+(10, 10, '2026-05-23'),
+(18, 1, '2026-05-16'),
+(18, 2, '2026-05-16'),
+(18, 3, '2026-05-16'),
+(18, 5, '2026-05-16'),
+(18, 6, '2026-05-16'),
+(18, 7, '2026-05-16'),
+(18, 8, '2026-05-16'),
+(18, 9, '2026-05-16'),
+(18, 10, '2026-05-16'),
+(20, 1, '2026-05-23'),
+(20, 2, '2026-05-23'),
+(20, 5, '2026-05-23'),
+(20, 6, '2026-05-23'),
+(20, 7, '2026-05-23'),
+(20, 9, '2026-05-23'),
+(20, 10, '2026-05-23'),
+(21, 1, '2026-05-23'),
+(21, 2, '2026-05-23'),
+(21, 3, '2026-05-23'),
+(21, 5, '2026-05-23'),
+(21, 6, '2026-05-23'),
+(21, 7, '2026-05-23'),
+(21, 8, '2026-05-23'),
+(21, 9, '2026-05-23'),
+(21, 10, '2026-05-23'),
+(22, 1, '2026-05-23'),
+(22, 2, '2026-05-23'),
+(22, 3, '2026-05-23'),
+(22, 5, '2026-05-23'),
+(22, 6, '2026-05-23'),
+(22, 7, '2026-05-23'),
+(22, 8, '2026-05-23'),
+(22, 9, '2026-05-23'),
+(22, 10, '2026-05-23');
 
 -- --------------------------------------------------------
 
@@ -106,16 +181,22 @@ INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
 CREATE TABLE `user_currency` (
   `user_id` int(11) NOT NULL,
   `gems` int(11) DEFAULT NULL,
-  `coins` int(11) DEFAULT NULL
+  `coins` int(11) DEFAULT NULL,
+  `pity` int(11) DEFAULT NULL,
+  `four_star_pity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user_currency`
 --
 
-INSERT INTO `user_currency` (`user_id`, `gems`, `coins`) VALUES
-(17, 0, 0),
-(18, 60, 0);
+INSERT INTO `user_currency` (`user_id`, `gems`, `coins`, `pity`, `four_star_pity`) VALUES
+(10, 222, 0, 7, 1),
+(17, 0, 0, 0, 0),
+(18, 0, 0, 0, 0),
+(20, 42, 100, 1, 0),
+(21, 31, 148000, 74, 1),
+(22, 110, 0, 65, 5);
 
 --
 -- Indexes for dumped tables
@@ -127,6 +208,14 @@ INSERT INTO `user_currency` (`user_id`, `gems`, `coins`) VALUES
 ALTER TABLE `accounts`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `emailunique` (`email`);
+
+--
+-- Indexes for table `account_favorites`
+--
+ALTER TABLE `account_favorites`
+  ADD PRIMARY KEY (`user_id`,`position`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`character_id`),
+  ADD KEY `character_id` (`character_id`);
 
 --
 -- Indexes for table `characters`
@@ -155,7 +244,7 @@ ALTER TABLE `user_currency`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `characters`
