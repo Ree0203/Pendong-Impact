@@ -1,26 +1,73 @@
 [
     {
         "firstName": "Jayson",
-        "quote": "\"Become the person you want to be!\"",
+        "quote": "\"Nganong nabuhat man to nimo nako?\"",
         "skillName": "Mondejar's Nature",
-        "skillDesc": "Jayson calls upon the spirit of Mondejar and fills himself with Spanish power. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia.",
+        "skillDesc": "Jayson calls upon the spirit of Mondejar and fills himself with Spanish power. With the blessing of Pendong, naghatag siya og dakong kadaot nga nakapildi sa tanan niyang mga kaaway tungod kay dako siyag kinatawo.",
         "backgroundInfo": "Jayson is a good good good good boy. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia."
     },
 
     {
         "firstName": "Demy",
-        "quote": "\"To be or not to be, that is the question.\"",
+        "quote": "\"Ang simoy ng hangin, bulong ay matapat. Sa pusong nagmamahal, ikaw lang ang sapat\"",
         "skillName": "Gambler's Luck",
         "skillDesc": "Demy manifests all of his luck into a powerful attack. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia.",
         "backgroundInfo": "Demy is the leader of Daddy Demy Supporter (DDS). Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia."
     },
 
     {
-        "firstName": "Johanes",
+        "firstName": "James",
         "quote": "\"An apple a day keeps the doctors away.\"",
-        "skillName": "Money Bags",
-        "skillDesc": "Johanes calls his private helicopter to drop a goonillion dollars on top of the enemy. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia.",
-        "backgroundInfo": "Johanes Lawrence Sia Antonio Bustaleno Scott Leyran III The Third is a master coder. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit possimus delectus repellendus accusantium nobis fugiat aliquam non ratione? Quibusdam error voluptates consectetur ratione repellendus esse totam earum perspiciatis odit officia."
-    }
+        "skillName": "Zero-Day Exploit",
+        "skillDesc": "James opens his terminal to isolate a vulnerability in the enemy's formation. He fires a concentrated burst of data packets directly at a single target. The overwhelming stream of information overloads the target's systems, dealing heavy single-target damage. This intense disruption causes the enemy to lag behind, reducing their overall movement Marcus for 2 turns. The skill scales directly with James' primary attack power attribute.",
+        "backgroundInfo": "A freshman prodigy who treats the dark web like his personal playground. James rarely attends lectures in person, preferring to compromise the campus server from his dorm room just to change his attendance records to \"Present.\""
+    },
 
+    {
+        "firstName": "Ryan",
+        "quote": "\"Ang pag-ibig ay parang utot. Kapag pwinersa, tae ang resulta.\"",
+        "skillName": "Dark Mode Toggle",
+        "skillDesc": "Ryan triggers a sweeping visual update that forces the entire battlefield into dark mode. A sudden shockwave of energy sweeps across the screen, dealing damage to all enemies simultaneously. The sleek and optimized interface immediately clears up any clutter for his team members. With the distraction removed, all allies find it much easier to pinpoint enemy weak points. This optimal layout increases the entire party's critical hit rate for 2 turns.",
+        "backgroundInfo": "A sophomore front-end developer who refuses to look at poorly designed websites. He is impeccably dressed, carries a color-palette swatch book in his backpack, and can talk for hours about why Comic Sans is a crime against humanity."
+    },
+
+    {
+        "firstName": "Johanes",
+        "quote": "\"To be or not to be, that is the question.\"",
+        "skillName": "Crunch Time",
+        "skillDesc": "Johan channels the raw panic of an imminent project deadline to push past his normal human limits. He enters a state of absolute focus, instantly boosting his overall combat readiness. His physical attack power is significantly increased for the next 2 turns. Additionally, his attack Marcus receives a massive percentage increase during this frantic state. This self-buff allows him to unleash rapid strikes before the effect naturally expires.",
+        "backgroundInfo": "A junior in the Game Development track. Johan lives on energy drinks, instant ramen, and pure spite. He hasn't seen sunlight in three weeks because his team is trying to launch their senior capstone indie game on Steam."
+    },
+
+    {
+        "firstName": "Tayog",
+        "quote": "\"Don't judge the book by it's cover. Put your hand inside and discover.\"",
+        "skillName": "Memory Leak",
+        "skillDesc": "Tayog executes a poorly managed system command that fails to release allocated hardware resources. A continuous wave of digital fragmentation spreads outward, hitting the entire enemy lineup. This unresolved loop forces the targets to take damage immediately upon activation. The lingering system instability continues to deal damage at the start of every turn. This continuous damage over time persists for a total duration of 3 turns.",
+        "backgroundInfo": "A senior specializing in Systems Programming. He writes everything in C or Assembly, absolutely loathes Python, and judges anyone who uses a heavy modern IDE instead of coding directly in the terminal using Vim."
+    },
+
+    {
+        "firstName": "Lawrence",
+        "quote": "\"Kapag ang palay naging bigas, may bumayo.\"",
+        "skillName": "Venture Capital",
+        "skillDesc": "Lawrence secures a massive round of venture capital funding to invest directly into the battlefield. He scans the current party metrics to find the most profitable asset on the team. He then allocates all of the gained resources to the ally with the highest current damage output. This sudden financial injection grants that specific teammate a massive boost to their attack power. The attack power increase lasts for 2 full rounds before the funding round closes.",
+        "backgroundInfo": "A junior who balances his CS classes with running three separate 'AI-powered Web3' startups out of his dorm. He wears black turtlenecks even in the dead of summer and always talks about his path to seed funding."
+    },
+
+    {
+        "firstName": "Chlowen",
+        "quote": "\"The unexamined life is not worth living.\"",
+        "skillName": "Neural Overdrive",
+        "skillDesc": "Chlowen connects his team to a highly optimized predictive neural network. The algorithm instantly calculates every potential incoming threat from the enemy's side. Using these data models, the defensive capabilities of all active allies are significantly increased. The entire party gains enhanced physical armor and magical resistance values. This protective predictive barrier remains active for a total of 2 turns.",
+        "backgroundInfo": "A brilliant senior Pre-Ph.D. student whose life revolves around training massive machine learning models. He balances a flawless 4.0 GPA with a severe coffee addiction, and treats his liquid-cooled GPU cluster better than most people treat their pets."
+    },
+
+    {
+        "firstName": "Marcus",
+        "quote": "\"I think, therefore I am.\"",
+        "skillName": "Greedy Algorithm",
+        "skillDesc": "Marcus runs a highly optimized algorithm designed to find the most immediate, optimal path to victory. He locks onto a single enemy target and delivers a devastating, calculated strike. This attack calculates its base damage directly from Marcus's current attack stat. If the chosen target's health pool is already below 50%, the algorithm triggers a bonus calculation multiplier. This bonus inflicts a large amount of additional raw damage to efficiently execute the target.",
+        "backgroundInfo": "A sophomore obsessed with LeetCode and international coding tournaments. He thinks strictly in data structures and measures the success of his day by how many algorithmic problems he managed to speedrun between classes."
+    }
 ]
