@@ -1,7 +1,7 @@
 * {
     font-family: Lexend;
     margin: 0;
-    box-sizing: border-box; /* Crucial to keep padding from altering block sizes */
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -20,10 +20,10 @@
 body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the body covers the full screen height */
+    min-height: 100vh;
     margin: 0;
     position: relative;
-    background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%); /* Background moved here */
+    background: linear-gradient(135deg, #e0f2fe 0%, #f0fdf4 100%);
 }
 
 header {
@@ -75,15 +75,14 @@ main {
     gap: 40px;
     padding: 8vh 8vw;
     min-height: 0;
-    align-items: stretch; 
-    /* Remove the background line from here */
+    align-items: stretch;
 }
 
 .main-left {
     display: flex;
     flex-direction: column;
     gap: 25px;
-    justify-content: flex-start; /* Keeps items naturally sized and packed at the top */
+    justify-content: flex-start;
 }
 
 .profile {
@@ -227,7 +226,6 @@ main {
     font-weight: 500;
 }
 
-/* Fixes the HTML inner wrapper block size */
 .student-showcase > div:last-child {
     width: 100%;
 }
@@ -247,7 +245,7 @@ main {
 }
 
 .student-showcase-down div {
-    aspect-ratio: 1/1; /* Maintained perfect 1:1 square aspect ratio */
+    aspect-ratio: 1/1;
     min-height: 0;
     min-width: 0;
     background-color: #cbd5e1;
@@ -267,12 +265,12 @@ main {
 
 .main-right textarea {
     background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #b8ffdf;
+    border: 2px solid #00b155;
     outline: none;
     border-radius: 20px;
     resize: none;
     width: 100%;
-    flex-grow: 1; /* Instructs the textarea directly to expand down to the exact bottom line */
+    flex-grow: 1;
     font-size: 30px; 
     padding: 25px;
     color: #334155;
@@ -298,7 +296,6 @@ main {
     box-shadow: 0 0 0 4px rgba(0, 117, 61, 0.15);
 }
 
-/* Character Selection Modal Interface */
 .overlay {
     position: absolute;
     height: 100vh;
