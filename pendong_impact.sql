@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2026 at 09:11 AM
+-- Generation Time: May 27, 2026 at 01:04 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,30 +29,19 @@ USE `pendong_impact`;
 -- Table structure for table `accounts`
 --
 
+DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
   `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(50) NOT NULL,
   `date_created` date NOT NULL DEFAULT current_timestamp(),
-  `profile_pic` varchar(50) DEFAULT NULL,
-  `message` varchar(255) DEFAULT NULL,
-  `wins` int(11) DEFAULT NULL,
-  `loses` int(11) DEFAULT NULL,
-  `last_login` datetime DEFAULT NULL
+  `last_login` datetime NOT NULL DEFAULT current_timestamp(),
+  `profile_pic` varchar(50) NOT NULL DEFAULT 'default-profile.png',
+  `message` varchar(255) DEFAULT 'Hello! This is my profile!',
+  `wins` int(11) NOT NULL DEFAULT 0,
+  `loses` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `accounts`
---
-
-INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_created`, `profile_pic`, `message`, `wins`, `loses`, `last_login`) VALUES
-(10, 'Brostic', '$2y$10$I4Rxt.IiSlbW.Imxlta4s.t5Qdwor43OXsLcNyY9LtHYQIzs03A0a', 'Brostic@gmail.com', '2026-05-11', 'default-profile.png', NULL, NULL, NULL, NULL),
-(17, 'Ryan', '$2y$10$qatTKjgJWttWQYliT1i1KO7MyKMJLC3gFDf.y.1NGnQ4M9/m4/H.i', 'ryan@gmail.com', '2026-05-14', 'default-profile.png', NULL, NULL, NULL, NULL),
-(18, 'Ryan', '$2y$10$YTjVQYeUgqsIGpWtsG6Hee.ZxFn.d8RQZLbUoB49J8Ywz3O5DeXbq', 'ryan1@gmail.com', '2026-05-14', 'default-profile.png', NULL, NULL, NULL, NULL),
-(20, 'ryry', '$2y$10$LLZGmKlocy8zNeGKEpjIRO6LAEMYRcEUqkoPuSUBiSxjP5a5KyPBW', 'ryry@gmail.com', '2026-05-16', 'default-profile.png', NULL, NULL, NULL, NULL),
-(21, 'Reee', '$2y$10$MQ3VtrQnwymA84oSCjnMNOOkT6/KUXQKtAhWi8.vyDho.ZOvSksE2', 'Reee@gmail.com', '2026-05-23', 'jayson.png', 'alksdjf', NULL, NULL, '2026-05-27 12:37:44'),
-(22, 'lawrence', '$2y$10$KBEW8IjK/cwN0dWDX0nJc.aoqkGlAqJzrBePZA4.bCilrnVfTY6LG', 'lawrence@gmail.com', '2026-05-23', 'default-profile.png', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -60,24 +49,12 @@ INSERT INTO `accounts` (`user_id`, `username`, `password`, `email`, `date_create
 -- Table structure for table `account_favorites`
 --
 
+DROP TABLE IF EXISTS `account_favorites`;
 CREATE TABLE `account_favorites` (
   `user_id` int(11) NOT NULL,
   `position` int(11) NOT NULL,
   `character_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `account_favorites`
---
-
-INSERT INTO `account_favorites` (`user_id`, `position`, `character_id`) VALUES
-(4, 1, 1),
-(21, 5, 1),
-(21, 4, 2),
-(4, 2, 3),
-(21, 1, 3),
-(21, 2, 5),
-(21, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -85,13 +62,14 @@ INSERT INTO `account_favorites` (`user_id`, `position`, `character_id`) VALUES
 -- Table structure for table `characters`
 --
 
+DROP TABLE IF EXISTS `characters`;
 CREATE TABLE `characters` (
   `character_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `rarity` int(11) NOT NULL,
   `attack` int(11) NOT NULL,
-  `defense` int(11) DEFAULT NULL,
+  `defense` int(11) NOT NULL,
   `speed` int(11) NOT NULL,
   `luck` int(11) NOT NULL,
   `picture` varchar(50) DEFAULT NULL
@@ -102,15 +80,15 @@ CREATE TABLE `characters` (
 --
 
 INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `attack`, `defense`, `speed`, `luck`, `picture`) VALUES
-(1, 'Jayson', 'Bustaleño', 5, 35, 70, 64, 50, 'jayson.png'),
-(2, 'Demy ', 'Moya', 5, 80, 67, 38, 94, 'demy.png'),
-(3, 'James', 'Mareau Santos', 5, 60, 80, 40, 50, 'james.png'),
-(5, 'Ryan', 'Donceras', 4, 0, 0, 0, 0, 'ryan.png'),
-(6, 'Johanes', 'Leyran', 4, 0, 0, 0, 0, 'johan.png'),
-(7, 'Tayog', 'Basallo', 4, 0, 0, 0, 0, 'tayog.png'),
-(8, 'Lawrence', 'Mojica', 4, 0, 0, 0, 0, 'lawrence.png'),
-(9, 'Chlowen', 'Patambang', 4, 0, 0, 0, 0, 'chlowen.png'),
-(10, 'Marcus', 'Matic', 4, 0, 0, 0, 0, 'marcus.png');
+(1, 'Jayson', 'Bustaleño', 5, 140, 50, 130, 80, 'jayson.png'),
+(2, 'Demy', 'Moya', 5, 80, 80, 90, 150, 'demy.png'),
+(3, 'James', 'Santos', 5, 110, 110, 70, 80, 'james.png'),
+(5, 'Ryan', 'Donceras', 4, 60, 140, 60, 60, 'ryan.png'),
+(6, 'Johanes', 'Leyran', 4, 130, 60, 70, 60, 'johan.png'),
+(7, 'Tayog', 'Basallo', 4, 80, 70, 120, 50, 'tayog.png'),
+(8, 'Lawrence', 'Mojica', 4, 70, 60, 70, 120, 'lawrence.png'),
+(9, 'Chlowen', 'Patambang', 4, 80, 80, 80, 80, 'chlowen.png'),
+(10, 'Marcus', 'Matic', 4, 95, 65, 85, 75, 'marcus.png');
 
 -- --------------------------------------------------------
 
@@ -118,59 +96,12 @@ INSERT INTO `characters` (`character_id`, `first_name`, `last_name`, `rarity`, `
 -- Table structure for table `inventory`
 --
 
+DROP TABLE IF EXISTS `inventory`;
 CREATE TABLE `inventory` (
   `user_id` int(11) NOT NULL,
   `character_id` int(11) NOT NULL,
   `date_acquired` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `inventory`
---
-
-INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
-(10, 2, '2026-05-23'),
-(10, 3, '2026-05-23'),
-(10, 5, '2026-05-23'),
-(10, 6, '2026-05-23'),
-(10, 7, '2026-05-23'),
-(10, 8, '2026-05-23'),
-(10, 9, '2026-05-23'),
-(10, 10, '2026-05-23'),
-(18, 1, '2026-05-16'),
-(18, 2, '2026-05-16'),
-(18, 3, '2026-05-16'),
-(18, 5, '2026-05-16'),
-(18, 6, '2026-05-16'),
-(18, 7, '2026-05-16'),
-(18, 8, '2026-05-16'),
-(18, 9, '2026-05-16'),
-(18, 10, '2026-05-16'),
-(20, 1, '2026-05-23'),
-(20, 2, '2026-05-23'),
-(20, 5, '2026-05-23'),
-(20, 6, '2026-05-23'),
-(20, 7, '2026-05-23'),
-(20, 9, '2026-05-23'),
-(20, 10, '2026-05-23'),
-(21, 1, '2026-05-23'),
-(21, 2, '2026-05-23'),
-(21, 3, '2026-05-23'),
-(21, 5, '2026-05-23'),
-(21, 6, '2026-05-23'),
-(21, 7, '2026-05-23'),
-(21, 8, '2026-05-23'),
-(21, 9, '2026-05-23'),
-(21, 10, '2026-05-23'),
-(22, 1, '2026-05-23'),
-(22, 2, '2026-05-23'),
-(22, 3, '2026-05-23'),
-(22, 5, '2026-05-23'),
-(22, 6, '2026-05-23'),
-(22, 7, '2026-05-23'),
-(22, 8, '2026-05-23'),
-(22, 9, '2026-05-23'),
-(22, 10, '2026-05-23');
 
 -- --------------------------------------------------------
 
@@ -178,6 +109,7 @@ INSERT INTO `inventory` (`user_id`, `character_id`, `date_acquired`) VALUES
 -- Table structure for table `user_currency`
 --
 
+DROP TABLE IF EXISTS `user_currency`;
 CREATE TABLE `user_currency` (
   `user_id` int(11) NOT NULL,
   `gems` int(11) DEFAULT NULL,
@@ -185,18 +117,6 @@ CREATE TABLE `user_currency` (
   `pity` int(11) DEFAULT NULL,
   `four_star_pity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `user_currency`
---
-
-INSERT INTO `user_currency` (`user_id`, `gems`, `coins`, `pity`, `four_star_pity`) VALUES
-(10, 222, 0, 7, 1),
-(17, 0, 0, 0, 0),
-(18, 0, 0, 0, 0),
-(20, 42, 100, 1, 0),
-(21, 31, 148000, 74, 1),
-(22, 110, 0, 65, 5);
 
 --
 -- Indexes for dumped tables
@@ -244,7 +164,7 @@ ALTER TABLE `user_currency`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `characters`
@@ -255,6 +175,13 @@ ALTER TABLE `characters`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `account_favorites`
+--
+ALTER TABLE `account_favorites`
+  ADD CONSTRAINT `account_favorites_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `accounts` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `account_favorites_ibfk_2` FOREIGN KEY (`character_id`) REFERENCES `characters` (`character_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `inventory`
